@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EzyAccount — Pilih Syarikat</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0fdf4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .logo-area {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .logo-area h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a7a4a;
+    }
+    .logo-area h1 span { color: #333; }
+    .logo-area p {
+      font-size: 13px;
+      color: #666;
+      margin-top: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 520px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 14px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+    .card .icon {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+    .card .name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a3a2a;
+    }
+    .card .sub {
+      font-size: 11px;
+      color: #999;
+      margin-top: 3px;
+    }
+    .footer {
+      margin-top: 36px;
+      font-size: 11px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-area">
+    <h1>ezy<span>account</span></h1>
+    <p>Pilih syarikat untuk masuk</p>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="ezysupplier/index.html" style="border-color:#1a7a4a20">
+      <div class="icon">🌳</div>
+      <div class="name">Ezy Supplier</div>
+      <div class="sub">Durian Supply</div>
+    </a>
+
+    <a class="card" href="ezybranch/index.html" style="border-color:#2d9e6220">
+      <div class="icon">🏪</div>
+      <div class="name">Ezy Branch</div>
+      <div class="sub">Cawangan</div>
+    </a>
+
+    <a class="card" href="ezybakery/index.html" style="border-color:#f59e0b20">
+      <div class="icon">🥐</div>
+      <div class="name">Ezy Bakery</div>
+      <div class="sub">Bakeri</div>
+    </a>
+
+    <a class="card" href="ezycafe/index.html" style="border-color:#8b5cf620">
+      <div class="icon">☕</div>
+      <div class="name">Ezy Cafe</div>
+      <div class="sub">Kafe</div>
+    </a>
+
+    <a class="card" href="ezysentralkitchen/index.html" style="border-color:#ef444420">
+      <div class="icon">🍳</div>
+      <div class="name">Ezy Sentral Kitchen</div>
+      <div class="sub">Dapur Pusat</div>
+    </a>
+  </div>
+
+  <div class="footer">EzyAccount · v1.00</div>
+</body>
+</html>
