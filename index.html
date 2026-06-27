@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EzyAccount — Pilih Syarikat</title>
+  <title>EzyAccount</title>
+  <script src="https://accounts.google.com/gsi/client" async defer onload="onGISLoaded()"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -16,35 +17,112 @@
       justify-content: center;
       padding: 24px;
     }
-    .logo-area {
-      text-align: center;
-      margin-bottom: 32px;
+
+    /* ── LOGIN SCREEN ── */
+    #loginScreen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 360px;
     }
-    .logo-area h1 {
-      font-size: 28px;
-      font-weight: 700;
-      color: #1a7a4a;
+    .main-logo {
+      width: 200px;
+      height: auto;
+      margin-bottom: 12px;
     }
-    .logo-area h1 span { color: #333; }
-    .logo-area p {
-      font-size: 13px;
+    .login-title {
+      font-size: 14px;
       color: #666;
-      margin-top: 4px;
+      margin-bottom: 36px;
+      text-align: center;
     }
+    .btn-google {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 14px;
+      padding: 14px 24px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      color: #111;
+      width: 100%;
+      justify-content: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      transition: box-shadow .2s;
+    }
+    .btn-google:hover { box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+    .google-svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .kekal-row {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 18px; cursor: pointer;
+      font-size: 14px; color: #6b7280;
+    }
+    .kekal-row input { width: 18px; height: 18px; accent-color: #1a7a4a; cursor: pointer; }
+    .login-loading {
+      display: none;
+      font-size: 13px;
+      color: #1a7a4a;
+      margin-top: 16px;
+    }
+
+    /* ── COMPANY SCREEN ── */
+    #companyScreen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 520px;
+    }
+    .user-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      background: #fff;
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 1px 6px rgba(0,0,0,.08);
+      margin-bottom: 24px;
+    }
+    .user-bar img {
+      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+    }
+    .user-bar-name { font-size: 14px; font-weight: 600; color: #111; }
+    .user-bar-email { font-size: 11px; color: #888; }
+    .user-bar-right { margin-left: auto; }
+    .btn-logout {
+      font-size: 12px; font-weight: 500; color: #dc2626;
+      background: none; border: 1px solid #dc2626;
+      border-radius: 8px; padding: 5px 10px; cursor: pointer;
+    }
+    .btn-logout:hover { background: #fee2e2; }
+    .company-head {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .main-logo-sm {
+      width: 140px;
+      height: auto;
+      margin-bottom: 8px;
+    }
+    .company-head p { font-size: 13px; color: #666; }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 14px;
       width: 100%;
-      max-width: 520px;
     }
     .card {
       background: #fff;
       border-radius: 16px;
-      padding: 22px 14px;
+      padding: 20px 12px;
       text-align: center;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
       border: 2px solid transparent;
       transition: all 0.2s;
       text-decoration: none;
@@ -52,11 +130,14 @@
     }
     .card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
     }
-    .card .icon {
-      font-size: 34px;
-      margin-bottom: 10px;
+    .card-logo {
+      width: 52px; height: 52px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin: 0 auto 10px;
+      display: block;
     }
     .card .name {
       font-size: 13px;
@@ -68,6 +149,25 @@
       color: #999;
       margin-top: 3px;
     }
+
+    /* ── PENDING/LOADING ── */
+    #loadingScreen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      color: #1a7a4a;
+      font-size: 14px;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #d1fae5;
+      border-top-color: #1a7a4a;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     .footer {
       margin-top: 36px;
       font-size: 11px;
@@ -76,43 +176,168 @@
   </style>
 </head>
 <body>
-  <div class="logo-area">
-    <h1>ezy<span>account</span></h1>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <img class="main-logo" src="logo/main.jpg" alt="EzyAccount" onerror="this.style.display='none';document.getElementById('loginFallbackTitle').style.display='block'">
+  <div id="loginFallbackTitle" style="display:none;font-size:28px;font-weight:800;color:#1a7a4a;margin-bottom:12px">ezy<span style="color:#333">account</span></div>
+  <div class="login-title">smart staff, ezy working</div>
+  <button class="btn-google" onclick="doLogin()">
+    <svg class="google-svg" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+    </svg>
+    Log Masuk dengan Google
+  </button>
+  <label class="kekal-row">
+    <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
+  </label>
+  <div class="login-loading" id="loginLoading">⏳ Sedang log masuk...</div>
+</div>
+
+<!-- LOADING -->
+<div id="loadingScreen">
+  <div class="spinner"></div>
+  <div>Memuat maklumat...</div>
+</div>
+
+<!-- COMPANY SELECT -->
+<div id="companyScreen">
+  <div class="user-bar">
+    <img id="userPic" src="" alt="">
+    <div>
+      <div class="user-bar-name" id="userName"></div>
+      <div class="user-bar-email" id="userEmail"></div>
+    </div>
+    <div class="user-bar-right">
+      <button class="btn-logout" onclick="doLogout()">Keluar</button>
+    </div>
+  </div>
+  <div class="company-head">
+    <img class="main-logo-sm" src="logo/main.jpg" alt="EzyAccount" onerror="this.style.display='none'">
     <p>Pilih syarikat untuk masuk</p>
   </div>
+  <div class="grid" id="companyGrid"></div>
+</div>
 
-  <div class="grid">
-    <a class="card" href="ezysupplier/index.html" style="border-color:#1a7a4a20">
-      <div class="icon">🌳</div>
-      <div class="name">Ezy Supplier</div>
-      <div class="sub">Durian Supply</div>
-    </a>
+<div class="footer" id="footerVer">EzyAccount · v1.00-2606/1246</div>
 
-    <a class="card" href="ezybranch/index.html" style="border-color:#2d9e6220">
-      <div class="icon">🏪</div>
-      <div class="name">Ezy Branch</div>
-      <div class="sub">Cawangan</div>
-    </a>
+<script>
+// ── CONFIG ──
+const COMPANIES = [
+  { id:'ezysupplier',    name:'Ezy Supplier',        sub:'Durian Supply',   logo:'logo/supplier.png',  color:'#1a7a4a', path:'ezysupplier/index.html' },
+  { id:'ezybranch',      name:'Ezy Branch',           sub:'Cawangan',        logo:'logo/Branch.png',    color:'#2d9e62', path:'ezybranch/index.html'   },
+  { id:'ezybakery',      name:'Ezy Bakery',           sub:'Bakeri',          logo:'logo/bakery.png',    color:'#f59e0b', path:'ezybakery/index.html'   },
+  { id:'ezycafe',        name:'Ezy Cafe',             sub:'Kafe',            logo:'logo/cafe.jpg',      color:'#8b5cf6', path:'ezycafe/index.html'     },
+  { id:'ezysentralkitchen', name:'Sentral Kitchen',   sub:'Dapur Pusat',     logo:'logo/kitchen.png',   color:'#ef4444', path:'ezysentralkitchen/index.html' },
+];
 
-    <a class="card" href="ezybakery/index.html" style="border-color:#f59e0b20">
-      <div class="icon">🥐</div>
-      <div class="name">Ezy Bakery</div>
-      <div class="sub">Bakeri</div>
-    </a>
+// ── HELPERS ──
+function lsGet(k, def=null){try{const v=localStorage.getItem(k);return v?JSON.parse(v):def;}catch{return def;}}
+function lsSet(k,v){localStorage.setItem(k,JSON.stringify(v));}
 
-    <a class="card" href="ezycafe/index.html" style="border-color:#8b5cf620">
-      <div class="icon">☕</div>
-      <div class="name">Ezy Cafe</div>
-      <div class="sub">Kafe</div>
-    </a>
+let tokenClient = null;
+let gisReady = false;
+let currentToken = null;
 
-    <a class="card" href="ezysentralkitchen/index.html" style="border-color:#ef444420">
-      <div class="icon">🍳</div>
-      <div class="name">Ezy Sentral Kitchen</div>
-      <div class="sub">Dapur Pusat</div>
-    </a>
-  </div>
+// ── GIS ──
+function onGISLoaded(){
+  gisReady = true;
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: '27154479564-ufljm52nmlh4gg7ie54knphff44jvrrq.apps.googleusercontent.com',
+    scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
+    callback: handleTokenResponse,
+  });
+  autoLogin();
+}
 
-  <div class="footer">EzyAccount · v1.00</div>
+function doLogin(){
+  if(!gisReady || !tokenClient){
+    setTimeout(()=>{ if(gisReady&&tokenClient) tokenClient.requestAccessToken({prompt:'select_account'}); },800);
+    return;
+  }
+  document.getElementById('loginLoading').style.display='block';
+  tokenClient.requestAccessToken({prompt:'select_account'});
+}
+
+async function handleTokenResponse(resp){
+  if(resp.error){ document.getElementById('loginLoading').style.display='none'; return; }
+  currentToken = resp.access_token;
+  const expiry = Date.now() + (resp.expires_in||3599)*1000;
+  const kekal = document.getElementById('kekalCheck').checked;
+  if(kekal){
+    lsSet('ezy_landing_token', currentToken);
+    lsSet('ezy_landing_expiry', expiry);
+    lsSet('ezy_kekal', true);
+  }
+  showScreen('loadingScreen');
+  await fetchUser();
+}
+
+async function fetchUser(){
+  try{
+    const r = await fetch('https://www.googleapis.com/oauth2/v2/userinfo',{headers:{Authorization:'Bearer '+currentToken}});
+    const u = await r.json();
+    if(!u||!u.email) throw new Error('no email');
+    lsSet('ezy_user', u);
+    showCompanyScreen(u);
+  }catch(e){
+    console.error(e);
+    showScreen('loginScreen');
+  }
+}
+
+function autoLogin(){
+  const kekal = lsGet('ezy_kekal', false);
+  if(!kekal) return;
+  const token = lsGet('ezy_landing_token', null);
+  const expiry = lsGet('ezy_landing_expiry', 0);
+  const user = lsGet('ezy_user', null);
+  if(token && expiry > Date.now() && user){
+    currentToken = token;
+    showCompanyScreen(user);
+  }
+}
+
+function showCompanyScreen(u){
+  document.getElementById('userPic').src = u.picture||'';
+  document.getElementById('userName').textContent = u.name||'';
+  document.getElementById('userEmail').textContent = u.email||'';
+
+  const grid = document.getElementById('companyGrid');
+  grid.innerHTML = '';
+  COMPANIES.forEach(c=>{
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.href = c.path;
+    a.style.borderColor = c.color+'30';
+    a.innerHTML = `
+      <img class="card-logo" src="${c.logo}" alt="${c.name}" onerror="this.style.display='none'">
+      <div class="name">${c.name}</div>
+      <div class="sub">${c.sub}</div>
+    `;
+    grid.appendChild(a);
+  });
+
+  showScreen('companyScreen');
+}
+
+function doLogout(){
+  localStorage.removeItem('ezy_landing_token');
+  localStorage.removeItem('ezy_landing_expiry');
+  localStorage.removeItem('ezy_kekal');
+  localStorage.removeItem('ezy_user');
+  currentToken = null;
+  showScreen('loginScreen');
+}
+
+function showScreen(id){
+  ['loginScreen','loadingScreen','companyScreen'].forEach(s=>{
+    document.getElementById(s).style.display = (s===id) ? 'flex' : 'none';
+  });
+}
+</script>
 </body>
 </html>
