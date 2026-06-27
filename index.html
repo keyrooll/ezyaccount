@@ -88,8 +88,15 @@
       box-shadow: 0 1px 6px rgba(0,0,0,.08);
       margin-bottom: 24px;
     }
-    .user-bar img {
-      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+    .user-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+    }
+    .user-avatar-fallback {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #1a7a4a; color: #fff;
+      display: none; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; flex-shrink: 0;
     }
     .user-bar-name { font-size: 14px; font-weight: 600; color: #111; }
     .user-bar-email { font-size: 11px; color: #888; }
@@ -105,24 +112,24 @@
       margin-bottom: 20px;
     }
     .main-logo-sm {
-      width: 140px;
+      width: 120px;
       height: auto;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .company-head p { font-size: 13px; color: #666; }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
       gap: 14px;
       width: 100%;
     }
     .card {
       background: #fff;
       border-radius: 16px;
-      padding: 20px 12px;
+      padding: 18px 12px 14px;
       text-align: center;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,.07);
       border: 2px solid transparent;
       transition: all 0.2s;
       text-decoration: none;
@@ -132,12 +139,21 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0,0,0,.12);
     }
-    .card-logo {
-      width: 52px; height: 52px;
-      object-fit: contain;
-      border-radius: 10px;
+    /* Logo wrapper — coloured background so white logos show up */
+    .card-logo-wrap {
+      width: 56px; height: 56px;
+      border-radius: 12px;
       margin: 0 auto 10px;
-      display: block;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .card-logo {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+    .card-emoji {
+      font-size: 28px;
+      display: none; /* shown via JS if img fails */
     }
     .card .name {
       font-size: 13px;
@@ -150,7 +166,7 @@
       margin-top: 3px;
     }
 
-    /* ── PENDING/LOADING ── */
+    /* ── LOADING ── */
     #loadingScreen {
       display: none;
       flex-direction: column;
@@ -179,8 +195,11 @@
 
 <!-- LOGIN -->
 <div id="loginScreen">
-  <img class="main-logo" src="logo/main.jpg" alt="EzyAccount" onerror="this.style.display='none';document.getElementById('loginFallbackTitle').style.display='block'">
-  <div id="loginFallbackTitle" style="display:none;font-size:28px;font-weight:800;color:#1a7a4a;margin-bottom:12px">ezy<span style="color:#333">account</span></div>
+  <img class="main-logo" src="logo/main.jpg" alt="EzyAccount"
+    onerror="this.style.display='none';document.getElementById('loginFallback').style.display='block'">
+  <div id="loginFallback" style="display:none;font-size:30px;font-weight:800;color:#1a7a4a;margin-bottom:12px">
+    ezy<span style="color:#333">account</span>
+  </div>
   <div class="login-title">smart staff, ezy working</div>
   <button class="btn-google" onclick="doLogin()">
     <svg class="google-svg" viewBox="0 0 24 24">
@@ -206,7 +225,9 @@
 <!-- COMPANY SELECT -->
 <div id="companyScreen">
   <div class="user-bar">
-    <img id="userPic" src="" alt="">
+    <img id="userPic" class="user-avatar" src="" alt=""
+      onerror="this.style.display='none';document.getElementById('userPicFallback').style.display='flex'">
+    <div id="userPicFallback" class="user-avatar-fallback"></div>
     <div>
       <div class="user-bar-name" id="userName"></div>
       <div class="user-bar-email" id="userEmail"></div>
@@ -222,40 +243,35 @@
   <div class="grid" id="companyGrid"></div>
 </div>
 
-<div class="footer" id="footerVer">EzyAccount · v1.00-2606/1246</div>
+<div class="footer">EzyAccount · v1.1-2706/1432</div>
 
 <script>
-// ── CONFIG ──
 const COMPANIES = [
-  { id:'ezysupplier',    name:'Ezy Supplier',        sub:'Durian Supply',   logo:'logo/supplier.png',  color:'#1a7a4a', path:'ezysupplier/index.html' },
-  { id:'ezybranch',      name:'Ezy Branch',           sub:'Cawangan',        logo:'logo/Branch.png',    color:'#2d9e62', path:'ezybranch/index.html'   },
-  { id:'ezybakery',      name:'Ezy Bakery',           sub:'Bakeri',          logo:'logo/bakery.png',    color:'#f59e0b', path:'ezybakery/index.html'   },
-  { id:'ezycafe',        name:'Ezy Cafe',             sub:'Kafe',            logo:'logo/cafe.jpg',      color:'#8b5cf6', path:'ezycafe/index.html'     },
-  { id:'ezysentralkitchen', name:'Sentral Kitchen',   sub:'Dapur Pusat',     logo:'logo/kitchen.png',   color:'#ef4444', path:'ezysentralkitchen/index.html' },
+  { id:'ezysupplier',       name:'Ezy Supplier',    sub:'Durian Supply', logo:'logo/supplier.png', emoji:'🌳', color:'#1a7a4a', bg:'#e8f5ee', path:'ezysupplier/index.html' },
+  { id:'ezybranch',         name:'Ezy Branch',      sub:'Cawangan',      logo:'logo/Branch.png',   emoji:'🏪', color:'#2d9e62', bg:'#e8f5ee', path:'ezybranch/index.html'   },
+  { id:'ezybakery',         name:'Ezy Bakery',      sub:'Bakeri',        logo:'logo/bakery.png',   emoji:'🥐', color:'#f59e0b', bg:'#fffbeb', path:'ezybakery/index.html'   },
+  { id:'ezycafe',           name:'Ezy Cafe',        sub:'Kafe',          logo:'logo/cafe.jpg',     emoji:'☕', color:'#8b5cf6', bg:'#f5f3ff', path:'ezycafe/index.html'     },
+  { id:'ezysentralkitchen', name:'Sentral Kitchen', sub:'Dapur Pusat',   logo:'logo/kitchen.png',  emoji:'🍳', color:'#ef4444', bg:'#fff1f2', path:'ezysentralkitchen/index.html' },
 ];
 
-// ── HELPERS ──
-function lsGet(k, def=null){try{const v=localStorage.getItem(k);return v?JSON.parse(v):def;}catch{return def;}}
+function lsGet(k,def=null){try{const v=localStorage.getItem(k);return v?JSON.parse(v):def;}catch{return def;}}
 function lsSet(k,v){localStorage.setItem(k,JSON.stringify(v));}
 
-let tokenClient = null;
-let gisReady = false;
-let currentToken = null;
+let tokenClient=null, gisReady=false, currentToken=null;
 
-// ── GIS ──
 function onGISLoaded(){
-  gisReady = true;
-  tokenClient = google.accounts.oauth2.initTokenClient({
-    client_id: '27154479564-ufljm52nmlh4gg7ie54knphff44jvrrq.apps.googleusercontent.com',
-    scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
-    callback: handleTokenResponse,
+  gisReady=true;
+  tokenClient=google.accounts.oauth2.initTokenClient({
+    client_id:'27154479564-ufljm52nmlh4gg7ie54knphff44jvrrq.apps.googleusercontent.com',
+    scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
+    callback:handleTokenResponse,
   });
   autoLogin();
 }
 
 function doLogin(){
-  if(!gisReady || !tokenClient){
-    setTimeout(()=>{ if(gisReady&&tokenClient) tokenClient.requestAccessToken({prompt:'select_account'}); },800);
+  if(!gisReady||!tokenClient){
+    setTimeout(()=>{if(gisReady&&tokenClient)tokenClient.requestAccessToken({prompt:'select_account'});},800);
     return;
   }
   document.getElementById('loginLoading').style.display='block';
@@ -263,14 +279,14 @@ function doLogin(){
 }
 
 async function handleTokenResponse(resp){
-  if(resp.error){ document.getElementById('loginLoading').style.display='none'; return; }
-  currentToken = resp.access_token;
-  const expiry = Date.now() + (resp.expires_in||3599)*1000;
-  const kekal = document.getElementById('kekalCheck').checked;
+  if(resp.error){document.getElementById('loginLoading').style.display='none';return;}
+  currentToken=resp.access_token;
+  const expiry=Date.now()+(resp.expires_in||3599)*1000;
+  const kekal=document.getElementById('kekalCheck').checked;
   if(kekal){
-    lsSet('ezy_landing_token', currentToken);
-    lsSet('ezy_landing_expiry', expiry);
-    lsSet('ezy_kekal', true);
+    lsSet('ezy_landing_token',currentToken);
+    lsSet('ezy_landing_expiry',expiry);
+    lsSet('ezy_kekal',true);
   }
   showScreen('loadingScreen');
   await fetchUser();
@@ -278,49 +294,49 @@ async function handleTokenResponse(resp){
 
 async function fetchUser(){
   try{
-    const r = await fetch('https://www.googleapis.com/oauth2/v2/userinfo',{headers:{Authorization:'Bearer '+currentToken}});
-    const u = await r.json();
-    if(!u||!u.email) throw new Error('no email');
-    lsSet('ezy_user', u);
+    const r=await fetch('https://www.googleapis.com/oauth2/v2/userinfo',{headers:{Authorization:'Bearer '+currentToken}});
+    const u=await r.json();
+    if(!u||!u.email)throw new Error('no email');
+    lsSet('ezy_user',u);
     showCompanyScreen(u);
-  }catch(e){
-    console.error(e);
-    showScreen('loginScreen');
-  }
+  }catch(e){console.error(e);showScreen('loginScreen');}
 }
 
 function autoLogin(){
-  const kekal = lsGet('ezy_kekal', false);
-  if(!kekal) return;
-  const token = lsGet('ezy_landing_token', null);
-  const expiry = lsGet('ezy_landing_expiry', 0);
-  const user = lsGet('ezy_user', null);
-  if(token && expiry > Date.now() && user){
-    currentToken = token;
-    showCompanyScreen(user);
-  }
+  const kekal=lsGet('ezy_kekal',false);
+  if(!kekal)return;
+  const token=lsGet('ezy_landing_token',null);
+  const expiry=lsGet('ezy_landing_expiry',0);
+  const user=lsGet('ezy_user',null);
+  if(token&&expiry>Date.now()&&user){currentToken=token;showCompanyScreen(user);}
 }
 
 function showCompanyScreen(u){
-  document.getElementById('userPic').src = u.picture||'';
-  document.getElementById('userName').textContent = u.name||'';
-  document.getElementById('userEmail').textContent = u.email||'';
+  document.getElementById('userPic').src=u.picture||'';
+  document.getElementById('userName').textContent=u.name||'';
+  document.getElementById('userEmail').textContent=u.email||'';
+  // fallback initial
+  const fb=document.getElementById('userPicFallback');
+  fb.textContent=(u.name||u.email||'?')[0].toUpperCase();
 
-  const grid = document.getElementById('companyGrid');
-  grid.innerHTML = '';
+  const grid=document.getElementById('companyGrid');
+  grid.innerHTML='';
   COMPANIES.forEach(c=>{
-    const a = document.createElement('a');
-    a.className = 'card';
-    a.href = c.path;
-    a.style.borderColor = c.color+'30';
-    a.innerHTML = `
-      <img class="card-logo" src="${c.logo}" alt="${c.name}" onerror="this.style.display='none'">
+    const a=document.createElement('a');
+    a.className='card';
+    a.href=c.path;
+    a.style.borderColor=c.color+'30';
+    a.innerHTML=`
+      <div class="card-logo-wrap" style="background:${c.bg}">
+        <img class="card-logo" src="${c.logo}" alt="${c.name}"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="card-emoji">${c.emoji}</span>
+      </div>
       <div class="name">${c.name}</div>
       <div class="sub">${c.sub}</div>
     `;
     grid.appendChild(a);
   });
-
   showScreen('companyScreen');
 }
 
@@ -329,13 +345,13 @@ function doLogout(){
   localStorage.removeItem('ezy_landing_expiry');
   localStorage.removeItem('ezy_kekal');
   localStorage.removeItem('ezy_user');
-  currentToken = null;
+  currentToken=null;
   showScreen('loginScreen');
 }
 
 function showScreen(id){
   ['loginScreen','loadingScreen','companyScreen'].forEach(s=>{
-    document.getElementById(s).style.display = (s===id) ? 'flex' : 'none';
+    document.getElementById(s).style.display=(s===id)?'flex':'none';
   });
 }
 </script>
