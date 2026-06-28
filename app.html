@@ -204,7 +204,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v1.6-2806/1035</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v1.7-2806/1041</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -1033,14 +1033,14 @@ function getValidToken(){
 }
 
 function logoutUser(){
+  const tokenToRevoke=currentToken;
   currentToken=null;currentUser=null;currentRole=null;
   localStorage.removeItem('ezy_token');localStorage.removeItem('ezy_token_expiry');
   localStorage.removeItem('ezy_kekal');localStorage.removeItem('ezy_user');
-  try{if(currentToken&&window.google) google.accounts.oauth2.revoke(currentToken,()=>{});}catch(e){}
-  document.getElementById('loginScreen').style.display='flex';
-  document.getElementById('mainApp').style.display='none';
-  document.getElementById('deniedScreen').style.display='none';
-  const _ps=document.getElementById('pendingScreen');if(_ps)_ps.style.display='none';
+  localStorage.removeItem('ezy_landing_token');localStorage.removeItem('ezy_landing_expiry');
+  sessionStorage.removeItem('ezy_sess_token');sessionStorage.removeItem('ezy_sess_expiry');
+  try{if(tokenToRevoke&&window.google) google.accounts.oauth2.revoke(tokenToRevoke,()=>{});}catch(e){}
+  window.location.href='index.html';
 }
 
 function showMainApp(){
