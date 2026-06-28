@@ -244,7 +244,7 @@
   <div class="grid" id="companyGrid"></div>
 </div>
 
-<div class="footer">EzyAccount · v1.5-2806/1025</div>
+<div class="footer">EzyAccount · v1.6-2806/1035</div>
 
 <script>
 const COMPANIES = [
@@ -284,10 +284,15 @@ async function handleTokenResponse(resp){
   currentToken=resp.access_token;
   const expiry=Date.now()+(resp.expires_in||3599)*1000;
   const kekal=document.getElementById('kekalCheck').checked;
+  // Always save token — localStorage if kekal, sessionStorage if not
   if(kekal){
     lsSet('ezy_landing_token',currentToken);
     lsSet('ezy_landing_expiry',expiry);
     lsSet('ezy_kekal',true);
+  } else {
+    // Session only — cleared when browser closes
+    sessionStorage.setItem('ezy_sess_token',currentToken);
+    sessionStorage.setItem('ezy_sess_expiry',String(expiry));
   }
   showScreen('loadingScreen');
   await fetchUser();
@@ -299,17 +304,30 @@ async function fetchUser(){
     const u=await r.json();
     if(!u||!u.email)throw new Error('no email');
     lsSet('ezy_user',u);
+    // Also save token to sessionStorage so app.html can pick it up even without kekal
+    const expiry=Number(sessionStorage.getItem('ezy_sess_expiry')||0)||
+                 lsGet('ezy_landing_expiry',0);
+    sessionStorage.setItem('ezy_sess_token', currentToken);
+    sessionStorage.setItem('ezy_sess_expiry', String(expiry||Date.now()+3599000));
     showCompanyScreen(u);
   }catch(e){console.error(e);showScreen('loginScreen');}
 }
 
 function autoLogin(){
-  const kekal=lsGet('ezy_kekal',false);
-  if(!kekal)return;
-  const token=lsGet('ezy_landing_token',null);
-  const expiry=lsGet('ezy_landing_expiry',0);
   const user=lsGet('ezy_user',null);
-  if(token&&expiry>Date.now()&&user){currentToken=token;showCompanyScreen(user);}
+  if(!user)return;
+  // Check localStorage (kekal)
+  const token1=lsGet('ezy_landing_token',null);
+  const expiry1=lsGet('ezy_landing_expiry',0);
+  // Check sessionStorage (session only)
+  const token2=sessionStorage.getItem('ezy_sess_token');
+  const expiry2=Number(sessionStorage.getItem('ezy_sess_expiry')||0);
+  
+  let token=null;
+  if(token1&&expiry1>Date.now()) token=token1;
+  else if(token2&&expiry2>Date.now()) token=token2;
+  
+  if(token&&user){currentToken=token;showCompanyScreen(user);}
 }
 
 function showCompanyScreen(u){

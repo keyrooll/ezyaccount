@@ -204,7 +204,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v1.5-2806/1020</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v1.6-2806/1035</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -996,18 +996,20 @@ function registerUser(u){
 }
 
 function autoLogin(){
-  // Check token from app.html own login (ezy_token)
-  const token1 = lsGet('ezy_token',null);
-  const expiry1 = lsGet('ezy_token_expiry',0);
-  // Also check token from index.html landing page (ezy_landing_token)
-  const token2 = lsGet('ezy_landing_token',null);
-  const expiry2 = lsGet('ezy_landing_expiry',0);
   const user = lsGet('ezy_user',null);
+  
+  // Check all token sources
+  const token1 = lsGet('ezy_token',null);            // app own login
+  const expiry1 = lsGet('ezy_token_expiry',0);
+  const token2 = lsGet('ezy_landing_token',null);    // index.html kekal
+  const expiry2 = lsGet('ezy_landing_expiry',0);
+  const token3 = sessionStorage.getItem('ezy_sess_token');  // index.html session
+  const expiry3 = Number(sessionStorage.getItem('ezy_sess_expiry')||0);
 
-  // Pick whichever token is still valid
   let token = null;
   if(token1 && expiry1 > Date.now()) token = token1;
   else if(token2 && expiry2 > Date.now()) token = token2;
+  else if(token3 && expiry3 > Date.now()) token = token3;
 
   if(token && user){
     currentToken = token;
@@ -1018,15 +1020,8 @@ function autoLogin(){
     return;
   }
 
-  // No valid token — if user data exists, redirect back to index to re-login
-  // Otherwise show login screen as fallback
-  if(user && !token){
-    // Token expired — send back to landing page to re-auth cleanly
-    window.location.href = 'index.html';
-    return;
-  }
-  // Fresh visit with no session — show login screen
-  document.getElementById('loginScreen').style.display='flex';
+  // No valid token — redirect to index.html to login
+  window.location.href = 'index.html';
 }
 
 // Returns a valid token or null. Does NOT auto-refresh (avoid popup blocked errors).
