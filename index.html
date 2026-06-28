@@ -244,7 +244,7 @@
   <div class="grid" id="companyGrid"></div>
 </div>
 
-<div class="footer">EzyAccount · v2.4-2806/1446</div>
+<div class="footer">EzyAccount · v2.6-2806/1520</div>
 
 <script>
 const COMPANIES = [
@@ -264,7 +264,7 @@ function onGISLoaded(){
   gisReady=true;
   tokenClient=google.accounts.oauth2.initTokenClient({
     client_id:'27154479564-ufljm52nmlh4gg7ie54knphff44jvrrq.apps.googleusercontent.com',
-    scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
+    scope:'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive',
     callback:handleTokenResponse,
   });
   autoLogin();
