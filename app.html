@@ -204,7 +204,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v1.7-2806/1041</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v1.8-2806/1232</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -1471,8 +1471,8 @@ async function analyzeWithAI(){
     const pages=uploadedPages.length>0?uploadedPages:[uploadedImage];
     const imageContents=pages.map(b=>({type:'image_url',image_url:{url:b.startsWith('data:')?b:'data:image/jpeg;base64,'+b,detail:'high'}}));
     const promptText=pages.length>1
-      ?'You are a receipt OCR assistant. These '+pages.length+' images are pages of ONE receipt. Combine all pages and return ONE unified JSON. Return ONLY valid JSON, no markdown: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. IMPORTANT: year "26"=2026,"25"=2025. For amount use the GRAND TOTAL from last page; if not shown sum ALL items. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS.'
-      :'You are a receipt OCR assistant. Analyze this receipt image carefully. Return ONLY valid JSON, no markdown, no extra text: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. IMPORTANT: For date, year "26" means 2026, "25" means 2025. For amount, sum ALL items if no total shown. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS. If unclear use OTHERS/101.';
+      ?'You are a receipt OCR assistant. These '+pages.length+' images are pages of ONE receipt. Combine all pages and return ONE unified JSON. Return ONLY valid JSON, no markdown: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total. If invoice shows Rate=4.00 and Amount=248.00, use price=4.00 NOT 248.00. qty = quantity ordered. IMPORTANT: year "26"=2026,"25"=2025. For amount use the GRAND TOTAL from last page; if not shown sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS.'
+      :'You are a receipt OCR assistant. Analyze this receipt image carefully. Return ONLY valid JSON, no markdown, no extra text: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total amount. If invoice shows columns Rate and Amount, use the Rate column value for price, not Amount. IMPORTANT: For date, year "26" means 2026, "25" means 2025. For amount, use GRAND TOTAL or sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS. If unclear use OTHERS/101.';
     const body={
       model:'gpt-4o',max_tokens:2000,temperature:0.1,
       messages:[{role:'user',content:[
