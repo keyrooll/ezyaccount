@@ -204,7 +204,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v2.0-2806/1249</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v2.2-2806/1414</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -1033,10 +1033,19 @@ function autoLogin(){
 
 // Returns a valid token or null. Does NOT auto-refresh (avoid popup blocked errors).
 function getValidToken(){
+  if(!currentToken) return null;
+  // Check localStorage expiry first
   const expiry = lsGet('ezy_token_expiry', 0);
-  const stillValid = expiry > Date.now() + 60000; // 1 min buffer
-  if(stillValid && currentToken) return currentToken;
-  return null; // token expired, caller should skip
+  if(expiry > Date.now() + 60000) return currentToken;
+  // Also check sessionStorage expiry (token from landing page)
+  const sessExpiry = Number(sessionStorage.getItem('ezy_sess_expiry')||0);
+  if(sessExpiry > Date.now() + 60000) return currentToken;
+  // Also check landing token expiry
+  const landingExpiry = lsGet('ezy_landing_expiry', 0);
+  if(landingExpiry > Date.now() + 60000) return currentToken;
+  // Token still in memory — trust it (Google token lasts 1hr from issue)
+  if(currentToken) return currentToken;
+  return null;
 }
 
 function logoutUser(){
@@ -1081,7 +1090,10 @@ function showMainApp(){
   checkApiKeyOnLogin();
   setTimeout(()=>ensureCategoriesSheet().catch(()=>{}),3000);
   setTimeout(()=>loadSkuList().catch(()=>{}),2000);
-  // setTimeout(()=>loadItemRegistryFromSheet().catch(()=>{}),1000);
+  // If this company uses a master supplier sheet, clear stale local data first
+  if(COMPANY_CONFIG.suppliersSheetId){
+    localStorage.removeItem('ezy_suppliers_'+COMPANY_CONFIG.id);
+  }
   // Load fresh data from Sheets so all devices stay in sync
   setTimeout(async()=>{
     try{
@@ -4245,10 +4257,19 @@ async function loadSuppliersFromSheet(){
   try{
     // If suppliersSheetId is set, load supplier NAMES only from master sheet (read-only)
     if(COMPANY_CONFIG.suppliersSheetId){
+      console.log('Loading suppliers from master sheet:',COMPANY_CONFIG.suppliersSheetId);
       const r=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${COMPANY_CONFIG.suppliersSheetId}/values/Suppliers!A2:J`,{headers:{Authorization:'Bearer '+tok}});
       const d=await r.json();
-      if(d.error){console.warn('Master supplier sheet error:',d.error.message);return;}
-      if(!d.values||!d.values.length) return;
+      if(d.error){
+        console.error('Master supplier sheet error:',d.error.status, d.error.message);
+        showToast('⚠️ Gagal load supplier: '+d.error.message);
+        return;
+      }
+      if(!d.values||!d.values.length){
+        console.warn('Master supplier sheet: no data found in Suppliers tab');
+        showToast('⚠️ Tab Suppliers kosong atau nama tab salah');
+        return;
+      }
       const masterSuppliers=d.values.map(row=>({
         id:row[0]||'sup_'+row[1],
         name:row[1]||'',category:row[2]||'COGS',account:row[3]||'101',
@@ -4257,6 +4278,7 @@ async function loadSuppliersFromSheet(){
       })).filter(s=>s.name.trim());
       lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,masterSuppliers);
       console.log('Loaded',masterSuppliers.length,'suppliers from master sheet');
+      showToast('✅ '+masterSuppliers.length+' supplier diload');
       return;
     }
     // Default: load from company's own sheet
