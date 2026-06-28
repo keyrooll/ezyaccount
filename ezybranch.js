@@ -5,9 +5,8 @@ const COMPANY_CONFIG = {
   themeColor: '#2d9e62',
 
   clientId: '27154479564-ufljm52nmlh4gg7ie54knphff44jvrrq.apps.googleusercontent.com',
-  sheetId: '1V5qK1giqd83qjUyV3hznvzIsmOluo_3WkxCLVBIQgAw',
-  skuSheetId: '1V5qK1giqd83qjUyV3hznvzIsmOluo_3WkxCLVBIQgAw',
-  suppliersSheetId: '1u3H6D57vx7jahjc40S9u_qwhCXduMQ7gMTZyoP7J8Z8',
+  sheetId: '1u3H6D57vx7jahjc40S9u_qwhCXduMQ7gMTZyoP7J8Z8',
+  skuSheetId: '1u3H6D57vx7jahjc40S9u_qwhCXduMQ7gMTZyoP7J8Z8',
   driveFolderName: 'EzyBranch Receipts',
   driveFolderRootId: '1GmJWOikquZb-As-XdJAYgZao_EXQcfY-',
 

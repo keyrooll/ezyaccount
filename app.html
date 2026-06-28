@@ -204,7 +204,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v2.2-2806/1414</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v2.4-2806/1446</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -232,6 +232,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v2.4-2806/1446</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -1090,10 +1091,8 @@ function showMainApp(){
   checkApiKeyOnLogin();
   setTimeout(()=>ensureCategoriesSheet().catch(()=>{}),3000);
   setTimeout(()=>loadSkuList().catch(()=>{}),2000);
-  // If this company uses a master supplier sheet, clear stale local data first
-  if(COMPANY_CONFIG.suppliersSheetId){
-    localStorage.removeItem('ezy_suppliers_'+COMPANY_CONFIG.id);
-  }
+  // Clear stale local supplier data so fresh data from sheet is used
+  localStorage.removeItem('ezy_suppliers_'+COMPANY_CONFIG.id);
   // Load fresh data from Sheets so all devices stay in sync
   setTimeout(async()=>{
     try{
@@ -4256,32 +4255,7 @@ async function loadSuppliersFromSheet(){
   if(!tok) return;
   try{
     // If suppliersSheetId is set, load supplier NAMES only from master sheet (read-only)
-    if(COMPANY_CONFIG.suppliersSheetId){
-      console.log('Loading suppliers from master sheet:',COMPANY_CONFIG.suppliersSheetId);
-      const r=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${COMPANY_CONFIG.suppliersSheetId}/values/Suppliers!A2:J`,{headers:{Authorization:'Bearer '+tok}});
-      const d=await r.json();
-      if(d.error){
-        console.error('Master supplier sheet error:',d.error.status, d.error.message);
-        showToast('⚠️ Gagal load supplier: '+d.error.message);
-        return;
-      }
-      if(!d.values||!d.values.length){
-        console.warn('Master supplier sheet: no data found in Suppliers tab');
-        showToast('⚠️ Tab Suppliers kosong atau nama tab salah');
-        return;
-      }
-      const masterSuppliers=d.values.map(row=>({
-        id:row[0]||'sup_'+row[1],
-        name:row[1]||'',category:row[2]||'COGS',account:row[3]||'101',
-        waNum:row[4]||'',bankName:row[5]||'',bankAcc:row[6]||'',
-        regNo:row[7]||'',count:parseInt(row[8])||0
-      })).filter(s=>s.name.trim());
-      lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,masterSuppliers);
-      console.log('Loaded',masterSuppliers.length,'suppliers from master sheet');
-      showToast('✅ '+masterSuppliers.length+' supplier diload');
-      return;
-    }
-    // Default: load from company's own sheet
+    // Load from company's own sheet (tab Suppliers)
     const r=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Suppliers!A2:J`,{headers:{Authorization:'Bearer '+tok}});
     const d=await r.json();
     if(d.error) return;
