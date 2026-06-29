@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EzyAccount</title>
-  <script src="https://accounts.google.com/gsi/client" async defer onload="onGISLoaded()"></script>
+  <script>window._gisLoaded=false;window.onGISLoaded=function(){window._gisLoaded=true;if(typeof _doGISInit==='function')_doGISInit();}</script>
+  <script src="https://accounts.google.com/gsi/client" async defer onload="window.onGISLoaded()"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -260,7 +261,7 @@ function lsSet(k,v){localStorage.setItem(k,JSON.stringify(v));}
 
 let tokenClient=null, gisReady=false, currentToken=null;
 
-function onGISLoaded(){
+function _doGISInit(){
   gisReady=true;
   tokenClient=google.accounts.oauth2.initTokenClient({
     client_id:'27154479564-ufljm52nmlh4gg7ie54knphff44jvrrq.apps.googleusercontent.com',
@@ -269,6 +270,8 @@ function onGISLoaded(){
   });
   autoLogin();
 }
+// If GIS already loaded before this script ran, init now
+if(window._gisLoaded) _doGISInit();
 
 function doLogin(){
   if(!gisReady||!tokenClient){
