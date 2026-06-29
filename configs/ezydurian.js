@@ -48,12 +48,5 @@ const COMPANY_CONFIG = {
     {code:'609',name:'STAFF REFRESHMENT'},{code:'701',name:'BANK CHARGES'},{code:'702',name:'GENERAL EXPENSES'}
   ],
 
-  // Default suppliers
-  defaultSuppliers: [
-    {id:'s1',name:'Mydin',category:'COGS',account:'101',count:5},
-    {id:'s2',name:'Giant',category:'COGS',account:'101',count:3},
-    {id:'s3',name:'TNB',category:'UTILITIES',account:'504',count:8},
-    {id:'s4',name:'Air Selangor',category:'UTILITIES',account:'502',count:4},
-    {id:'s5',name:'Petronas',category:'GAS',account:'506',count:6},
-  ]
+  defaultSuppliers: []
 };
