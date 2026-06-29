@@ -204,7 +204,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.5-2906/1950</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.7-2906/2030</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -232,7 +232,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.5-2906/1950</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.7-2906/2030</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -4047,12 +4047,27 @@ async function saveInvoiceToSheet(inv){
   const tok = getValidToken()||accessToken||currentToken;
   if(!tok) return;
   try{
-    const row = [inv.id, inv.invoiceNo, inv.date, inv.dueDate, inv.billTo?.split('\n')[0], inv.total, inv.status, inv.createdBy, new Date().toLocaleString('en-MY'), JSON.stringify(inv.items)];
-    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Invoice!A:J:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,{
+    // Ensure Invoice tab exists
+    await ensureSheetTab(tok, SHEET_ID, 'Invoice');
+    const row = [inv.id, inv.invoiceNo, inv.date, inv.billTo?.split('\n')[0], inv.total, inv.status, inv.createdBy, new Date().toLocaleString('en-MY'), JSON.stringify(inv.items)];
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Invoice!A:I:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,{
       method:'POST', headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
       body:JSON.stringify({values:[row]})
     });
   }catch(e){console.warn('Save invoice sheet:',e);}
+}
+
+async function ensureSheetTab(tok, sheetId, tabName){
+  try{
+    // Try to read the tab — if 400, create it
+    const check = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(tabName)}!A1`,{headers:{Authorization:'Bearer '+tok}});
+    if(check.status===400){
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}:batchUpdate`,{
+        method:'POST', headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+        body:JSON.stringify({requests:[{addSheet:{properties:{title:tabName}}}]})
+      });
+    }
+  }catch(e){console.warn('ensureSheetTab:',e);}
 }
 
 function cancelInvoiceForm(){
@@ -4097,7 +4112,7 @@ function viewInvoice(id){
           <div style="font-size:20px;font-weight:800;color:var(--dark)">MYR${parseFloat(balanceDue).toFixed(2)}</div>
         </div>
         <div style="text-align:right;font-size:12px">
-          <img src="logo/main.png" style="height:50px;object-fit:contain;margin-bottom:4px;display:block;margin-left:auto" onerror="this.style.display='none'">
+          ${(window.logoMap&&window.logoMap[COMPANY_CONFIG.id])?`<img src="${window.logoMap[COMPANY_CONFIG.id]}" style="height:50px;object-fit:contain;margin-bottom:4px;display:block;margin-left:auto">`:''}
           <div style="font-weight:700;font-size:14px">${COMPANY_CONFIG.name}</div>
         </div>
       </div>
@@ -4117,20 +4132,24 @@ function viewInvoice(id){
           <tr style="background:var(--dark);color:#fff">
             <th style="padding:8px;text-align:left">#</th>
             <th style="padding:8px;text-align:left">Item & Description</th>
+            <th style="padding:8px;text-align:left">Supplier</th>
             <th style="padding:8px;text-align:right">Qty</th>
             <th style="padding:8px;text-align:right">Rate</th>
             <th style="padding:8px;text-align:right">Amount</th>
           </tr>
         </thead>
         <tbody>
-          ${(inv.items||[]).map((it,i)=>`
+          ${(inv.items||[]).map((it,i)=>{
+            const supName = it.supplier ? (getSuppliers().find(s=>s.id===it.supplier)||{}).name||it.supplier : '-';
+            return `
             <tr style="border-bottom:1px solid var(--border)">
               <td style="padding:8px">${i+1}</td>
               <td style="padding:8px"><strong>${it.desc}</strong><br><span style="color:var(--mid)">${it.unit||''}</span></td>
+              <td style="padding:8px;color:var(--mid);font-size:11px">${supName}</td>
               <td style="padding:8px;text-align:right">${it.qty}</td>
               <td style="padding:8px;text-align:right">${parseFloat(it.rate||0).toFixed(2)}</td>
               <td style="padding:8px;text-align:right">${parseFloat(it.amount||0).toFixed(2)}</td>
-            </tr>`).join('')}
+            </tr>`;}).join('')}
         </tbody>
       </table>
 
@@ -4229,7 +4248,7 @@ async function generateInvoiceImage(id){
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
     // Draw logo top right
-    const logoSrc = 'logo/main.png';
+    const logoSrc = (window.logoMap&&window.logoMap[COMPANY_CONFIG.id])||null;
     const drawRest = ()=>{
     // Draw text content
     ctx.fillStyle='#111';
@@ -4268,16 +4287,17 @@ async function generateInvoiceImage(id){
     // Table rows
     (inv.items||[]).forEach((it,i)=>{
       y+=32;
+      const supName = it.supplier ? (getSuppliers().find(s=>s.id===it.supplier)||{}).name||'' : '';
       ctx.fillStyle= i%2===0?'#f9fafb':'#fff';
       ctx.fillRect(40,y,820,36);
       ctx.fillStyle='#111';
       ctx.font='13px Arial';
       ctx.fillText(i+1,48,y+23);
       ctx.font='bold 13px Arial';
-      ctx.fillText(it.desc.substring(0,35),88,y+18);
-      ctx.font='12px Arial';
+      ctx.fillText(it.desc.substring(0,30),88,y+18);
+      ctx.font='11px Arial';
       ctx.fillStyle='#888';
-      ctx.fillText(it.unit||'',88,y+32);
+      ctx.fillText(supName.substring(0,25),88,y+32);
       ctx.fillStyle='#111';
       ctx.font='13px Arial';
       ctx.fillText(it.qty,620,y+23);
