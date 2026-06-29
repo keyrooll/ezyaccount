@@ -204,7 +204,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.1-2906/1800</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.2-2906/2100</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -232,7 +232,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.1-2906/1800</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.2-2906/2100</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -1973,7 +1973,8 @@ async function submitReceipt(){
     data.items.forEach(i=>{
       const code=i.code||getOrCreateItemCode(i.name||'Item');
       const lineTotal=(parseFloat(i.price)||0)*(parseFloat(i.qty)||1);
-      allItemDetails.push({code,name:i.name||'Item',qty:parseFloat(i.qty)||1,price:parseFloat(i.price)||0,lineTotal,category:i.category||cat,account:i.account||data.account});
+      const itemSupplier = i.supplier ? (getSuppliers().find(s=>s.id===i.supplier)||{}).name||'' : (vendor?vendor.name:'');
+      allItemDetails.push({code,name:i.name||'Item',qty:parseFloat(i.qty)||1,price:parseFloat(i.price)||0,lineTotal,category:i.category||cat,account:i.account||data.account,supplier:itemSupplier});
     });
   });
   const totalAmount=Object.values(byCat).reduce((s,d)=>s+d.total,0);
@@ -3899,14 +3900,20 @@ function showInvoiceForm(invId=null){
       </div>
 
       <div style="margin-bottom:12px">
-        <label style="font-size:12px;color:var(--mid);display:block;margin-bottom:6px">Item</label>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <label style="font-size:12px;color:var(--mid)">Item</label>
+          <div style="display:flex;align-items:center;gap:8px">
+            <label style="font-size:11px;color:var(--mid)">Supplier sama untuk semua:</label>
+            <select id="invGlobalSupplier" class="form-input" style="font-size:12px;padding:4px 8px;width:auto" onchange="applyGlobalSupplier(this.value)">
+              <option value="">-- Pilih --</option>
+            </select>
+          </div>
+        </div>
         <div id="invItemsWrap"></div>
         <button class="btn btn-outline" style="width:100%;margin-top:8px" onclick="addInvoiceItem()">+ Tambah Item</button>
       </div>
 
       <div style="text-align:right;font-size:14px;margin-bottom:14px">
-        Sub Total: <strong id="invSubTotal">RM 0.00</strong><br>
-        <span style="font-size:12px;color:var(--mid)">(Tax Inclusive)</span><br>
         <span style="font-size:16px;font-weight:800;color:var(--dark)">Total: <span id="invTotal">RM 0.00</span></span>
       </div>
 
@@ -3917,6 +3924,12 @@ function showInvoiceForm(invId=null){
       </div>
     </div>`;
   renderInvoiceItems();
+  // Populate global supplier dropdown
+  const gs = $id('invGlobalSupplier');
+  if(gs){
+    const suppliers = getSuppliers();
+    gs.innerHTML = '<option value="">-- Pilih --</option>' + suppliers.map(s=>`<option value="${s.id}">${s.name}</option>`).join('');
+  }
 }
 
 function handleBranchSelect(val){
@@ -3951,7 +3964,6 @@ function updateInvoiceItem(idx, field, val){
 
 function recalcInvoiceTotal(){
   const total = invoiceItems.reduce((s,it)=>s+(parseFloat(it.amount)||0),0);
-  $text('invSubTotal','RM '+total.toFixed(2));
   $text('invTotal','RM '+total.toFixed(2));
 }
 
@@ -3986,6 +3998,12 @@ function renderInvoiceItems(){
       </div>
     </div>`).join('');
   recalcInvoiceTotal();
+}
+
+function applyGlobalSupplier(supplierId){
+  if(!supplierId) return;
+  invoiceItems.forEach((it,i)=>{ it.supplier = supplierId; });
+  renderInvoiceItems();
 }
 
 function applySkuToInvItem(idx, val){
@@ -4044,6 +4062,20 @@ function viewInvoice(id){
   const invoices = lsGet('ezy_invoices_'+COMPANY_CONFIG.id)||[];
   const inv = invoices.find(x=>x.id===id);
   if(!inv) return;
+  // Compute balance due = total resit - payments for this invoice's supplier(s)
+  const receipts = getReceipts();
+  const allPayments = lsGetPayments();
+  const supplierIds = [...new Set((inv.items||[]).map(it=>it.supplier).filter(Boolean))];
+  let balanceDue = inv.total;
+  if(supplierIds.length===1){
+    // single supplier: use payment balance
+    const sup = getSuppliers().find(s=>s.id===supplierIds[0]);
+    if(sup){
+      const totalPurchase = receipts.filter(r=>r.vendor===sup.name&&(r.status==='Approved'||r.status==='Paid')).reduce((s,r)=>s+parseFloat(r.amount||0),0);
+      const totalPaid = allPayments.filter(p=>p.supplier===sup.name).reduce((s,p)=>s+parseFloat(p.amount||0),0);
+      balanceDue = Math.max(0, totalPurchase - totalPaid);
+    }
+  }
   const role = currentRole;
   const canEdit = role==='accountant'||role==='super_admin';
   const canApprove = role==='super_admin'||role==='manager';
@@ -4058,9 +4090,10 @@ function viewInvoice(id){
           <div style="font-size:22px;font-weight:900;color:var(--dark)">INVOICE</div>
           <div style="font-size:13px;font-weight:600">Invoice# ${inv.invoiceNo}</div>
           <div style="margin-top:8px;font-size:12px;color:var(--mid)">Balance Due</div>
-          <div style="font-size:20px;font-weight:800;color:var(--dark)">MYR${parseFloat(inv.total).toFixed(2)}</div>
+          <div style="font-size:20px;font-weight:800;color:var(--dark)">MYR${parseFloat(balanceDue).toFixed(2)}</div>
         </div>
         <div style="text-align:right;font-size:12px">
+          ${logoMap[COMPANY_CONFIG.id]?`<img src="${logoMap[COMPANY_CONFIG.id]}" style="height:50px;object-fit:contain;margin-bottom:4px;display:block;margin-left:auto">`:``}
           <div style="font-weight:700;font-size:14px">${COMPANY_CONFIG.name}</div>
         </div>
       </div>
@@ -4098,9 +4131,7 @@ function viewInvoice(id){
       </table>
 
       <div style="text-align:right;font-size:13px;margin-bottom:16px">
-        <div>Sub Total: <strong>MYR ${parseFloat(inv.total).toFixed(2)}</strong></div>
-        <div style="font-size:11px;color:var(--mid)">(Tax Inclusive)</div>
-        <div style="font-size:16px;font-weight:800;margin-top:4px">Total: MYR ${parseFloat(inv.total).toFixed(2)}</div>
+        <div style="font-size:16px;font-weight:800">Total: MYR ${parseFloat(inv.total).toFixed(2)}</div>
       </div>
 
       <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -4150,8 +4181,6 @@ async function generateInvoiceImage(id){
     <div style="display:flex;justify-content:space-between;margin-bottom:24px;font-size:13px">
       <div>
         <div><span style="color:#888">Invoice Date: </span>${inv.date}</div>
-        <div><span style="color:#888">Terms: </span>${inv.terms}</div>
-        <div><span style="color:#888">Due Date: </span>${inv.dueDate}</div>
       </div>
       <div style="text-align:right">
         <div style="color:#888">Bill To</div>
@@ -4195,6 +4224,9 @@ async function generateInvoiceImage(id){
     ctx.fillStyle='#fff';
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
+    // Draw logo top right
+    const logoSrc = logoMap[COMPANY_CONFIG.id];
+    const drawRest = ()=>{
     // Draw text content
     ctx.fillStyle='#111';
     ctx.font='bold 36px Arial';
@@ -4211,10 +4243,6 @@ async function generateInvoiceImage(id){
     ctx.font='13px Arial';
     ctx.fillStyle='#888';
     ctx.fillText('Invoice Date: ',40,185); ctx.fillStyle='#111'; ctx.fillText(inv.date,140,185);
-    ctx.fillStyle='#888';
-    ctx.fillText('Terms: ',40,205); ctx.fillStyle='#111'; ctx.fillText(inv.terms,100,205);
-    ctx.fillStyle='#888';
-    ctx.fillText('Due Date: ',40,225); ctx.fillStyle='#111'; ctx.fillText(inv.dueDate,120,225);
 
     ctx.fillStyle='#888';
     ctx.fillText('Bill To',500,185);
@@ -4254,11 +4282,40 @@ async function generateInvoiceImage(id){
     });
 
     y+=50;
-    ctx.font='bold 14px Arial';
-    ctx.fillStyle='#111';
-    ctx.fillText('Sub Total: MYR '+parseFloat(inv.total).toFixed(2),560,y);
     ctx.font='bold 18px Arial';
-    ctx.fillText('Total: MYR '+parseFloat(inv.total).toFixed(2),560,y+28);
+    ctx.fillStyle='#111';
+    ctx.fillText('Total: MYR '+parseFloat(inv.total).toFixed(2),560,y);
+    }; // end drawRest
+
+    // Draw company name top right
+    ctx.fillStyle='#111';
+    ctx.font='bold 16px Arial';
+    ctx.textAlign='right';
+    ctx.fillText(COMPANY_CONFIG.name, canvas.width-40, 60);
+    ctx.textAlign='left';
+
+    if(logoSrc){
+      const img = new Image();
+      img.onload = async ()=>{
+        ctx.drawImage(img, canvas.width-140, 10, 90, 55);
+        drawRest();
+        URL.revokeObjectURL(url);
+        const imgData = canvas.toDataURL('image/png');
+        const base64 = imgData.split(',')[1];
+        const d = new Date(inv.date);
+        const month = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+        const day = String(d.getDate()).padStart(2,'0');
+        const branch = inv.billTo?.split('\n')[0]||'Unknown';
+        const filename = `${inv.invoiceNo.replace('/','_')}.png`;
+        const folderPath = `${month}/${day}/${branch}`;
+        await uploadInvoiceToDrive(base64, filename, folderPath);
+        showToast('Invoice disimpan ke Drive ✅');
+      };
+      img.onerror = async ()=>{ drawRest(); URL.revokeObjectURL(url); const imgData = canvas.toDataURL('image/png'); const base64=imgData.split(',')[1]; const d=new Date(inv.date); const month=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`; const day=String(d.getDate()).padStart(2,'0'); const branch=inv.billTo?.split('\n')[0]||'Unknown'; const filename=`${inv.invoiceNo.replace('/','_')}.png`; await uploadInvoiceToDrive(base64,filename,`${month}/${day}/${branch}`); showToast('Invoice disimpan ke Drive ✅'); };
+      img.src = logoSrc;
+      return; // async path handles the rest
+    }
+    drawRest();
 
     URL.revokeObjectURL(url);
 
