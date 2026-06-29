@@ -204,7 +204,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.10-2906/2100</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.11-2906/2100</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -232,7 +232,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.10-2906/2100</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.11-2906/2100</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -3095,8 +3095,8 @@ function setBranchPeriod(period, btn){
 
   const allReceipts=getReceipts();
   const receipts=allReceipts.filter(r=>new Date(r.uploadedAt||r.date)>=startDate);
-  const invoices=lsGet('ezy_invoices_'+COMPANY_CONFIG.id)||[];
-  const payments=lsGetPayments();
+  const invoices=sheetInvoices();
+  const payments=sheetPayments();
 
   // KPI
   const kpiEl=document.getElementById('branchKpi');
@@ -3163,9 +3163,17 @@ function setBranchPeriod(period, btn){
 function renderBranchScreen(){
   const el=document.getElementById('branchContent');
   if(!el) return;
+  el.innerHTML='<div style="text-align:center;padding:40px 0;color:var(--mid)">⏳ Memuatkan data...</div>';
+  Promise.all([loadInvoicesFromSheet(), loadPaymentsFromSheet()]).then(()=>{
+    _renderBranchScreenInner();
+  });
+}
+function _renderBranchScreenInner(){
+  const el=document.getElementById('branchContent');
+  if(!el) return;
   const branches=COMPANY_CONFIG.branches||[];
-  const invoices=lsGet('ezy_invoices_'+COMPANY_CONFIG.id)||[];
-  const payments=lsGetPayments();
+  const invoices=sheetInvoices();
+  const payments=sheetPayments();
   const receipts=getReceipts();
 
   const rows=branches.map(b=>{
@@ -3613,8 +3621,16 @@ function saveAssignBranch(email){
 }
 
 // ===================== PAYMENT MODULE =====================
-function lsGetPayments(){return JSON.parse(localStorage.getItem('payments')||'[]');}
-function lsSetPayments(p){localStorage.setItem('payments',JSON.stringify(p));syncPaymentsToSheet().catch(e=>console.warn('Payment sync failed',e));}
+function lsGetPayments(){
+  // Use Sheet cache if loaded, else fallback to localStorage
+  if(window._paymentCache!==null) return window._paymentCache;
+  return JSON.parse(localStorage.getItem('payments')||'[]');
+}
+function lsSetPayments(p){
+  window._paymentCache=p;
+  localStorage.setItem('payments',JSON.stringify(p));
+  syncPaymentsToSheet().catch(e=>console.warn('Payment sync failed',e));
+}
 
 async function syncPaymentsToSheet(){
   const tok=getValidToken()||accessToken||currentToken;
@@ -3648,6 +3664,106 @@ async function syncPaymentsToSheet(){
 }
 function lsGetPaymentsRaw(){return JSON.parse(localStorage.getItem('payments')||'[]');}
 
+// ===================== SHEET-BASED INVOICE & PAYMENT =====================
+// In-memory cache — loaded from Sheet on tab open
+window._invoiceCache = null;
+window._paymentCache = null;
+
+function sheetInvoices(){ return window._invoiceCache || []; }
+function sheetPayments(){ return window._paymentCache || []; }
+
+async function loadInvoicesFromSheet(){
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok){ window._invoiceCache=[]; return []; }
+  try{
+    await ensureSheetTab(tok, SHEET_ID, 'Invoice');
+    const r=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Invoice!A2:J10000`,{headers:{Authorization:'Bearer '+tok}});
+    const d=await r.json();
+    const rows=d.values||[];
+    window._invoiceCache=rows.map(r=>({
+      id:r[0]||'', invoiceNo:r[1]||'', date:r[2]||'', billTo:r[3]||'',
+      total:parseFloat(r[4]||0), status:r[5]||'Draft',
+      createdBy:r[6]||'', createdAt:r[7]||'',
+      items: (() => { try{ return JSON.parse(r[8]||'[]'); } catch(e){ return []; } })(),
+      branch:r[9]||''
+    }));
+    return window._invoiceCache;
+  }catch(e){ console.warn('loadInvoicesFromSheet:',e); window._invoiceCache=[]; return []; }
+}
+
+async function loadPaymentsFromSheet(){
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok){ window._paymentCache=[]; return []; }
+  try{
+    await ensureSheetTab(tok, SHEET_ID, 'Payments');
+    // Write header if empty
+    const hdr=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Payments!A1:H1`,{headers:{Authorization:'Bearer '+tok}});
+    const hd=await hdr.json();
+    if(!(hd.values&&hd.values[0]&&hd.values[0][0])){
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Payments!A1:H1?valueInputOption=RAW`,{
+        method:'PUT',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+        body:JSON.stringify({values:[['ID','Tarikh','Supplier','Jumlah','Kaedah','Nota','DirekoOleh','Type']]})
+      });
+    }
+    const r=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Payments!A2:H10000`,{headers:{Authorization:'Bearer '+tok}});
+    const d=await r.json();
+    const rows=d.values||[];
+    window._paymentCache=rows.filter(r=>r[0]).map(r=>({
+      id:r[0]||'', date:r[1]||'', supplier:r[2]||'',
+      amount:parseFloat(r[3]||0), method:r[4]||'', note:r[5]||'',
+      recordedBy:r[6]||'', type:r[7]||'manual'
+    }));
+    return window._paymentCache;
+  }catch(e){ console.warn('loadPaymentsFromSheet:',e); window._paymentCache=[]; return []; }
+}
+
+async function writeInvoiceToSheet(inv, isUpdate=false){
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok) return;
+  try{
+    await ensureSheetTab(tok, SHEET_ID, 'Invoice');
+    // Write header if needed
+    const hdr=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Invoice!A1:J1`,{headers:{Authorization:'Bearer '+tok}});
+    const hd=await hdr.json();
+    if(!(hd.values&&hd.values[0]&&hd.values[0][0])){
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Invoice!A1:J1?valueInputOption=RAW`,{
+        method:'PUT',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+        body:JSON.stringify({values:[['ID','InvoiceNo','Tarikh','BillTo','Total','Status','CreatedBy','CreatedAt','Items','Branch']]})
+      });
+    }
+    if(isUpdate){
+      // Full overwrite — rewrite all rows
+      const all=window._invoiceCache||[];
+      const rows=[['ID','InvoiceNo','Tarikh','BillTo','Total','Status','CreatedBy','CreatedAt','Items','Branch']];
+      all.forEach(i=>rows.push([i.id,i.invoiceNo,i.date,i.billTo,i.total,i.status,i.createdBy,i.createdAt,JSON.stringify(i.items||[]),i.branch||'']));
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Invoice!A1:J10000:clear`,{method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'}});
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Invoice!A1?valueInputOption=RAW`,{
+        method:'PUT',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+        body:JSON.stringify({values:rows})
+      });
+    } else {
+      // Append new row
+      const row=[inv.id,inv.invoiceNo,inv.date,inv.billTo,inv.total,inv.status,inv.createdBy,inv.createdAt,JSON.stringify(inv.items||[]),inv.branch||''];
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Invoice!A:J:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,{
+        method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+        body:JSON.stringify({values:[row]})
+      });
+    }
+  }catch(e){ console.warn('writeInvoiceToSheet:',e); }
+}
+
+async function writePaymentToSheet(p){
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok) return;
+  try{
+    await ensureSheetTab(tok, SHEET_ID, 'Payments');
+    const row=[p.id,p.date,p.supplier,p.amount,p.method||'',p.note||'',p.recordedBy||'',p.type||'manual'];
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Payments!A:H:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,{
+      method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+      body:JSON.stringify({values:[row]})
+    });
+  }catch(e){ console.warn('writePaymentToSheet:',e); }
+}
 
 // ===================== PAYMENT RECEIPT UPLOAD =====================
 let pmtUploadState = {file:null, preview:null, aiResult:null};
@@ -3936,8 +4052,9 @@ function pmtConfirmSingle(idx){
   };
   const all=lsGetPayments();
   all.push(payment);
-  lsSetPayments(all);
-  syncPaymentToSheet(payment);
+  window._paymentCache=all;
+  localStorage.setItem('payments',JSON.stringify(all));
+  writePaymentToSheet(payment);
   // Mark card as done — keep card visible, replace button with WA button
   const card=document.getElementById('knockCard_'+idx);
   if(card){
@@ -3979,11 +4096,11 @@ function pmtConfirmPayment(){
       advanceAmount:item.advance||0
     };
     payments.push(payment);
-    // Sync to sheets
-    syncPaymentToSheet(payment);
+    writePaymentToSheet(payment);
   });
 
-  lsSetPayments(payments);
+  window._paymentCache=payments;
+  localStorage.setItem('payments',JSON.stringify(payments));
   showToast(`${plan.length} bayaran direkod ✅`);
   // Don't reset screen — show done state so user can still send WA
   const confirmBtn=document.getElementById('pmtConfirmBtn');
@@ -4030,30 +4147,32 @@ function getBranchAddresses(){
 function renderInvoiceScreen(){
   const el = $id('invoiceContent');
   if(!el) return;
-  const invoices = lsGet('ezy_invoices_'+COMPANY_CONFIG.id) || [];
-  el.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div style="font-size:16px;font-weight:700;color:var(--dark)">Invoice</div>
-      <button class="btn btn-primary" onclick="showInvoiceForm()">+ Buat Invoice</button>
-    </div>
-    <div id="invoiceFormWrap" style="display:none"></div>
-    <div id="invoiceListWrap">
-      ${invoices.length === 0 ? '<div style="text-align:center;color:var(--mid);padding:40px 0">Tiada invoice lagi</div>' :
-        invoices.slice().reverse().map(inv => `
-          <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer" onclick="viewInvoice('${inv.id}')">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div style="font-weight:700;font-size:14px">${inv.invoiceNo}</div>
-                <div style="font-size:12px;color:var(--mid)">${inv.billTo?.split('\n')[0]||'-'}</div>
-                <div style="font-size:11px;color:var(--mid)">${inv.date}</div>
+  el.innerHTML=`<div style="text-align:center;padding:40px 0;color:var(--mid)">⏳ Memuatkan invoice...</div>`;
+  loadInvoicesFromSheet().then(invoices=>{
+    el.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <div style="font-size:16px;font-weight:700;color:var(--dark)">Invoice</div>
+        <button class="btn btn-primary" onclick="showInvoiceForm()">+ Buat Invoice</button>
+      </div>
+      <div id="invoiceFormWrap" style="display:none"></div>
+      <div id="invoiceListWrap">
+        ${invoices.length === 0 ? '<div style="text-align:center;color:var(--mid);padding:40px 0">Tiada invoice lagi</div>' :
+          invoices.slice().reverse().map(inv => `
+            <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer" onclick="viewInvoice('${inv.id}')">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:700;font-size:14px">${inv.invoiceNo}</div>
+                  <div style="font-size:12px;color:var(--mid)">${inv.billTo?.split('\n')[0]||'-'}</div>
+                  <div style="font-size:11px;color:var(--mid)">${inv.date}</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="font-weight:700;color:var(--green)">RM ${parseFloat(inv.total||0).toFixed(2)}</div>
+                  <span style="font-size:11px;padding:2px 8px;border-radius:10px;background:${inv.status==='Paid'?'#d1fae5':inv.status==='Approved'?'#dbeafe':inv.status==='Sent'?'#fef9c3':'#f3f4f6'};color:${inv.status==='Paid'?'#065f46':inv.status==='Approved'?'#1e40af':inv.status==='Sent'?'#92400e':'#6b7280'}">${inv.status||'Draft'}</span>
+                </div>
               </div>
-              <div style="text-align:right">
-                <div style="font-weight:700;color:var(--green)">RM ${parseFloat(inv.total||0).toFixed(2)}</div>
-                <span style="font-size:11px;padding:2px 8px;border-radius:10px;background:${inv.status==='Paid'?'#d1fae5':inv.status==='Approved'?'#dbeafe':inv.status==='Sent'?'#fef9c3':'#f3f4f6'};color:${inv.status==='Paid'?'#065f46':inv.status==='Approved'?'#1e40af':inv.status==='Sent'?'#92400e':'#6b7280'}">${inv.status||'Draft'}</span>
-              </div>
-            </div>
-          </div>`).join('')}
-    </div>`;
+            </div>`).join('')}
+      </div>`;
+  });
 }
 
 function showInvoiceForm(invId=null){
@@ -4062,7 +4181,7 @@ function showInvoiceForm(invId=null){
 
   const addresses = getBranchAddresses();
   const branchKeys = Object.keys(addresses);
-  const inv = invId ? (lsGet('ezy_invoices_'+COMPANY_CONFIG.id)||[]).find(x=>x.id===invId) : null;
+  const inv = invId ? (sheetInvoices()).find(x=>x.id===invId) : null;
   editingInvoiceId = invId;
   invoiceItems = inv ? JSON.parse(JSON.stringify(inv.items||[])) : [{desc:'',unit:'kg',qty:'',rate:'',amount:''}];
 
@@ -4218,17 +4337,23 @@ function saveInvoice(status){
   if(!invoiceItems.length||!invoiceItems.some(it=>it.desc)){showToast('Sila tambah sekurang-kurangnya 1 item');return;}
 
   const total = invoiceItems.reduce((s,it)=>s+(parseFloat(it.amount)||0),0);
-  const invoices = lsGet('ezy_invoices_'+COMPANY_CONFIG.id)||[];
+  const cache = window._invoiceCache || [];
+  const now = new Date().toLocaleString('en-MY');
 
   if(editingInvoiceId){
-    const idx = invoices.findIndex(x=>x.id===editingInvoiceId);
-    if(idx>=0){invoices[idx]={...invoices[idx],invoiceNo,date,billTo,items:invoiceItems,total,status,updatedAt:Date.now()};}
+    const idx = cache.findIndex(x=>x.id===editingInvoiceId);
+    if(idx>=0) cache[idx]={...cache[idx],invoiceNo,date,billTo,items:invoiceItems,total,status,updatedAt:now};
+    window._invoiceCache = cache;
+    writeInvoiceToSheet(null, true); // full overwrite
   } else {
-    invoices.push({id:'inv_'+Date.now(),invoiceNo,date,billTo,items:invoiceItems,total,status,createdBy:currentUser?.email,createdAt:Date.now()});
+    const inv={id:'inv_'+Date.now(),invoiceNo,date,billTo,items:invoiceItems,total,status,createdBy:currentUser?.email,createdAt:now};
+    cache.push(inv);
+    window._invoiceCache = cache;
+    writeInvoiceToSheet(inv, false); // append
   }
 
-  lsSet('ezy_invoices_'+COMPANY_CONFIG.id, invoices);
-  saveInvoiceToSheet(invoices[invoices.length-1]);
+  // Keep localStorage as fallback backup
+  lsSet('ezy_invoices_'+COMPANY_CONFIG.id, cache);
   showToast(status==='Sent'?'Invoice dihantar ✅':'Draft disimpan ✅');
   cancelInvoiceForm();
   renderInvoiceScreen();
@@ -4269,7 +4394,7 @@ function cancelInvoiceForm(){
 }
 
 function viewInvoice(id){
-  const invoices = lsGet('ezy_invoices_'+COMPANY_CONFIG.id)||[];
+  const invoices = sheetInvoices();
   const inv = invoices.find(x=>x.id===id);
   if(!inv) return;
   // Compute balance due = total resit - payments for this invoice's supplier(s)
@@ -4362,18 +4487,20 @@ function viewInvoice(id){
 }
 
 function updateInvoiceStatus(id, status){
-  const invoices = lsGet('ezy_invoices_'+COMPANY_CONFIG.id)||[];
+  const invoices = sheetInvoices();
   const inv = invoices.find(x=>x.id===id);
   if(!inv) return;
   inv.status = status;
-  inv.updatedAt = Date.now();
+  inv.updatedAt = new Date().toLocaleString('en-MY');
+  window._invoiceCache = invoices;
   lsSet('ezy_invoices_'+COMPANY_CONFIG.id, invoices);
+  writeInvoiceToSheet(null, true);
   showToast('Status dikemaskini: '+status);
   viewInvoice(id);
 }
 
 async function generateInvoiceImage(id){
-  const invoices = lsGet('ezy_invoices_'+COMPANY_CONFIG.id)||[];
+  const invoices = sheetInvoices();
   const inv = invoices.find(x=>x.id===id);
   if(!inv){showToast('Invoice tidak dijumpai');return;}
 
@@ -4583,8 +4710,14 @@ async function uploadInvoiceToDrive(base64, filename, folderPath){
 function renderPaymentScreen(){
   const el=document.getElementById('paymentContent');
   if(!el) return;
+  el.innerHTML='<div style="text-align:center;padding:40px 0;color:var(--mid)">⏳ Memuatkan bayaran...</div>';
+  loadPaymentsFromSheet().then(()=>_renderPaymentScreenInner());
+}
+function _renderPaymentScreenInner(){
+  const el=document.getElementById('paymentContent');
+  if(!el) return;
   const suppliers=getSuppliers();
-  const payments=lsGetPayments();
+  const payments=sheetPayments();
   const receipts=getReceipts();
 
   // Calculate debt per supplier
@@ -4847,7 +4980,8 @@ function savePayment(){
   const id='PMT-'+Date.now();
   const payment={id,supplier,date,amount,method,note,waNum,recordedBy:currentUser.email,recordedAt:Date.now()};
   payments.push(payment);
-  lsSetPayments(payments);
+  window._paymentCache=payments;
+  localStorage.setItem('payments',JSON.stringify(payments));
   // Save WA number to supplier record
   if(waNum){
     const suppliers=getSuppliers();
@@ -4856,8 +4990,8 @@ function savePayment(){
   }
   // Mark oldest Approved receipts for this supplier as Paid
   markReceiptsPaid(supplier);
-  // Sync to Sheets
-  syncPaymentToSheet(payment);
+  // Write to Sheet
+  writePaymentToSheet(payment);
   setTimeout(()=>updateSupplierTab(supplier).catch(()=>{}),3000);
   hideModal();
   showToast('Bayaran direkod ✅');
@@ -5209,7 +5343,7 @@ async function refreshAllData(){
 
 function showSupplierPaymentDetail(supplierName){
   const receipts=getReceipts();
-  const payments=lsGetPayments();
+  const payments=lsGetPayments(); // uses cache
   const suppliers=getSuppliers();
   const sup=suppliers.find(s=>s.name===supplierName)||{};
   const myReceipts=receipts.filter(r=>r.vendor===supplierName && r.status==='Approved');
