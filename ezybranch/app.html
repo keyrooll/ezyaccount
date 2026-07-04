@@ -1040,9 +1040,7 @@ function autoLogin(){
   if(token && user){
     currentToken = token;
     accessToken = token;
-    currentUser = user;
-    currentRole = getRole(user.email);
-    showMainApp();
+    fetchAndSetUser();
     return;
   }
 
