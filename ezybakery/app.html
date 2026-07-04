@@ -1047,7 +1047,7 @@ function autoLogin(){
   }
 
   // No valid token — redirect to index.html to login
-  window.location.href = 'index.html';
+  window.location.href = '../index.html';
 }
 
 // Returns a valid token or null. Does NOT auto-refresh (avoid popup blocked errors).
@@ -1075,7 +1075,7 @@ function logoutUser(){
   localStorage.removeItem('ezy_landing_token');localStorage.removeItem('ezy_landing_expiry');
   sessionStorage.removeItem('ezy_sess_token');sessionStorage.removeItem('ezy_sess_expiry');
   try{if(tokenToRevoke&&window.google) google.accounts.oauth2.revoke(tokenToRevoke,()=>{});}catch(e){}
-  window.location.href='index.html';
+  window.location.href = '../index.html';
 }
 
 function showMainApp(){
