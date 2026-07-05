@@ -4673,7 +4673,7 @@ function viewInvoice(id){
   const role = currentRole;
   const canEdit = role==='accountant'||role==='super_admin';
   const canSaveImg = canEdit||role==='manager';
-  const canApprove = role==='super_admin'||role==='manager';
+  const canApprove = role==='super_admin'||role==='accountant';
   const el = $id('invoiceContent');
   if(!el) return;
 
