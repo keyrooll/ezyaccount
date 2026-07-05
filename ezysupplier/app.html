@@ -650,8 +650,8 @@ function fmtDate(d){
   if(!d) return '-';
   // Accepts YYYY-MM-DD or DD/MM/YY or DD/MM/YYYY
   const s=String(d).trim();
-  if(s.includes('-')){const p=s.split('-');if(p.length===3)return p[2].slice(-2)+'/'+p[1]+'/'+p[0].slice(2);}
-  if(s.includes('/')){const p=s.split('/');if(p.length===3)return p[0].padStart(2,'0')+'/'+p[1].padStart(2,'0')+'/'+p[2].slice(-2);}
+  if(s.includes('-')){const p=s.split('-');if(p.length===3)return p[2].padStart(2,'0')+'/'+p[1].padStart(2,'0')+'/'+(p[0].length===2?'20'+p[0]:p[0]);}
+  if(s.includes('/')){const p=s.split('/');if(p.length===3)return p[0].padStart(2,'0')+'/'+p[1].padStart(2,'0')+'/'+(p[2].length===2?'20'+p[2]:p[2]);}
   return s;
 }
 function showModal(title,bodyHtml){
@@ -738,6 +738,10 @@ function setSuppliers(s){lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,s);syncSupplie
 // =====================
 function getItemRegistry(){return lsGet('ezy_item_registry_'+COMPANY_CONFIG.id,{})}
 function setItemRegistry(r){lsSet('ezy_item_registry_'+COMPANY_CONFIG.id,r)}
+function getRegisteredItemNames(){
+  const reg=getItemRegistry();
+  return Object.entries(reg).map(([code,v])=>({code,name:(v.names&&v.names[0])||code})).sort((a,b)=>a.name.localeCompare(b.name));
+}
 
 function getOrCreateItemCode(name){
   const reg=getItemRegistry();
@@ -1762,16 +1766,30 @@ function addItemRow(prefill=null){
   // Supplier: use currently selected vendor, or prefill supplier, or empty
   const currentVendorId = selectedVendor?selectedVendor.id:'';
   const initSupplier = prefill?prefill.supplier||currentVendorId:currentVendorId;
-  const item={name:prefill?prefill.name||'':'',price:initPrice,qty:initQty,supplier:initSupplier,category:'COGS',account:prefill?prefill.account_code||'101':''};
+  // Item name must come from the registry (existing item) or be confirmed as a new item —
+  // prevents free-text junk (e.g. bill/date references) from polluting cross-supplier price analysis.
+  const regItems=getRegisteredItemNames();
+  const prefillName=(prefill&&prefill.name)?String(prefill.name).trim():'';
+  const matched=prefillName?regItems.find(r=>r.name.toLowerCase()===prefillName.toLowerCase()):null;
+  const item={name:matched?matched.name:'',code:matched?matched.code:'',price:initPrice,qty:initQty,supplier:initSupplier,category:'COGS',account:prefill?prefill.account_code||'101':''};
   wizardItems.push(item);
   // Build supplier options from saved suppliers list
   const suppliers=getSuppliers();
   const supplierOpts=suppliers.map(s=>`<option value="${s.id}" ${initSupplier===s.id?'selected':''}>${s.name}</option>`).join('');
+  const itemOpts=regItems.map(r=>`<option value="${r.code}" ${matched&&matched.code===r.code?'selected':''}>${r.name}</option>`).join('');
   const tr=document.createElement('tr');
   tr.id='item-row-'+idx;
   const initTotal=(initPrice*initQty).toFixed(2);
   tr.innerHTML=`
-    <td><input value="${item.name}" oninput="updateItem(${idx},'name',this.value)" placeholder="Nama item" style="min-width:80px"></td>
+    <td>
+      <select id="item-name-sel-${idx}" onchange="onItemNameSelect(${idx},this.value)" style="min-width:90px;font-size:11px">
+        <option value="">-- Pilih Item --</option>${itemOpts}
+        <option value="__new__">+ Tambah Item Baru</option>
+      </select>
+      <input id="item-name-new-${idx}" type="text" value="${!matched?prefillName.replace(/"/g,'&quot;'):''}" placeholder="Nama item baru" style="display:${(!matched&&prefillName)?'block':'none'};min-width:90px;margin-top:4px;font-size:11px"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();confirmNewItemName(${idx},this.value)}"
+        onblur="confirmNewItemName(${idx},this.value)">
+    </td>
     <td style="text-align:center"><input type="number" step="0.01" value="${initPrice||''}" oninput="updateItem(${idx},'price',parseFloat(this.value)||0);calcRowTotal(${idx});updateSplit()" placeholder="0.00" style="width:52px;text-align:center;-moz-appearance:textfield" class="no-spinner"></td>
     <td style="text-align:center"><input type="number" step="0.01" min="0.01" value="${initQty}" oninput="updateItem(${idx},'qty',parseFloat(this.value)||1);calcRowTotal(${idx});updateSplit()" style="width:42px;text-align:center;-moz-appearance:textfield" class="no-spinner"></td>
     <td>
@@ -1782,6 +1800,10 @@ function addItemRow(prefill=null){
     <td style="text-align:center;font-weight:600" id="row-total-${idx}">${initTotal}</td>
     <td><button class="btn btn-sm btn-danger" onclick="removeItemRow(${idx})">Buang</button></td>`;
   tbody.appendChild(tr);
+  if(!matched&&prefillName){
+    const sel=document.getElementById('item-name-sel-'+idx);
+    if(sel) sel.value='__new__';
+  }
   // If "same supplier" checkbox is ticked, apply that supplier to this new row
   const sameCheck=document.getElementById('sameSupplierCheck');
   const sameSel=document.getElementById('sameSupplierSel');
@@ -1819,6 +1841,41 @@ function applySupplierToAllRows(supplierId){
 }
 
 function updateItem(idx,field,val){if(wizardItems[idx]) wizardItems[idx][field]=val;}
+
+function onItemNameSelect(idx,val){
+  const newInput=document.getElementById('item-name-new-'+idx);
+  if(val==='__new__'){
+    if(newInput){newInput.style.display='block';newInput.value='';newInput.focus();}
+    updateItem(idx,'name','');updateItem(idx,'code','');
+    return;
+  }
+  if(newInput) newInput.style.display='none';
+  const reg=getItemRegistry();
+  const entry=reg[val];
+  updateItem(idx,'code',val);
+  updateItem(idx,'name',(entry&&entry.names&&entry.names[0])||val);
+}
+
+function confirmNewItemName(idx,val){
+  val=(val||'').trim();
+  if(!val) return;
+  const sel=document.getElementById('item-name-sel-'+idx);
+  if(sel&&sel.value!=='__new__') return; // already resolved via dropdown
+  const code=getOrCreateItemCode(val);
+  updateItem(idx,'name',val);
+  updateItem(idx,'code',code);
+  if(sel){
+    let opt=[...sel.options].find(o=>o.value===code);
+    if(!opt){
+      opt=document.createElement('option');
+      opt.value=code;opt.textContent=val;
+      sel.insertBefore(opt,sel.lastElementChild);
+    }
+    sel.value=code;
+  }
+  const newInput=document.getElementById('item-name-new-'+idx);
+  if(newInput) newInput.style.display='none';
+}
 
 function calcRowTotal(idx){
   const it=wizardItems[idx];
@@ -1977,6 +2034,12 @@ async function submitReceipt(){
   const nota=document.getElementById('receiptNota').value;
   const branch=document.getElementById('receiptBranch').value;
   const items=wizardItems.filter(i=>!i._deleted&&!i._empty);
+  const incompleteItem=items.find(i=>!i.name&&(parseFloat(i.price)>0||parseFloat(i.qty)>0));
+  if(incompleteItem){
+    showToast('Sila pilih atau tambah nama item untuk semua baris ⚠️');
+    btn.disabled=false;btn.textContent='Hantar';
+    return;
+  }
   const u=currentUser;
   const profile=getUserProfile(u.email);
   const uploadedBy=profile.fullname||u.name;
@@ -2616,7 +2679,7 @@ function renderAccountantDashboard(){
   }
   html+=`<div class="kpi-grid">
     <div class="kpi-card"><div class="kpi-label">Total Resit</div><div class="kpi-value">${receipts.length}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Pending</div><div class="kpi-value" style="color:var(--amber)">${pending.length}</div></div>
+    <div class="kpi-card" style="cursor:pointer" onclick="switchTab('resit')"><div class="kpi-label">Pending</div><div class="kpi-value" style="color:var(--amber)">${pending.length}</div></div>
     <div class="kpi-card"><div class="kpi-label">Approved</div><div class="kpi-value" style="color:var(--green)">${approved.length}</div></div>
     <div class="kpi-card"><div class="kpi-label">Total Approved</div><div class="kpi-value" style="font-size:16px">${formatRM(totalApproved)}</div></div>
   </div>
@@ -2666,7 +2729,7 @@ function renderResitContent(tab){
   const kpiHtml=`<div class="kpi-grid" style="margin-bottom:12px">
     <div class="kpi-card"><div class="kpi-label">Jumlah Resit</div><div class="kpi-value">${allR.length}</div></div>
     <div class="kpi-card"><div class="kpi-label">Telah Diluluskan</div><div class="kpi-value" style="color:var(--green)">${approvedCount}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Pending Approval</div><div class="kpi-value" style="color:var(--amber)">${pendingCount}</div></div>
+    <div class="kpi-card" style="cursor:pointer" onclick="document.getElementById('restab-Pending')?.click()"><div class="kpi-label">Pending Approval</div><div class="kpi-value" style="color:var(--amber)">${pendingCount}</div></div>
     <div class="kpi-card"><div class="kpi-label">RM Purata Resit</div><div class="kpi-value" style="font-size:14px">${formatRM(avg)}</div></div>
   </div>`;
   if(tab==='Pending') receipts=receipts.filter(r=>r.status==='Pending');
@@ -2682,15 +2745,17 @@ function renderResitContent(tab){
   const allReceipts=getReceipts();
   const latest=allReceipts.slice().reverse().slice(0,10);
   if(latest.length){
+    const canActLatest=(currentRole==='accountant'||currentRole==='super_admin');
     html+=`<div style="margin-top:20px">
       <div class="section-title">10 Transaksi Terakhir</div>
       <div class="table-wrap">
         <table class="data-table">
-          <thead><tr><th>Tarikh</th><th>Vendor</th><th>Cawangan</th><th>RM</th><th>Status</th></tr></thead>
+          <thead><tr><th>Tarikh</th><th>Vendor</th><th>Cawangan</th><th>RM</th><th>Status</th>${canActLatest?'<th>Aksi</th>':''}</tr></thead>
           <tbody>${latest.map(r=>`<tr>
             <td>${fmtDate(r.date)}</td><td>${r.vendor}</td><td>${r.branch||'-'}</td>
             <td>${formatRM(parseFloat(r.amount||0))}</td>
             <td><span class="status-badge status-${(r.status||'').toLowerCase()}">${r.status}</span></td>
+            ${canActLatest?`<td>${r.status==='Pending'?`<button class="btn btn-success btn-sm" style="padding:2px 8px;font-size:11px" onclick="approveReceipt('${r.id}')">Lulus</button>`:''}</td>`:''}
           </tr>`).join('')}</tbody>
         </table>
       </div>
@@ -2809,7 +2874,7 @@ function showApprovalWaPrompt(r){
   const staffWa=(uploaderProfile.waNum||'').replace(/\D/g,'');
 
   // Build message
-  const dateStr=r.date||'-';
+  const dateStr=fmtDate(r.date);
   const vendor=r.vendor||'-';
   const amount=formatRM(parseFloat(r.amount||0));
   const approver=getUserProfile(currentUser.email).fullname||currentUser.name||currentUser.email;
@@ -3206,7 +3271,7 @@ function setBranchPeriod(period, btn){
   const ltEl=document.getElementById('blatest-tx');
   if(ltEl){
     const latest=allInvoices.slice(-10).reverse();
-    ltEl.innerHTML=latest.length?`<table style="width:100%;font-size:12px;border-collapse:collapse"><thead><tr style="background:var(--surface2)"><th style="padding:6px 4px;text-align:left">Tarikh</th><th style="padding:6px 4px;text-align:left">Invoice</th><th style="padding:6px 4px;text-align:left">Branch</th><th style="padding:6px 4px;text-align:right">Jumlah</th></tr></thead><tbody>${latest.map(r=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px 4px">${r.date||'-'}</td><td style="padding:6px 4px;color:var(--mid)">${r.invoiceNo||'-'}</td><td style="padding:6px 4px">${r.branch||'-'}</td><td style="padding:6px 4px;text-align:right;font-weight:600">${formatRM(r.total)}</td></tr>`).join('')}</tbody></table>`:'<div style="color:var(--mid);font-size:13px;text-align:center;padding:16px">Tiada rekod Stock IN</div>';
+    ltEl.innerHTML=latest.length?`<table style="width:100%;font-size:12px;border-collapse:collapse"><thead><tr style="background:var(--surface2)"><th style="padding:6px 4px;text-align:left">Tarikh</th><th style="padding:6px 4px;text-align:left">Invoice</th><th style="padding:6px 4px;text-align:left">Branch</th><th style="padding:6px 4px;text-align:right">Jumlah</th></tr></thead><tbody>${latest.map(r=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px 4px">${fmtDate(r.date)}</td><td style="padding:6px 4px;color:var(--mid)">${r.invoiceNo||'-'}</td><td style="padding:6px 4px">${r.branch||'-'}</td><td style="padding:6px 4px;text-align:right;font-weight:600">${formatRM(r.total)}</td></tr>`).join('')}</tbody></table>`:'<div style="color:var(--mid);font-size:13px;text-align:center;padding:16px">Tiada rekod Stock IN</div>';
   }
 }
 
@@ -3277,7 +3342,7 @@ function _renderOnpayScreenInner(){
         <tbody>
           ${records.map(r=>`
             <tr style="border-bottom:1px solid var(--border)">
-              <td style="padding:8px 10px">${r.date}</td>
+              <td style="padding:8px 10px">${fmtDate(r.date)}</td>
               <td style="padding:8px 10px;color:var(--mid)">${r.invoiceNo||'-'}</td>
               <td style="padding:8px 10px">${r.branch}</td>
               <td style="padding:8px 10px;text-align:right;font-weight:600;color:var(--green)">${formatRM(r.amount)}</td>
@@ -4359,7 +4424,7 @@ function _renderInvoiceList(invoices){
               <div>
                 <div style="font-weight:700;font-size:14px">${inv.invoiceNo||inv.branch||'-'}</div>
                 <div style="font-size:12px;color:var(--mid)">${inv.billTo?.split('\n')[0]||inv.branch||'-'}</div>
-                <div style="font-size:11px;color:var(--mid)">${inv.date}</div>
+                <div style="font-size:11px;color:var(--mid)">${fmtDate(inv.date)}</div>
               </div>
               <div style="text-align:right">
                 <div style="font-weight:700;color:var(--green)">RM ${parseFloat(inv.total||0).toFixed(2)}</div>
@@ -4630,7 +4695,7 @@ function viewInvoice(id){
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;font-size:12px">
         <div>
-          <div style="color:var(--mid)">Invoice Date</div><div>${inv.date}</div>
+          <div style="color:var(--mid)">Invoice Date</div><div>${fmtDate(inv.date)}</div>
         </div>
         <div>
           <div style="color:var(--mid)">Bill To</div>
@@ -4715,7 +4780,7 @@ async function generateInvoiceImage(id){
     </div>
     <div style="display:flex;justify-content:space-between;margin-bottom:24px;font-size:13px">
       <div>
-        <div><span style="color:#888">Invoice Date: </span>${inv.date}</div>
+        <div><span style="color:#888">Invoice Date: </span>${fmtDate(inv.date)}</div>
       </div>
       <div style="text-align:right">
         <div style="color:#888">Bill To</div>
@@ -4777,7 +4842,7 @@ async function generateInvoiceImage(id){
 
     ctx.font='13px Arial';
     ctx.fillStyle='#888';
-    ctx.fillText('Invoice Date: ',40,185); ctx.fillStyle='#111'; ctx.fillText(inv.date,140,185);
+    ctx.fillText('Invoice Date: ',40,185); ctx.fillStyle='#111'; ctx.fillText(fmtDate(inv.date),140,185);
 
     ctx.fillStyle='#888';
     ctx.fillText('Bill To',500,185);
@@ -4971,7 +5036,7 @@ function _renderPaymentScreenEzybranch(){
     html+=`<div class="table-wrap"><table class="data-table">
       <thead><tr><th>Tarikh</th><th>Invoice</th><th>Branch</th><th>RM</th></tr></thead>
       <tbody>${recent.map(p=>`<tr>
-        <td>${p.date||'-'}</td>
+        <td>${fmtDate(p.date)}</td>
         <td style="color:var(--mid);font-size:11px">${p.invoiceNo||'-'}</td>
         <td>${p.branch||p.supplier||'-'}</td>
         <td style="font-weight:600;color:var(--green)">${formatRM(p.amount)}</td>
