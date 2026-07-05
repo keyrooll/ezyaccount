@@ -2617,7 +2617,7 @@ function renderAccountantDashboard(){
   }
   html+=`<div class="kpi-grid">
     <div class="kpi-card"><div class="kpi-label">Total Resit</div><div class="kpi-value">${receipts.length}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Pending</div><div class="kpi-value" style="color:var(--amber)">${pending.length}</div></div>
+    <div class="kpi-card" style="cursor:pointer" onclick="switchTab('resit')"><div class="kpi-label">Pending</div><div class="kpi-value" style="color:var(--amber)">${pending.length}</div></div>
     <div class="kpi-card"><div class="kpi-label">Approved</div><div class="kpi-value" style="color:var(--green)">${approved.length}</div></div>
     <div class="kpi-card"><div class="kpi-label">Total Approved</div><div class="kpi-value" style="font-size:16px">${formatRM(totalApproved)}</div></div>
   </div>
@@ -2667,7 +2667,7 @@ function renderResitContent(tab){
   const kpiHtml=`<div class="kpi-grid" style="margin-bottom:12px">
     <div class="kpi-card"><div class="kpi-label">Jumlah Resit</div><div class="kpi-value">${allR.length}</div></div>
     <div class="kpi-card"><div class="kpi-label">Telah Diluluskan</div><div class="kpi-value" style="color:var(--green)">${approvedCount}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Pending Approval</div><div class="kpi-value" style="color:var(--amber)">${pendingCount}</div></div>
+    <div class="kpi-card" style="cursor:pointer" onclick="document.getElementById('restab-Pending')?.click()"><div class="kpi-label">Pending Approval</div><div class="kpi-value" style="color:var(--amber)">${pendingCount}</div></div>
     <div class="kpi-card"><div class="kpi-label">RM Purata Resit</div><div class="kpi-value" style="font-size:14px">${formatRM(avg)}</div></div>
   </div>`;
   if(tab==='Pending') receipts=receipts.filter(r=>r.status==='Pending');
@@ -2683,15 +2683,17 @@ function renderResitContent(tab){
   const allReceipts=getReceipts();
   const latest=allReceipts.slice().reverse().slice(0,10);
   if(latest.length){
+    const canActLatest=(currentRole==='accountant'||currentRole==='super_admin');
     html+=`<div style="margin-top:20px">
       <div class="section-title">10 Transaksi Terakhir</div>
       <div class="table-wrap">
         <table class="data-table">
-          <thead><tr><th>Tarikh</th><th>Vendor</th><th>Cawangan</th><th>RM</th><th>Status</th></tr></thead>
+          <thead><tr><th>Tarikh</th><th>Vendor</th><th>Cawangan</th><th>RM</th><th>Status</th>${canActLatest?'<th>Aksi</th>':''}</tr></thead>
           <tbody>${latest.map(r=>`<tr>
             <td>${fmtDate(r.date)}</td><td>${r.vendor}</td><td>${r.branch||'-'}</td>
             <td>${formatRM(parseFloat(r.amount||0))}</td>
             <td><span class="status-badge status-${(r.status||'').toLowerCase()}">${r.status}</span></td>
+            ${canActLatest?`<td>${r.status==='Pending'?`<button class="btn btn-success btn-sm" style="padding:2px 8px;font-size:11px" onclick="approveReceipt('${r.id}')">Lulus</button>`:''}</td>`:''}
           </tr>`).join('')}</tbody>
         </table>
       </div>
@@ -4640,7 +4642,7 @@ function viewInvoice(id){
   const role = currentRole;
   const canEdit = role==='accountant'||role==='super_admin';
   const canSaveImg = canEdit||role==='manager';
-  const canApprove = role==='super_admin'||role==='manager';
+  const canApprove = role==='super_admin'||role==='accountant';
   const el = $id('invoiceContent');
   if(!el) return;
 
