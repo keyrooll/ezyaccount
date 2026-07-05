@@ -583,7 +583,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
 // Load company config synchronously based on URL hash (#ezysupplier, #ezybakery, etc)
 // Each company/index.html redirects to app.html#<companyid>
 (function(){
-  var company = 'ezysupplier';
+  var company = 'ezybranch';
   document.write('<script src="../configs/'+company+'.js"><\/script>');
 })();
 </script>
@@ -738,10 +738,6 @@ function setSuppliers(s){lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,s);syncSupplie
 // =====================
 function getItemRegistry(){return lsGet('ezy_item_registry_'+COMPANY_CONFIG.id,{})}
 function setItemRegistry(r){lsSet('ezy_item_registry_'+COMPANY_CONFIG.id,r)}
-function getRegisteredItemNames(){
-  const reg=getItemRegistry();
-  return Object.entries(reg).map(([code,v])=>({code,name:(v.names&&v.names[0])||code})).sort((a,b)=>a.name.localeCompare(b.name));
-}
 
 function getOrCreateItemCode(name){
   const reg=getItemRegistry();
@@ -1044,7 +1040,7 @@ function autoLogin(){
   if(token && user){
     currentToken = token;
     accessToken = token;
-        fetchAndSetUser();
+    fetchAndSetUser();
     return;
   }
 
@@ -1191,7 +1187,8 @@ function setupAppForRole(){
         {id:'invoice',label:'Invoice',fn:renderInvoiceScreen},
         {id:'onpay',label:'Onpay',fn:renderOnpayScreen},
         {id:'payment',label:'Payment',fn:renderPaymentScreen},
-        {id:'branch',label:'Branch',fn:renderBranchScreen}
+        {id:'branch',label:'Branch',fn:renderBranchScreen},
+        {id:'staff',label:'Staff',fn:renderStaffScreen}
       ]);
     } else {
       setupTabs([
@@ -1766,30 +1763,16 @@ function addItemRow(prefill=null){
   // Supplier: use currently selected vendor, or prefill supplier, or empty
   const currentVendorId = selectedVendor?selectedVendor.id:'';
   const initSupplier = prefill?prefill.supplier||currentVendorId:currentVendorId;
-  // Item name must come from the registry (existing item) or be confirmed as a new item —
-  // prevents free-text junk (e.g. bill/date references) from polluting cross-supplier price analysis.
-  const regItems=getRegisteredItemNames();
-  const prefillName=(prefill&&prefill.name)?String(prefill.name).trim():'';
-  const matched=prefillName?regItems.find(r=>r.name.toLowerCase()===prefillName.toLowerCase()):null;
-  const item={name:matched?matched.name:'',code:matched?matched.code:'',price:initPrice,qty:initQty,supplier:initSupplier,category:'COGS',account:prefill?prefill.account_code||'101':''};
+  const item={name:prefill?prefill.name||'':'',price:initPrice,qty:initQty,supplier:initSupplier,category:'COGS',account:prefill?prefill.account_code||'101':''};
   wizardItems.push(item);
   // Build supplier options from saved suppliers list
   const suppliers=getSuppliers();
   const supplierOpts=suppliers.map(s=>`<option value="${s.id}" ${initSupplier===s.id?'selected':''}>${s.name}</option>`).join('');
-  const itemOpts=regItems.map(r=>`<option value="${r.code}" ${matched&&matched.code===r.code?'selected':''}>${r.name}</option>`).join('');
   const tr=document.createElement('tr');
   tr.id='item-row-'+idx;
   const initTotal=(initPrice*initQty).toFixed(2);
   tr.innerHTML=`
-    <td>
-      <select id="item-name-sel-${idx}" onchange="onItemNameSelect(${idx},this.value)" style="min-width:90px;font-size:11px">
-        <option value="">-- Pilih Item --</option>${itemOpts}
-        <option value="__new__">+ Tambah Item Baru</option>
-      </select>
-      <input id="item-name-new-${idx}" type="text" value="${!matched?prefillName.replace(/"/g,'&quot;'):''}" placeholder="Nama item baru" style="display:${(!matched&&prefillName)?'block':'none'};min-width:90px;margin-top:4px;font-size:11px"
-        onkeydown="if(event.key==='Enter'){event.preventDefault();confirmNewItemName(${idx},this.value)}"
-        onblur="confirmNewItemName(${idx},this.value)">
-    </td>
+    <td><input value="${item.name}" oninput="updateItem(${idx},'name',this.value)" placeholder="Nama item" style="min-width:80px"></td>
     <td style="text-align:center"><input type="number" step="0.01" value="${initPrice||''}" oninput="updateItem(${idx},'price',parseFloat(this.value)||0);calcRowTotal(${idx});updateSplit()" placeholder="0.00" style="width:52px;text-align:center;-moz-appearance:textfield" class="no-spinner"></td>
     <td style="text-align:center"><input type="number" step="0.01" min="0.01" value="${initQty}" oninput="updateItem(${idx},'qty',parseFloat(this.value)||1);calcRowTotal(${idx});updateSplit()" style="width:42px;text-align:center;-moz-appearance:textfield" class="no-spinner"></td>
     <td>
@@ -1800,10 +1783,6 @@ function addItemRow(prefill=null){
     <td style="text-align:center;font-weight:600" id="row-total-${idx}">${initTotal}</td>
     <td><button class="btn btn-sm btn-danger" onclick="removeItemRow(${idx})">Buang</button></td>`;
   tbody.appendChild(tr);
-  if(!matched&&prefillName){
-    const sel=document.getElementById('item-name-sel-'+idx);
-    if(sel) sel.value='__new__';
-  }
   // If "same supplier" checkbox is ticked, apply that supplier to this new row
   const sameCheck=document.getElementById('sameSupplierCheck');
   const sameSel=document.getElementById('sameSupplierSel');
@@ -1841,41 +1820,6 @@ function applySupplierToAllRows(supplierId){
 }
 
 function updateItem(idx,field,val){if(wizardItems[idx]) wizardItems[idx][field]=val;}
-
-function onItemNameSelect(idx,val){
-  const newInput=document.getElementById('item-name-new-'+idx);
-  if(val==='__new__'){
-    if(newInput){newInput.style.display='block';newInput.value='';newInput.focus();}
-    updateItem(idx,'name','');updateItem(idx,'code','');
-    return;
-  }
-  if(newInput) newInput.style.display='none';
-  const reg=getItemRegistry();
-  const entry=reg[val];
-  updateItem(idx,'code',val);
-  updateItem(idx,'name',(entry&&entry.names&&entry.names[0])||val);
-}
-
-function confirmNewItemName(idx,val){
-  val=(val||'').trim();
-  if(!val) return;
-  const sel=document.getElementById('item-name-sel-'+idx);
-  if(sel&&sel.value!=='__new__') return; // already resolved via dropdown
-  const code=getOrCreateItemCode(val);
-  updateItem(idx,'name',val);
-  updateItem(idx,'code',code);
-  if(sel){
-    let opt=[...sel.options].find(o=>o.value===code);
-    if(!opt){
-      opt=document.createElement('option');
-      opt.value=code;opt.textContent=val;
-      sel.insertBefore(opt,sel.lastElementChild);
-    }
-    sel.value=code;
-  }
-  const newInput=document.getElementById('item-name-new-'+idx);
-  if(newInput) newInput.style.display='none';
-}
 
 function calcRowTotal(idx){
   const it=wizardItems[idx];
@@ -2034,12 +1978,6 @@ async function submitReceipt(){
   const nota=document.getElementById('receiptNota').value;
   const branch=document.getElementById('receiptBranch').value;
   const items=wizardItems.filter(i=>!i._deleted&&!i._empty);
-  const incompleteItem=items.find(i=>!i.name&&(parseFloat(i.price)>0||parseFloat(i.qty)>0));
-  if(incompleteItem){
-    showToast('Sila pilih atau tambah nama item untuk semua baris ⚠️');
-    btn.disabled=false;btn.textContent='Hantar';
-    return;
-  }
   const u=currentUser;
   const profile=getUserProfile(u.email);
   const uploadedBy=profile.fullname||u.name;
@@ -3253,9 +3191,9 @@ function setBranchPeriod(period, btn){
     if(lb) lb.innerHTML=bkeys.map((k,i)=>`<div style="display:flex;align-items:center;gap:3px"><span style="width:7px;height:7px;border-radius:50%;background:${branchColors[i%branchColors.length]};flex-shrink:0;display:inline-block"></span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1">${k}</span><span style="color:var(--mid);flex-shrink:0">${totalB?Math.round(byBranch[k]/totalB*100):0}%</span></div>`).join('');
   }
 
-  // Bar chart — Stock IN by branch
+  // Bar chart — Stock IN by branch (always show all configured branches, even with 0 in this period)
   const barC=document.getElementById('bchart-bar');
-  if(barC){const bkeys=Object.keys(byBranch);charts['bchart-bar']=new Chart(barC,{type:'bar',data:{labels:bkeys,datasets:[{label:'RM',data:bkeys.map(k=>byBranch[k]),backgroundColor:branchColors}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});}
+  if(barC){const bkeys=COMPANY_CONFIG.branches||Object.keys(byBranch);charts['bchart-bar']=new Chart(barC,{type:'bar',data:{labels:bkeys,datasets:[{label:'RM',data:bkeys.map(k=>byBranch[k]||0),backgroundColor:branchColors}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});}
 
   // Balance per branch sidebar
   const lbBal=document.getElementById('blegend-balance');
@@ -3412,7 +3350,7 @@ function _renderBranchScreenInner(){
       <div class="kpi-card"><div class="kpi-label">Baki Hutang</div><div class="kpi-value" style="font-size:14px;color:${grand.balance>0?'var(--red)':'var(--green)'}">${formatRM(Math.abs(grand.balance))}</div></div>
     </div>
     ${rows.map(({b,i,stockIn,onpay,payment,balance})=>`
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px">
+      <div onclick="showBranchDetail('${b}')" style="cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
           <div style="width:10px;height:10px;border-radius:50%;background:${(COMPANY_CONFIG.branchColors||[])[i%8]||'#999'};flex-shrink:0"></div>
           <div style="font-size:14px;font-weight:700">${b}</div>
@@ -3427,6 +3365,37 @@ function _renderBranchScreenInner(){
         </div>
       </div>`).join('')}
   `;
+}
+
+function showBranchDetail(branch){
+  const invoices=sheetInvoices().filter(r=>r.branch===branch).slice().reverse();
+  const onpays=sheetOnpay().filter(r=>r.branch===branch).slice().reverse();
+  const payments=sheetPayments().filter(r=>r.branch===branch).slice().reverse();
+  const {stockIn,onpay,payment,balance}=getBranchBalance(branch);
+
+  function recTable(records,amountKey){
+    if(!records.length) return '<div style="color:var(--mid);font-size:12px;text-align:center;padding:10px">Tiada rekod</div>';
+    return `<table style="width:100%;font-size:12px;border-collapse:collapse">
+      <thead><tr style="background:var(--surface2)"><th style="padding:6px 4px;text-align:left">Tarikh</th><th style="padding:6px 4px;text-align:left">Invoice</th><th style="padding:6px 4px;text-align:right">Jumlah</th></tr></thead>
+      <tbody>${records.map(r=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px 4px">${fmtDate(r.date)}</td><td style="padding:6px 4px;color:var(--mid)">${r.invoiceNo||'-'}</td><td style="padding:6px 4px;text-align:right;font-weight:600">${formatRM(r[amountKey])}</td></tr>`).join('')}</tbody>
+    </table>`;
+  }
+
+  const body=`
+    <div class="kpi-grid" style="margin-bottom:14px">
+      <div class="kpi-card"><div class="kpi-label">Stock IN</div><div class="kpi-value" style="font-size:13px">${formatRM(stockIn)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Onpay</div><div class="kpi-value" style="font-size:13px;color:var(--green)">${formatRM(onpay)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Payment</div><div class="kpi-value" style="font-size:13px;color:var(--green)">${formatRM(payment)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Baki</div><div class="kpi-value" style="font-size:13px;color:${balance>0?'var(--red)':'var(--green)'}">${formatRM(Math.abs(balance))}</div></div>
+    </div>
+    <div style="font-size:12px;font-weight:600;color:var(--mid);margin-bottom:6px">STOCK IN</div>
+    ${recTable(invoices,'total')}
+    <div style="font-size:12px;font-weight:600;color:var(--mid);margin:14px 0 6px">ONPAY</div>
+    ${recTable(onpays,'amount')}
+    <div style="font-size:12px;font-weight:600;color:var(--mid);margin:14px 0 6px">PAYMENT</div>
+    ${recTable(payments,'amount')}
+  `;
+  showModal(branch, body);
 }
 
 function setPeriod(period, btn){
