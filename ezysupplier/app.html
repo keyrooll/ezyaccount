@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.27-0507/1845</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.33-0607/2223</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.27-0507/1845</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.33-0607/2223</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -583,7 +583,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
 // Load company config synchronously based on URL hash (#ezysupplier, #ezybakery, etc)
 // Each company/index.html redirects to app.html#<companyid>
 (function(){
-  var company = 'ezybranch';
+  var company = 'ezysupplier';
   document.write('<script src="../configs/'+company+'.js"><\/script>');
 })();
 </script>
@@ -607,6 +607,16 @@ const SHEET_ID = COMPANY_CONFIG.sheetId;
 const MASTER_SHEET_ID = '1u3H6D57vx7jahjc40S9u_qwhCXduMQ7gMTZyoP7J8Z8';
 const DRIVE_FOLDER_NAME = COMPANY_CONFIG.driveFolderName;
 const DRIVE_ROOT_FOLDER_ID = COMPANY_CONFIG.driveFolderRootId;
+const MALAY_MONTHS=['Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
+function malayMonthName(d){ return MALAY_MONTHS[d.getMonth()]; }
+// All companies share one Drive root; this resolves (and caches) the company's own
+// subfolder inside it so receipts/invoices from different companies never mix together.
+let _companyDriveFolderIdCache=null;
+async function getCompanyDriveFolderId(token){
+  if(_companyDriveFolderIdCache) return _companyDriveFolderIdCache;
+  _companyDriveFolderIdCache=await getOrCreateSubfolder(token, DRIVE_ROOT_FOLDER_ID, COMPANY_CONFIG.id);
+  return _companyDriveFolderIdCache;
+}
 const SKU_SHEET_ID = COMPANY_CONFIG.skuSheetId;
 const SUPER_ADMIN = COMPANY_CONFIG.superAdmin;
 const ACCOUNTANTS = COMPANY_CONFIG.accountants||[];
@@ -653,6 +663,12 @@ function fmtDate(d){
   if(s.includes('-')){const p=s.split('-');if(p.length===3)return p[2].padStart(2,'0')+'/'+p[1].padStart(2,'0')+'/'+(p[0].length===2?'20'+p[0]:p[0]);}
   if(s.includes('/')){const p=s.split('/');if(p.length===3)return p[0].padStart(2,'0')+'/'+p[1].padStart(2,'0')+'/'+(p[2].length===2?'20'+p[2]:p[2]);}
   return s;
+}
+// Force a date to be written to Sheets as literal dd/mm/yyyy TEXT (leading apostrophe = Sheets "plain text" marker).
+// Prevents USER_ENTERED from auto-detecting it as a date and storing a serial number that later renders
+// as a raw number (e.g. "46208") when the cell's inherited number format isn't a date format.
+function toSheetDateText(d){
+  return "'"+fmtDate(d);
 }
 function showModal(title,bodyHtml){
   let m=document.getElementById('genericModal');
@@ -738,6 +754,10 @@ function setSuppliers(s){lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,s);syncSupplie
 // =====================
 function getItemRegistry(){return lsGet('ezy_item_registry_'+COMPANY_CONFIG.id,{})}
 function setItemRegistry(r){lsSet('ezy_item_registry_'+COMPANY_CONFIG.id,r)}
+function getRegisteredItemNames(){
+  const reg=getItemRegistry();
+  return Object.entries(reg).map(([code,v])=>({code,name:(v.names&&v.names[0])||code})).sort((a,b)=>a.name.localeCompare(b.name));
+}
 
 function getOrCreateItemCode(name){
   const reg=getItemRegistry();
@@ -1045,7 +1065,7 @@ function autoLogin(){
   if(token && user){
     currentToken = token;
     accessToken = token;
-    fetchAndSetUser();
+        fetchAndSetUser();
     return;
   }
 
@@ -1192,8 +1212,7 @@ function setupAppForRole(){
         {id:'invoice',label:'Invoice',fn:renderInvoiceScreen},
         {id:'onpay',label:'Onpay',fn:renderOnpayScreen},
         {id:'payment',label:'Payment',fn:renderPaymentScreen},
-        {id:'branch',label:'Branch',fn:renderBranchScreen},
-        {id:'staff',label:'Staff',fn:renderStaffScreen}
+        {id:'branch',label:'Branch',fn:renderBranchScreen}
       ]);
     } else {
       setupTabs([
@@ -1768,16 +1787,30 @@ function addItemRow(prefill=null){
   // Supplier: use currently selected vendor, or prefill supplier, or empty
   const currentVendorId = selectedVendor?selectedVendor.id:'';
   const initSupplier = prefill?prefill.supplier||currentVendorId:currentVendorId;
-  const item={name:prefill?prefill.name||'':'',price:initPrice,qty:initQty,supplier:initSupplier,category:'COGS',account:prefill?prefill.account_code||'101':''};
+  // Item name must come from the registry (existing item) or be confirmed as a new item —
+  // prevents free-text junk (e.g. bill/date references) from polluting cross-supplier price analysis.
+  const regItems=getRegisteredItemNames();
+  const prefillName=(prefill&&prefill.name)?String(prefill.name).trim():'';
+  const matched=prefillName?regItems.find(r=>r.name.toLowerCase()===prefillName.toLowerCase()):null;
+  const item={name:matched?matched.name:'',code:matched?matched.code:'',price:initPrice,qty:initQty,supplier:initSupplier,category:'COGS',account:prefill?prefill.account_code||'101':''};
   wizardItems.push(item);
   // Build supplier options from saved suppliers list
   const suppliers=getSuppliers();
   const supplierOpts=suppliers.map(s=>`<option value="${s.id}" ${initSupplier===s.id?'selected':''}>${s.name}</option>`).join('');
+  const itemOpts=regItems.map(r=>`<option value="${r.code}" ${matched&&matched.code===r.code?'selected':''}>${r.name}</option>`).join('');
   const tr=document.createElement('tr');
   tr.id='item-row-'+idx;
   const initTotal=(initPrice*initQty).toFixed(2);
   tr.innerHTML=`
-    <td><input value="${item.name}" oninput="updateItem(${idx},'name',this.value)" placeholder="Nama item" style="min-width:80px"></td>
+    <td>
+      <select id="item-name-sel-${idx}" onchange="onItemNameSelect(${idx},this.value)" style="min-width:90px;font-size:11px">
+        <option value="">-- Pilih Item --</option>${itemOpts}
+        <option value="__new__">+ Tambah Item Baru</option>
+      </select>
+      <input id="item-name-new-${idx}" type="text" value="${!matched?prefillName.replace(/"/g,'&quot;'):''}" placeholder="Nama item baru" style="display:${(!matched&&prefillName)?'block':'none'};min-width:90px;margin-top:4px;font-size:11px"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();confirmNewItemName(${idx},this.value)}"
+        onblur="confirmNewItemName(${idx},this.value)">
+    </td>
     <td style="text-align:center"><input type="number" step="0.01" value="${initPrice||''}" oninput="updateItem(${idx},'price',parseFloat(this.value)||0);calcRowTotal(${idx});updateSplit()" placeholder="0.00" style="width:52px;text-align:center;-moz-appearance:textfield" class="no-spinner"></td>
     <td style="text-align:center"><input type="number" step="0.01" min="0.01" value="${initQty}" oninput="updateItem(${idx},'qty',parseFloat(this.value)||1);calcRowTotal(${idx});updateSplit()" style="width:42px;text-align:center;-moz-appearance:textfield" class="no-spinner"></td>
     <td>
@@ -1788,6 +1821,10 @@ function addItemRow(prefill=null){
     <td style="text-align:center;font-weight:600" id="row-total-${idx}">${initTotal}</td>
     <td><button class="btn btn-sm btn-danger" onclick="removeItemRow(${idx})">Buang</button></td>`;
   tbody.appendChild(tr);
+  if(!matched&&prefillName){
+    const sel=document.getElementById('item-name-sel-'+idx);
+    if(sel) sel.value='__new__';
+  }
   // If "same supplier" checkbox is ticked, apply that supplier to this new row
   const sameCheck=document.getElementById('sameSupplierCheck');
   const sameSel=document.getElementById('sameSupplierSel');
@@ -1825,6 +1862,41 @@ function applySupplierToAllRows(supplierId){
 }
 
 function updateItem(idx,field,val){if(wizardItems[idx]) wizardItems[idx][field]=val;}
+
+function onItemNameSelect(idx,val){
+  const newInput=document.getElementById('item-name-new-'+idx);
+  if(val==='__new__'){
+    if(newInput){newInput.style.display='block';newInput.value='';newInput.focus();}
+    updateItem(idx,'name','');updateItem(idx,'code','');
+    return;
+  }
+  if(newInput) newInput.style.display='none';
+  const reg=getItemRegistry();
+  const entry=reg[val];
+  updateItem(idx,'code',val);
+  updateItem(idx,'name',(entry&&entry.names&&entry.names[0])||val);
+}
+
+function confirmNewItemName(idx,val){
+  val=(val||'').trim();
+  if(!val) return;
+  const sel=document.getElementById('item-name-sel-'+idx);
+  if(sel&&sel.value!=='__new__') return; // already resolved via dropdown
+  const code=getOrCreateItemCode(val);
+  updateItem(idx,'name',val);
+  updateItem(idx,'code',code);
+  if(sel){
+    let opt=[...sel.options].find(o=>o.value===code);
+    if(!opt){
+      opt=document.createElement('option');
+      opt.value=code;opt.textContent=val;
+      sel.insertBefore(opt,sel.lastElementChild);
+    }
+    sel.value=code;
+  }
+  const newInput=document.getElementById('item-name-new-'+idx);
+  if(newInput) newInput.style.display='none';
+}
 
 function calcRowTotal(idx){
   const it=wizardItems[idx];
@@ -1983,6 +2055,12 @@ async function submitReceipt(){
   const nota=document.getElementById('receiptNota').value;
   const branch=document.getElementById('receiptBranch').value;
   const items=wizardItems.filter(i=>!i._deleted&&!i._empty);
+  const incompleteItem=items.find(i=>!i.name&&(parseFloat(i.price)>0||parseFloat(i.qty)>0));
+  if(incompleteItem){
+    showToast('Sila pilih atau tambah nama item untuk semua baris ⚠️');
+    btn.disabled=false;btn.textContent='Hantar';
+    return;
+  }
   const u=currentUser;
   const profile=getUserProfile(u.email);
   const uploadedBy=profile.fullname||u.name;
@@ -2050,7 +2128,7 @@ async function submitReceipt(){
   };
   receipts.push(entry);
   // Sheet resit: ONE row per receipt (total amount only)
-  sheetRows.push([id,date,vendor?vendor.name:'',totalAmount,primaryAccount,primaryCat,branch,uploadedBy,u.email,'Pending','',driveLink,nota||'']);
+  sheetRows.push([id,toSheetDateText(date),vendor?vendor.name:'',totalAmount,primaryAccount,primaryCat,branch,uploadedBy,u.email,'Pending','',driveLink,nota||'']);
   setReceipts(receipts);
   // Update supplier tab in Sheet
   if(vendor) setTimeout(()=>updateSupplierTab(vendor.name).catch(()=>{}),3000);
@@ -2118,10 +2196,10 @@ async function uploadToDrive(base64,vendorName,date,amount){
   const cleanAmount='RM'+((parseFloat(amount)||0).toFixed(2));
   const filename=`${dd}${mm}${yy}-${cleanVendor}-${cleanAmount}`;
   const blob=base64ToBlob(base64,'image/jpeg');
-  // Subfolder: YYYY-MM based on TODAY (upload month), not receipt date
-  const todayMM=String(today.getMonth()+1).padStart(2,'0');
-  const monthFolder=`${today.getFullYear()}-${todayMM}`;
-  const folderId=await getOrCreateSubfolder(token, DRIVE_ROOT_FOLDER_ID, monthFolder);
+  // Subfolder: EzyGroup root > company > month name (based on TODAY, the upload month, not receipt date)
+  const companyFolderId=await getCompanyDriveFolderId(token);
+  const monthFolder=malayMonthName(today);
+  const folderId=await getOrCreateSubfolder(token, companyFolderId, monthFolder);
   const metadata={name:filename+'.jpg',parents:[folderId]};
   const form=new FormData();
   form.append('metadata',new Blob([JSON.stringify(metadata)],{type:'application/json'}));
@@ -2392,14 +2470,42 @@ function renderStaffResit(){
   el.innerHTML=html;
 }
 
+// Normalises any accepted date format (ISO or dd/mm/yyyy) into a lexicographically sortable yyyy-mm-dd key.
+function dateSortKey(d){
+  const f=fmtDate(d);
+  if(!f||f==='-') return '';
+  const p=f.split('/');
+  if(p.length!==3) return '';
+  return p[2]+'-'+p[1]+'-'+p[0];
+}
+
 function renderSuppliersList(){
-  const suppliers=getSuppliers().sort((a,b)=>b.count-a.count);
+  const receipts=getReceipts();
+  const payments=lsGetPayments();
+  // Sort suppliers by their most recent transaction (receipt or payment) first
+  const lastTxMap={};
+  receipts.forEach(r=>{
+    if(!r.vendor) return;
+    const sn=r.vendor.toLowerCase();
+    const k=dateSortKey(r.date);
+    if(k&&(!lastTxMap[sn]||k>lastTxMap[sn])) lastTxMap[sn]=k;
+  });
+  payments.forEach(p=>{
+    if(!p.supplier) return;
+    const sn=p.supplier.toLowerCase();
+    const k=dateSortKey(p.date);
+    if(k&&(!lastTxMap[sn]||k>lastTxMap[sn])) lastTxMap[sn]=k;
+  });
+  const suppliers=getSuppliers().sort((a,b)=>{
+    const da=lastTxMap[a.name.toLowerCase()]||'';
+    const db=lastTxMap[b.name.toLowerCase()]||'';
+    if(da!==db) return db.localeCompare(da);
+    return b.count-a.count;
+  });
   const el=document.getElementById('suppliersList');
   if(!el) return;
   if(!suppliers.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">📦</div><div>Tiada supplier</div></div>';return;}
   // Build KPI summary
-  const receipts=getReceipts();
-  const payments=lsGetPayments();
   const totalBeli=receipts.filter(r=>r.status==='Approved').reduce((a,r)=>a+parseFloat(r.amount||0),0);
   const totalBayar=payments.reduce((a,p)=>a+parseFloat(p.amount||0),0);
   const totalHutang=totalBeli-totalBayar;
@@ -2695,7 +2801,7 @@ function renderResitContent(tab){
         <table class="data-table">
           <thead><tr><th>Tarikh</th><th>Vendor</th><th>Cawangan</th><th>RM</th><th>Status</th>${canActLatest?'<th>Aksi</th>':''}</tr></thead>
           <tbody>${latest.map(r=>`<tr>
-            <td>${fmtDate(r.date)}</td><td>${r.vendor}</td><td>${r.branch||'-'}</td>
+            <td>${fmtDate(r.date)}</td><td style="cursor:pointer;color:var(--green)" onclick="showReceiptDetailModal('${r.id}')">${r.vendor}</td><td>${r.branch||'-'}</td>
             <td>${formatRM(parseFloat(r.amount||0))}</td>
             <td><span class="status-badge status-${(r.status||'').toLowerCase()}">${r.status}</span></td>
             ${canActLatest?`<td>${r.status==='Pending'?`<button class="btn btn-success btn-sm" style="padding:2px 8px;font-size:11px" onclick="approveReceipt('${r.id}')">Lulus</button>`:''}</td>`:''}
@@ -2762,6 +2868,41 @@ function toggleReceiptItems(id){
   el.style.display=el.style.display==='none'?'block':'none';
 }
 
+function showReceiptDetailModal(id){
+  const r=getReceipts().find(x=>x.id===id);
+  if(!r) return;
+  const hasItems=r.itemDetails&&r.itemDetails.length>0;
+  let body=`<div style="font-size:13px;color:var(--mid);margin-bottom:10px">
+    <div><b>${r.vendor||'-'}</b></div>
+    <div>${fmtDate(r.date)} · ${r.branch||'-'} · <span class="status-badge status-${(r.status||'').toLowerCase()}">${r.status}</span></div>
+    <div style="margin-top:4px;font-weight:600;color:var(--dark)">${formatRM(parseFloat(r.amount||0))}</div>
+  </div>`;
+  if(hasItems){
+    body+=`<table style="width:100%;font-size:12px;border-collapse:collapse">
+      <thead><tr style="color:var(--mid)">
+        <th style="text-align:left;padding:4px">Item</th>
+        <th style="text-align:left;padding:4px">Kod</th>
+        <th style="text-align:center;padding:4px">Qty</th>
+        <th style="text-align:right;padding:4px">Harga</th>
+        <th style="text-align:right;padding:4px">Jumlah</th>
+      </tr></thead>
+      <tbody>${r.itemDetails.map(it=>`<tr style="border-top:1px solid #f0f0f0">
+        <td style="padding:4px">${it.name||'-'}</td>
+        <td style="padding:4px;color:var(--mid)">${it.code||'-'}</td>
+        <td style="padding:4px;text-align:center">${it.qty||1}</td>
+        <td style="padding:4px;text-align:right">${formatRM(it.price||0)}</td>
+        <td style="padding:4px;text-align:right;font-weight:600">${formatRM(it.lineTotal||((it.qty||1)*(it.price||0)))}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+  } else {
+    body+=`<div style="font-size:12px;color:var(--mid)">Tiada butiran item untuk resit ini.</div>`;
+  }
+  if(r.driveLink){
+    body+=`<div style="margin-top:12px;text-align:center"><button class="btn btn-outline" onclick="showReceiptImageModal('${r.driveLink}')">📷 Lihat Gambar Resit</button></div>`;
+  }
+  showModal(r.vendor||'Butiran Resit',body);
+}
+
 async function syncReceiptStatusToSheet(r,status){
   const tok=getValidToken()||accessToken||currentToken;
   if(!tok) return;
@@ -2772,15 +2913,20 @@ async function syncReceiptStatusToSheet(r,status){
     const fd=await fr.json();
     if(!fd.values) return;
     const rows=fd.values;
-    // Headers: Tarikh,Vendor,Item,Jumlah,Akaun,Kategori,Cawangan,Staff,Email,Status,Approved By,Drive Link,Nota
-    // Col:      A     B      C    D      E     F        G        H     I     J      K           L          M
-    const dateStr=r.date||'';
-    const vendor=r.vendor||'';
+    // NEW format rows: A=ID,B=Tarikh,C=Vendor,D=Jumlah,E=Akaun,F=Kategori,G=Cawangan,H=Staff,I=Email,J=Status,K=Approved By,L=Drive Link,M=Nota
     let rowIdx=-1;
     for(let i=1;i<rows.length;i++){
-      if(rows[i][0]===dateStr && rows[i][1]===vendor){rowIdx=i+1;break;}
+      if(rows[i][0]===r.id){rowIdx=i+1;break;}
     }
-    if(rowIdx<1) return;
+    if(rowIdx<1){
+      // Fallback for legacy OLD format rows: A=Tarikh,B=Vendor (no ID column)
+      const dateStr=r.date||'';
+      const vendor=r.vendor||'';
+      for(let i=1;i<rows.length;i++){
+        if(rows[i][0]===dateStr && rows[i][1]===vendor){rowIdx=i+1;break;}
+      }
+    }
+    if(rowIdx<1){console.warn('syncReceiptStatusToSheet: no matching row for',r.id);return;}
     const approvedByName=currentUser?(currentUser.name||currentUser.email):'System';
     const approvedAtStr=new Date().toLocaleString('en-MY');
     const updateUrl=`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/resit!J${rowIdx}:K${rowIdx}?valueInputOption=RAW`;
@@ -3185,7 +3331,7 @@ function setBranchPeriod(period, btn){
 
   // Branch doughnut — Stock IN by branch in period
   const byBranch={};
-  invoices.forEach(r=>{if(r.branch){const k=normalizeBranchName(r.branch);byBranch[k]=(byBranch[k]||0)+r.total;}});
+  invoices.forEach(r=>{if(r.branch)byBranch[r.branch]=(byBranch[r.branch]||0)+r.total;});
   const branchColors=COMPANY_CONFIG.branchColors||BRANCH_COLORS;
   const bc=document.getElementById('bchart-branch');
   if(bc){
@@ -3196,9 +3342,9 @@ function setBranchPeriod(period, btn){
     if(lb) lb.innerHTML=bkeys.map((k,i)=>`<div style="display:flex;align-items:center;gap:3px"><span style="width:7px;height:7px;border-radius:50%;background:${branchColors[i%branchColors.length]};flex-shrink:0;display:inline-block"></span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1">${k}</span><span style="color:var(--mid);flex-shrink:0">${totalB?Math.round(byBranch[k]/totalB*100):0}%</span></div>`).join('');
   }
 
-  // Bar chart — Stock IN by branch (always show all configured branches, even with 0 in this period)
+  // Bar chart — Stock IN by branch
   const barC=document.getElementById('bchart-bar');
-  if(barC){const bkeys=COMPANY_CONFIG.branches||Object.keys(byBranch);charts['bchart-bar']=new Chart(barC,{type:'bar',data:{labels:bkeys,datasets:[{label:'RM',data:bkeys.map(k=>byBranch[k]||0),backgroundColor:branchColors}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});}
+  if(barC){const bkeys=Object.keys(byBranch);charts['bchart-bar']=new Chart(barC,{type:'bar',data:{labels:bkeys,datasets:[{label:'RM',data:bkeys.map(k=>byBranch[k]),backgroundColor:branchColors}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});}
 
   // Balance per branch sidebar
   const lbBal=document.getElementById('blegend-balance');
@@ -3323,24 +3469,11 @@ function renderBranchScreen(){
   });
 }
 
-// Older Stock IN rows were written with the branch's full address name (e.g. "Ezydurian Shah Alam")
-// instead of the clean configured name ("Shah Alam"), so a strict === comparison against
-// COMPANY_CONFIG.branches silently matched nothing and showed RM0 everywhere. Normalise before comparing.
-function normalizeBranchName(raw){
-  if(!raw) return raw;
-  const r=String(raw).trim().toLowerCase();
-  const match=(COMPANY_CONFIG.branches||[]).find(b=>{
-    const k=b.trim().toLowerCase();
-    return r===k || r.endsWith(' '+k) || r===('ezydurian '+k);
-  });
-  return match||raw;
-}
-
 // Balance = Stock IN - Onpay - Payment
 function getBranchBalance(branch){
-  const stockIn = sheetInvoices().filter(r=>!branch||normalizeBranchName(r.branch)===branch).reduce((a,r)=>a+(+r.total||0),0);
-  const onpay = sheetOnpay().filter(r=>!branch||normalizeBranchName(r.branch)===branch).reduce((a,r)=>a+(+r.amount||0),0);
-  const payment = sheetPayments().filter(r=>!branch||normalizeBranchName(r.branch)===branch).reduce((a,r)=>a+(+r.amount||0),0);
+  const stockIn = sheetInvoices().filter(r=>!branch||r.branch===branch).reduce((a,r)=>a+(+r.total||0),0);
+  const onpay = sheetOnpay().filter(r=>!branch||r.branch===branch).reduce((a,r)=>a+(+r.amount||0),0);
+  const payment = sheetPayments().filter(r=>!branch||r.branch===branch).reduce((a,r)=>a+(+r.amount||0),0);
   return {stockIn, onpay, payment, balance: stockIn - onpay - payment};
 }
 
@@ -3368,7 +3501,7 @@ function _renderBranchScreenInner(){
       <div class="kpi-card"><div class="kpi-label">Baki Hutang</div><div class="kpi-value" style="font-size:14px;color:${grand.balance>0?'var(--red)':'var(--green)'}">${formatRM(Math.abs(grand.balance))}</div></div>
     </div>
     ${rows.map(({b,i,stockIn,onpay,payment,balance})=>`
-      <div onclick="showBranchDetail('${b}')" style="cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
           <div style="width:10px;height:10px;border-radius:50%;background:${(COMPANY_CONFIG.branchColors||[])[i%8]||'#999'};flex-shrink:0"></div>
           <div style="font-size:14px;font-weight:700">${b}</div>
@@ -3383,37 +3516,6 @@ function _renderBranchScreenInner(){
         </div>
       </div>`).join('')}
   `;
-}
-
-function showBranchDetail(branch){
-  const invoices=sheetInvoices().filter(r=>normalizeBranchName(r.branch)===branch).slice().reverse();
-  const onpays=sheetOnpay().filter(r=>normalizeBranchName(r.branch)===branch).slice().reverse();
-  const payments=sheetPayments().filter(r=>normalizeBranchName(r.branch)===branch).slice().reverse();
-  const {stockIn,onpay,payment,balance}=getBranchBalance(branch);
-
-  function recTable(records,amountKey){
-    if(!records.length) return '<div style="color:var(--mid);font-size:12px;text-align:center;padding:10px">Tiada rekod</div>';
-    return `<table style="width:100%;font-size:12px;border-collapse:collapse">
-      <thead><tr style="background:var(--surface2)"><th style="padding:6px 4px;text-align:left">Tarikh</th><th style="padding:6px 4px;text-align:left">Invoice</th><th style="padding:6px 4px;text-align:right">Jumlah</th></tr></thead>
-      <tbody>${records.map(r=>`<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px 4px">${fmtDate(r.date)}</td><td style="padding:6px 4px;color:var(--mid)">${r.invoiceNo||'-'}</td><td style="padding:6px 4px;text-align:right;font-weight:600">${formatRM(r[amountKey])}</td></tr>`).join('')}</tbody>
-    </table>`;
-  }
-
-  const body=`
-    <div class="kpi-grid" style="margin-bottom:14px">
-      <div class="kpi-card"><div class="kpi-label">Stock IN</div><div class="kpi-value" style="font-size:13px">${formatRM(stockIn)}</div></div>
-      <div class="kpi-card"><div class="kpi-label">Onpay</div><div class="kpi-value" style="font-size:13px;color:var(--green)">${formatRM(onpay)}</div></div>
-      <div class="kpi-card"><div class="kpi-label">Payment</div><div class="kpi-value" style="font-size:13px;color:var(--green)">${formatRM(payment)}</div></div>
-      <div class="kpi-card"><div class="kpi-label">Baki</div><div class="kpi-value" style="font-size:13px;color:${balance>0?'var(--red)':'var(--green)'}">${formatRM(Math.abs(balance))}</div></div>
-    </div>
-    <div style="font-size:12px;font-weight:600;color:var(--mid);margin-bottom:6px">STOCK IN</div>
-    ${recTable(invoices,'total')}
-    <div style="font-size:12px;font-weight:600;color:var(--mid);margin:14px 0 6px">ONPAY</div>
-    ${recTable(onpays,'amount')}
-    <div style="font-size:12px;font-weight:600;color:var(--mid);margin:14px 0 6px">PAYMENT</div>
-    ${recTable(payments,'amount')}
-  `;
-  showModal(branch, body);
 }
 
 function setPeriod(period, btn){
@@ -3994,6 +4096,33 @@ async function writeInvoiceToSheet(inv){
   await _appendSheetRow('Stock in', [inv.date, inv.invoiceNo, branch, inv.total]);
 }
 
+// Update an existing 'Stock in' row in place (matched by invoice no). Without this,
+// editing an invoice only changed the local cache and the edit silently reverted to
+// the old amount on the next reload, because the Sheet still held the original row.
+async function updateInvoiceInSheet(inv, matchNo){
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok) return;
+  const findNo=matchNo||inv.invoiceNo;
+  try{
+    const enc=encodeURIComponent('Stock in');
+    const r=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${enc}!B2:F10000`,{headers:{Authorization:'Bearer '+tok}});
+    const d=await r.json();
+    const rows=d.values||[];
+    let rowIdx=-1;
+    if(findNo){
+      for(let i=0;i<rows.length;i++){
+        if((rows[i][1]||'')===findNo){rowIdx=i+2;break;}
+      }
+    }
+    if(rowIdx<0){ await writeInvoiceToSheet(inv); return; } // no matching row — append instead
+    const branch = inv.branch || inv.billTo?.split('\n')[0] || '';
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${enc}!B${rowIdx}:E${rowIdx}?valueInputOption=USER_ENTERED`,{
+      method:'PUT',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+      body:JSON.stringify({values:[[inv.date, inv.invoiceNo, branch, inv.total]]})
+    });
+  }catch(e){ console.warn('updateInvoiceInSheet:',e); }
+}
+
 async function writePaymentToSheet(p){
   // Append to 'Payment': Date, Invoice no, Branch, Amount
   await _appendSheetRow('Payment', [p.date, p.invoiceNo||'', p.branch||p.supplier||'', p.amount]);
@@ -4436,7 +4565,7 @@ function showInvoiceForm(invId=null){
   editingInvoiceId = invId;
   invoiceItems = inv ? JSON.parse(JSON.stringify(inv.items||[])) : [{desc:'',unit:'kg',qty:'',rate:'',amount:''}];
 
-  const addressOpts = branchKeys.map(k=>`<option value="${k}" ${inv?.branch===k?'selected':''}>${k}</option>`).join('');
+  const addressOpts = branchKeys.map(k=>`<option value="${addresses[k]}" ${inv?.billTo===addresses[k]?'selected':''}>${k}</option>`).join('');
 
   $id('invoiceFormWrap').style.display='block';
   $id('invoiceListWrap').style.display='none';
@@ -4501,11 +4630,7 @@ function handleBranchSelect(val){
   const ta = $id('invBillTo');
   if(!ta) return;
   if(val === '__manual__'){ ta.value=''; ta.readOnly=false; ta.focus(); }
-  else if(val){
-    const addresses = getBranchAddresses();
-    ta.value = addresses[val]||'';
-    ta.readOnly = true;
-  }
+  else if(val){ ta.value=val; ta.readOnly=true; }
   else { ta.value=''; ta.readOnly=false; }
 }
 
@@ -4595,14 +4720,15 @@ function saveInvoice(status){
   const cache = window._invoiceCache || [];
   const now = new Date().toLocaleString('en-MY');
 
-  const branchSel = $id('invBranchSel')?.value || '';
-  const branch = (branchSel && branchSel!=='__manual__') ? branchSel : '';
+  const branch = invoiceItems[0]?.branch || '';
   const inv={id:'inv_'+Date.now(),invoiceNo,date,billTo,branch,items:invoiceItems,total,status,createdBy:currentUser?.email,createdAt:now};
 
   if(editingInvoiceId){
-    // For edit: just update cache, no sheet rewrite (sheet is source of truth on reload)
     const idx = cache.findIndex(x=>x.id===editingInvoiceId);
+    // Match the Sheet row by the ORIGINAL invoice no (in case the user changed it in this edit)
+    const prevNo = idx>=0 ? cache[idx].invoiceNo : invoiceNo;
     if(idx>=0) cache[idx]={...cache[idx],...inv,id:editingInvoiceId};
+    updateInvoiceInSheet(inv, prevNo); // update the 'Stock in' row in place
   } else {
     cache.push(inv);
     writeInvoiceToSheet(inv); // append to 'Stock in'
@@ -4840,22 +4966,30 @@ async function generateInvoiceImage(id){
     ctx.fillStyle='#888';
     ctx.fillText('Invoice Date: ',40,185); ctx.fillStyle='#111'; ctx.fillText(fmtDate(inv.date),140,185);
 
+    // Bill To — right-aligned block (matches the on-screen preview)
+    ctx.textAlign='right';
     ctx.fillStyle='#888';
-    ctx.fillText('Bill To',500,185);
+    ctx.font='13px Arial';
+    ctx.fillText('Bill To',860,185);
     ctx.fillStyle='#111';
     ctx.font='bold 13px Arial';
-    inv.billTo.split('\n').forEach((line,i)=>ctx.fillText(line,500,205+i*18));
+    inv.billTo.split('\n').forEach((line,i)=>ctx.fillText(line,860,205+i*18));
+    ctx.textAlign='left';
 
-    // Table header
+    // Table header: #, Item & Description, Supplier, Qty (centered), Rate, Amount
     let y = 270;
     ctx.fillStyle='#111';
     ctx.fillRect(40,y,820,32);
     ctx.fillStyle='#fff';
     ctx.font='bold 13px Arial';
-    ['#','Item & Description','Qty','Rate','Amount'].forEach((h,i)=>{
-      const x=[40,80,580,660,760][i];
-      ctx.fillText(h,x+8,y+21);
-    });
+    ctx.fillText('#',48,y+21);
+    ctx.fillText('Item & Description',88,y+21);
+    ctx.fillText('Supplier',388,y+21);
+    ctx.textAlign='center';
+    ctx.fillText('Qty',620,y+21);
+    ctx.textAlign='left';
+    ctx.fillText('Rate',668,y+21);
+    ctx.fillText('Amount',768,y+21);
 
     // Table rows
     (inv.items||[]).forEach((it,i)=>{
@@ -4867,13 +5001,15 @@ async function generateInvoiceImage(id){
       ctx.font='13px Arial';
       ctx.fillText(i+1,48,y+23);
       ctx.font='bold 13px Arial';
-      ctx.fillText(it.desc.substring(0,30),88,y+18);
+      ctx.fillText(it.desc.substring(0,28),88,y+23);
       ctx.font='11px Arial';
       ctx.fillStyle='#888';
-      ctx.fillText(supName.substring(0,25),88,y+32);
+      ctx.fillText(supName.substring(0,22),388,y+23);
       ctx.fillStyle='#111';
       ctx.font='13px Arial';
+      ctx.textAlign='center';
       ctx.fillText(it.qty,620,y+23);
+      ctx.textAlign='left';
       ctx.fillText(parseFloat(it.rate||0).toFixed(2),668,y+23);
       ctx.fillText(parseFloat(it.amount||0).toFixed(2),768,y+23);
     });
@@ -4884,13 +5020,6 @@ async function generateInvoiceImage(id){
     ctx.fillText('Total: MYR '+parseFloat(inv.total).toFixed(2),560,y);
     }; // end drawRest
 
-    // Draw company name top right
-    ctx.fillStyle='#111';
-    ctx.font='bold 16px Arial';
-    ctx.textAlign='right';
-    ctx.fillText(COMPANY_CONFIG.name, canvas.width-40, 60);
-    ctx.textAlign='left';
-
     if(logoSrc){
       const img = new Image();
       // Errors thrown inside these async handlers happen after the outer try/catch has
@@ -4898,17 +5027,20 @@ async function generateInvoiceImage(id){
       // upload (or any error) fails completely silently with no toast shown at all.
       img.onload = async ()=>{
         try{
-          ctx.drawImage(img, canvas.width-140, 10, 90, 55);
+          // Fit logo in a 220x160 box preserving aspect ratio (no stretch); right-aligned, ends above Bill To
+          const logoScale=Math.min(220/img.naturalWidth, 160/img.naturalHeight);
+          const logoW=img.naturalWidth*logoScale, logoH=img.naturalHeight*logoScale;
+          ctx.drawImage(img, canvas.width-40-logoW, 10, logoW, logoH);
           drawRest();
           URL.revokeObjectURL(url);
           const imgData = canvas.toDataURL('image/png');
           const base64 = imgData.split(',')[1];
           const d = new Date(inv.date);
-          const month = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+          const month = malayMonthName(d);
           const day = String(d.getDate()).padStart(2,'0');
           const branch = inv.billTo?.split('\n')[0]||'Unknown';
           const filename = `${inv.invoiceNo.replace('/','_')}.png`;
-          const folderPath = `${month}/${day}/${branch}`;
+          const folderPath = `${COMPANY_CONFIG.id}/${month}/${day}/${branch}`;
           await uploadInvoiceToDrive(base64, filename, folderPath);
           showToast('Invoice disimpan ke Drive ✅');
         }catch(e){
@@ -4923,11 +5055,11 @@ async function generateInvoiceImage(id){
           const imgData = canvas.toDataURL('image/png');
           const base64=imgData.split(',')[1];
           const d=new Date(inv.date);
-          const month=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+          const month = malayMonthName(d);
           const day=String(d.getDate()).padStart(2,'0');
           const branch=inv.billTo?.split('\n')[0]||'Unknown';
           const filename=`${inv.invoiceNo.replace('/','_')}.png`;
-          await uploadInvoiceToDrive(base64,filename,`${month}/${day}/${branch}`);
+          await uploadInvoiceToDrive(base64,filename,`${COMPANY_CONFIG.id}/${month}/${day}/${branch}`);
           showToast('Invoice disimpan ke Drive ✅');
         }catch(e){
           console.warn('Generate invoice image (onerror):',e);
@@ -4945,11 +5077,11 @@ async function generateInvoiceImage(id){
     const imgData = canvas.toDataURL('image/png');
     const base64 = imgData.split(',')[1];
     const d = new Date(inv.date);
-    const month = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+    const month = malayMonthName(d);
     const day = String(d.getDate()).padStart(2,'0');
     const branch = inv.billTo?.split('\n')[0]||'Unknown';
     const filename = `${inv.invoiceNo}.png`;
-    const folderPath = `${month}/${day}/${branch}`;
+    const folderPath = `${COMPANY_CONFIG.id}/${month}/${day}/${branch}`;
 
     await uploadInvoiceToDrive(base64, filename, folderPath);
     showToast('Invoice disimpan ke Drive ✅');
@@ -5529,7 +5661,9 @@ async function loadReceiptsFromSheet(){
     // Mixed format support — detect row-by-row:
     // OLD row: col A = date (YYYY-MM-DD or DD/MM/YYYY), col B = Vendor, col C = Item
     // NEW row: col A = ID (long number/string, not a date), col B = date, col C = Vendor
-    function isDateVal(v){return /^\d{4}-\d{2}-\d{2}$/.test(v)||/^\d{2}\/\d{2}\/\d{4}$/.test(v);}
+    // Day/month may be 1 or 2 digits — manual entries like "1/07/2026" must still count as dates,
+    // otherwise the row is misread as NEW format and silently dropped (empty col C = no vendor).
+    function isDateVal(v){return /^\d{4}-\d{1,2}-\d{1,2}$/.test(v)||/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(v);}
 
     const oldMap={};
     const newRows=[];
@@ -5544,7 +5678,9 @@ async function loadReceiptsFromSheet(){
         if(!vendor) return;
         const key=`${date}__${vendor.toLowerCase()}__${uploadedEmail}`;
         if(!oldMap[key]){
-          oldMap[key]={id:'r_'+key.replace(/[^a-z0-9]/gi,'_'),date,vendor,branch:row[6]||'',category:row[5]||'',amount:0,status:row[9]||'Pending',uploadedBy:row[7]||'',uploadedEmail,approvedBy:row[10]||'',driveLink:row[11]||'',nota:row[12]||'',itemDetails:[]};
+          // OLD-format rows are legacy/manually-keyed data — blank Status means already-approved history,
+          // not an item waiting in the approval queue (new app uploads always write 'Pending' explicitly).
+          oldMap[key]={id:'r_'+key.replace(/[^a-z0-9]/gi,'_'),date,vendor,branch:row[6]||'',category:row[5]||'',amount:0,status:row[9]||'Approved',uploadedBy:row[7]||'',uploadedEmail,approvedBy:row[10]||'',driveLink:row[11]||'',nota:row[12]||'',itemDetails:[]};
         }
         oldMap[key].amount+=amount;
         if(row[2]) oldMap[key].itemDetails.push({name:row[2],price:amount,category:row[5]||''});
