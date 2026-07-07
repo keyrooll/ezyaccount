@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.47-0807/0017</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.49-0807/0031</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.47-0807/0017</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.49-0807/0031</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -816,12 +816,21 @@ function isJunkItemName(n){
   if(/^\d{1,2}\/\d{1,2}(\/\d{2,4})?$/.test(n)) return true; // bare date like 25/6
   return false;
 }
-// Period filter for the price analysis (Semua / Hari / Minggu / Bulan).
+// Period filter for the price analysis. Either quick buttons (Semua/Hari/Minggu/Bulan) OR a
+// custom Dari–Hingga date range. A set date range overrides the quick buttons.
 window._analysisPeriod = window._analysisPeriod || 'all';
+window._analysisFrom = window._analysisFrom || '';
+window._analysisTo = window._analysisTo || '';
 function inAnalysisPeriod(dateStr){
+  const k=dateSortKey(dateStr); if(!k) return false;
+  // Custom date range takes priority
+  if(window._analysisFrom||window._analysisTo){
+    if(window._analysisFrom&&k<window._analysisFrom) return false;
+    if(window._analysisTo&&k>window._analysisTo) return false;
+    return true;
+  }
   const p=window._analysisPeriod||'all';
   if(p==='all') return true;
-  const k=dateSortKey(dateStr); if(!k) return false;
   const now=new Date();
   const pad=n=>String(n).padStart(2,'0');
   const today=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
@@ -846,13 +855,32 @@ function getItemPriceRows(){
   return rows;
 }
 function analysisPeriodBar(){
+  const custom=!!(window._analysisFrom||window._analysisTo);
   const opts=[['all','Semua'],['day','Hari'],['week','Minggu'],['month','Bulan']];
-  return `<div style="display:flex;gap:6px;margin-bottom:12px">`+opts.map(([v,l])=>`<button onclick="setAnalysisPeriod('${v}')" class="btn btn-sm ${window._analysisPeriod===v?'btn-primary':'btn-secondary'}" style="flex:1;white-space:nowrap;font-size:12px">${l}</button>`).join('')+`</div>`;
+  let html=`<div style="display:flex;gap:6px;margin-bottom:8px">`+opts.map(([v,l])=>`<button onclick="setAnalysisPeriod('${v}')" class="btn btn-sm ${(!custom&&window._analysisPeriod===v)?'btn-primary':'btn-secondary'}" style="flex:1;white-space:nowrap;font-size:12px">${l}</button>`).join('')+`</div>`;
+  html+=`<div style="display:flex;gap:6px;align-items:center;margin-bottom:12px;font-size:11px;color:var(--mid);flex-wrap:wrap">
+    <span>Dari</span><input type="date" value="${window._analysisFrom||''}" onchange="setAnalysisDate('from',this.value)" style="font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:6px">
+    <span>Hingga</span><input type="date" value="${window._analysisTo||''}" onchange="setAnalysisDate('to',this.value)" style="font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:6px">
+    ${custom?`<button onclick="clearAnalysisDate()" class="btn btn-sm btn-secondary" style="font-size:11px;padding:3px 8px">✕ Reset</button>`:''}
+  </div>`;
+  return html;
+}
+function _rerenderAnalysis(){
+  renderItemPriceAnalysis();
+  ['sameDateComparison','sameDateComparisonAdmin'].forEach(id=>{ if(document.getElementById(id)) renderSameDateComparison(id); });
 }
 function setAnalysisPeriod(p){
   window._analysisPeriod=p;
-  renderItemPriceAnalysis();
-  ['sameDateComparison','sameDateComparisonAdmin'].forEach(id=>{ if(document.getElementById(id)) renderSameDateComparison(id); });
+  window._analysisFrom=''; window._analysisTo=''; // quick buttons clear any custom range
+  _rerenderAnalysis();
+}
+function setAnalysisDate(which,val){
+  if(which==='from') window._analysisFrom=val; else window._analysisTo=val;
+  _rerenderAnalysis();
+}
+function clearAnalysisDate(){
+  window._analysisFrom=''; window._analysisTo='';
+  _rerenderAnalysis();
 }
 function getSameDateComparison(){
   const byDateItem={};// key: date + item name
@@ -1670,8 +1698,8 @@ async function analyzeWithAI(){
     const pages=uploadedPages.length>0?uploadedPages:[uploadedImage];
     const imageContents=pages.map(b=>({type:'image_url',image_url:{url:b.startsWith('data:')?b:'data:image/jpeg;base64,'+b,detail:'high'}}));
     const promptText=pages.length>1
-      ?'You are a receipt OCR assistant. These '+pages.length+' images are pages of ONE receipt. Combine all pages and return ONE unified JSON. Return ONLY valid JSON, no markdown: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total. If invoice shows Rate=4.00 and Amount=248.00, use price=4.00 NOT 248.00. qty = quantity ordered. IMPORTANT: year "26"=2026,"25"=2025. For amount use the GRAND TOTAL from last page; if not shown sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS. IMPORTANT: never put a raw double-quote character inside any string value; write inches as "in" (e.g. 13A 52 1/2in) and always escape quotes so the JSON stays valid.'
-      :'You are a receipt OCR assistant. Analyze this receipt image carefully. Return ONLY valid JSON, no markdown, no extra text: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total amount. If invoice shows columns Rate and Amount, use the Rate column value for price, not Amount. IMPORTANT: For date, year "26" means 2026, "25" means 2025. For amount, use GRAND TOTAL or sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS. If unclear use OTHERS/101.';
+      ?'You are a receipt OCR assistant. These '+pages.length+' images are pages of ONE receipt. Combine all pages and return ONE unified JSON. Return ONLY valid JSON, no markdown: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total. If invoice shows Rate=4.00 and Amount=248.00, use price=4.00 NOT 248.00. qty = quantity ordered. IMPORTANT: year "26"=2026,"25"=2025. For amount use the GRAND TOTAL from last page; if not shown sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS. IMPORTANT: never put a raw double-quote character inside any string value; write inches as "in" (e.g. 13A 52 1/2in) and always escape quotes so the JSON stays valid. HANDWRITTEN SUPPLIER RECEIPTS: item names are usually SHORT CODES like 13A, 101A, MK3C, BC, BTCC. Read each cell by its CONTENT, not by column position — writers often put things in the wrong column. If the Quantity/Kuantiti column holds a short letter+digit code (e.g. 13A, 101A, MK3C) instead of a number, treat THAT as the item name, and read the real qty from the description cell which is usually a sum like 52 1/2, 51 1/2 = 104 → use the total after the equals sign (104) as qty. Transport fee / Transport is a valid item. Ignore crossed-out or circled correction notes.'
+      :'You are a receipt OCR assistant. Analyze this receipt image carefully. Return ONLY valid JSON, no markdown, no extra text: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total amount. If invoice shows columns Rate and Amount, use the Rate column value for price, not Amount. IMPORTANT: For date, year "26" means 2026, "25" means 2025. For amount, use GRAND TOTAL or sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS. If unclear use OTHERS/101. HANDWRITTEN SUPPLIER RECEIPTS: item names are usually SHORT CODES like 13A, 101A, MK3C, BC, BTCC. Read each cell by its CONTENT, not by column position — writers often put things in the wrong column. If the Quantity/Kuantiti column holds a short letter+digit code (e.g. 13A, 101A, MK3C) instead of a number, treat THAT as the item name, and read the real qty from the description cell which is usually a sum like 52 1/2, 51 1/2 = 104 → use the total after the equals sign (104) as qty. Transport fee / Transport is a valid item. Ignore crossed-out or circled correction notes. Never put a raw double-quote inside a string value.';
     const body={
       model:'gpt-4o',max_tokens:4000,temperature:0.1,
       messages:[{role:'user',content:[
