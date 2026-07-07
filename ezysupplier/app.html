@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.34-0707/1027</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.35-0707/1050</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.34-0707/1027</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.35-0707/1050</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -1554,6 +1554,53 @@ async function stepTwoInit(){
   }
 }
 
+// Repair stray double-quotes inside JSON string values (e.g. inch marks like 13A 52 1/2")
+// and auto-close a response that was truncated by max_tokens. Receipts for hardware/electrical
+// items frequently contain " (inches) which the model emits unescaped, producing invalid JSON.
+function _repairAIQuotes(s){
+  let out='',inStr=false;
+  for(let i=0;i<s.length;i++){
+    const c=s[i];
+    if(!inStr){ out+=c; if(c==='"') inStr=true; continue; }
+    if(c==='\\'){ out+=c+(s[i+1]||''); i++; continue; }
+    if(c==='"'){
+      let j=i+1; while(j<s.length && (s[j]===' '||s[j]==='\t')) j++;
+      const nxt=s[j];
+      if(nxt===undefined||nxt===','||nxt===':'||nxt==='}'||nxt===']'||nxt==='\n'||nxt==='\r'){
+        out+='"'; inStr=false; // genuine closing quote
+      } else {
+        out+='\\"'; // stray inner quote → escape it
+      }
+      continue;
+    }
+    out+=c;
+  }
+  return out;
+}
+function parseAIReceiptJson(text){
+  if(!text) throw new Error('empty response');
+  let s=text.replace(/```json[\n]?|[\n]?```/g,'').trim();
+  const first=s.indexOf('{');
+  if(first>0) s=s.slice(first);
+  // 1. direct
+  try{ return JSON.parse(s); }catch(e){}
+  // 2. narrow to outermost braces
+  const m=s.match(/\{[\s\S]*\}/);
+  if(m){ try{ return JSON.parse(m[0]); }catch(e){} }
+  // 3. escape stray inner quotes (inch marks etc.)
+  const repaired=_repairAIQuotes(s);
+  try{ return JSON.parse(repaired); }catch(e){}
+  // 4. truncated response: keep up to the last complete item object and close the structure
+  const cut=repaired.lastIndexOf('}');
+  if(cut>0){
+    const head=repaired.slice(0,cut+1);
+    for(const tail of [']}','}',']}}','}}']){
+      try{ return JSON.parse(head+tail); }catch(e){}
+    }
+  }
+  throw new Error('Cannot parse AI response: '+text.substring(0,150));
+}
+
 async function analyzeWithAI(){
   // Read raw from localStorage to avoid JSON.parse issues
   let key=(localStorage.getItem('ezy_openai_key_global')||'').trim();
@@ -1572,10 +1619,10 @@ async function analyzeWithAI(){
     const pages=uploadedPages.length>0?uploadedPages:[uploadedImage];
     const imageContents=pages.map(b=>({type:'image_url',image_url:{url:b.startsWith('data:')?b:'data:image/jpeg;base64,'+b,detail:'high'}}));
     const promptText=pages.length>1
-      ?'You are a receipt OCR assistant. These '+pages.length+' images are pages of ONE receipt. Combine all pages and return ONE unified JSON. Return ONLY valid JSON, no markdown: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total. If invoice shows Rate=4.00 and Amount=248.00, use price=4.00 NOT 248.00. qty = quantity ordered. IMPORTANT: year "26"=2026,"25"=2025. For amount use the GRAND TOTAL from last page; if not shown sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS.'
+      ?'You are a receipt OCR assistant. These '+pages.length+' images are pages of ONE receipt. Combine all pages and return ONE unified JSON. Return ONLY valid JSON, no markdown: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total. If invoice shows Rate=4.00 and Amount=248.00, use price=4.00 NOT 248.00. qty = quantity ordered. IMPORTANT: year "26"=2026,"25"=2025. For amount use the GRAND TOTAL from last page; if not shown sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS. IMPORTANT: never put a raw double-quote character inside any string value; write inches as "in" (e.g. 13A 52 1/2in) and always escape quotes so the JSON stays valid.'
       :'You are a receipt OCR assistant. Analyze this receipt image carefully. Return ONLY valid JSON, no markdown, no extra text: {"date":"YYYY-MM-DD","vendor":"string","vendor_confidence":"high","amount":0.00,"items":[{"name":"string","qty":1,"price":0.00,"category":"COGS","account_code":"101"}]}. CRITICAL: "price" = UNIT PRICE / RATE PER UNIT (e.g. price per kg), NOT the line total amount. If invoice shows columns Rate and Amount, use the Rate column value for price, not Amount. IMPORTANT: For date, year "26" means 2026, "25" means 2025. For amount, use GRAND TOTAL or sum ALL line totals. Categories: COGS,UTILITIES,RENTAL,RENOVATION,MARKETING,TRANSPORTATION,GAS,MANAGEMENT,OTHERS. If unclear use OTHERS/101.';
     const body={
-      model:'gpt-4o',max_tokens:2000,temperature:0.1,
+      model:'gpt-4o',max_tokens:4000,temperature:0.1,
       messages:[{role:'user',content:[
         ...imageContents,
         {type:'text',text:promptText}
@@ -1599,19 +1646,12 @@ async function analyzeWithAI(){
     const text=d.choices[0].message.content;
     let json;
     try{
-      // Remove markdown code blocks and control characters
-      const cleaned=text.replace(/```json[\n]?|[\n]?```/g,'').trim();
-      json=JSON.parse(cleaned);
+      json=parseAIReceiptJson(text);
     }catch(e2){
-      try{
-        const match=text.match(/\{[\s\S]*\}/);
-        if(!match) throw new Error('No JSON found');
-        const safe=match[0];
-        json=JSON.parse(safe);
-      }catch(e3){
-        console.error('AI parse error, raw text:',text);
-        throw new Error('Cannot parse AI response: '+text.substring(0,150));
-      }
+      console.error('AI parse error, raw text:',text);
+      showToast('AI gagal baca resit. Sila isi manual ⚠️');
+      document.getElementById('aiLoadingRow').style.display='none';
+      return;
     }
     document.getElementById('aiVendorName').textContent=json.vendor||'-';
     const conf=json.vendor_confidence==='high';
