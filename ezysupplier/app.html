@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.44-0707/2334</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.46-0707/2355</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.44-0707/2334</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.46-0707/2355</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -5852,30 +5852,36 @@ async function loadReceiptsFromSheet(){
       const ri=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/resit_items!A1:I`,{headers:{Authorization:'Bearer '+tok}});
       const rid=await ri.json();
       if(!ri.ok||rid.error) console.warn('resit_items fetch failed',ri.status,rid.error||'');
+      console.log('resit_items rows fetched:',rid.values?rid.values.length:0,'| header:',JSON.stringify(rid.values&&rid.values[0]));
       if(rid.values&&rid.values.length>1){
-        const header=(rid.values[0]||[]).map(h=>(h||'').toString().toLowerCase());
-        // Detect format by header: new format has 'supplier' in col B
-        const isNewFormat=header[1]==='supplier';
+        // resit_items has MIXED per-row layouts (the header alone can't tell them apart):
+        //   OLD: ResitID, Item, Kod, Qty, Harga, LineTotal, Kategori          (col C = Kod)
+        //   NEW: ResitID, Supplier, Tarikh, Item, Kod, Qty, Harga, LineTotal, Kategori  (col C = date)
+        // Detect PER ROW by whether col C looks like a date. Fill any missing Supplier/Tarikh
+        // from the parent receipt so old rows still contribute to the price analysis.
         const dataRows=rid.values.slice(1);
+        const recById={};
+        receipts.forEach(r=>{ if(r.id) recById[r.id]={vendor:r.vendor||'',date:r.date||''}; });
+        const isDateCell=v=>/^\d{4}-\d{1,2}-\d{1,2}$/.test(v)||/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(v);
         const itemMap={};   // by ResitID
-        const itemMapDV={}; // by "sortdate|vendor" — fallback for OLD-format receipts whose synthetic id
-                            // never matches the real ResitID, so their SKU items would otherwise be lost.
-        const flat=[];      // flat item rows straight from resit_items — the source of truth for the
-                            // price analysis (has Supplier + Tarikh, so no fragile row-linkage needed)
+        const itemMapDV={}; // by "sortdate|vendor"
+        const flat=[];      // flat item rows — source of truth for the price analysis
         dataRows.forEach(row=>{
           const rid2=row[0];if(!rid2) return;
+          const cVal=(row[2]||'').toString().trim();
           let item, sup='', tar='';
-          if(isNewFormat){
-            // ResitID,Supplier,Tarikh,Item,Kod,Qty,Harga,LineTotal,Kategori
+          if(isDateCell(cVal)){
+            // NEW: ResitID,Supplier,Tarikh,Item,Kod,Qty,Harga,LineTotal,Kategori
             item={name:row[3]||'',code:row[4]||'',qty:parseFloat(row[5])||1,price:parseFloat(row[6])||0,lineTotal:parseFloat(row[7])||0,category:row[8]||''};
-            sup=(row[1]||'').toString(); tar=(row[2]||'').toString();
+            sup=(row[1]||'').toString().trim(); tar=cVal;
           } else {
-            // ResitID,Item,Kod,Qty,Harga,LineTotal,Kategori
+            // OLD: ResitID,Item,Kod,Qty,Harga,LineTotal,Kategori
             item={name:row[1]||'',code:row[2]||'',qty:parseFloat(row[3])||1,price:parseFloat(row[4])||0,lineTotal:parseFloat(row[5])||0,category:row[6]||''};
           }
+          if((!sup||!tar)&&recById[rid2]){ sup=sup||recById[rid2].vendor; tar=tar||recById[rid2].date; }
           if(!itemMap[rid2]) itemMap[rid2]=[];
           itemMap[rid2].push(item);
-          flat.push({resitId:rid2,supplier:sup.trim(),date:tar.trim(),name:item.name,code:item.code,qty:item.qty,price:item.price,category:item.category});
+          flat.push({resitId:rid2,supplier:(sup||'').trim(),date:(tar||'').trim(),name:item.name,code:item.code,qty:item.qty,price:item.price,category:item.category});
           if(sup&&tar){
             const dv=dateSortKey(tar)+'|'+sup.trim().toLowerCase();
             if(!itemMapDV[dv]) itemMapDV[dv]=[];
@@ -5883,6 +5889,7 @@ async function loadReceiptsFromSheet(){
           }
         });
         window._resitItemsFlat=flat;
+        console.log('resit_items: parsed',flat.length,'rows; withSupplier:',flat.filter(f=>f.supplier).length,'; sample:',JSON.stringify(flat[0]));
         receipts.forEach(r=>{
           if(itemMap[r.id]&&itemMap[r.id].length){ r.itemDetails=itemMap[r.id]; return; }
           const dv=dateSortKey(r.date)+'|'+(r.vendor||'').trim().toLowerCase();
