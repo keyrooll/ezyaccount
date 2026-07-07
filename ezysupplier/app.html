@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.40-0707/1651</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.41-0707/1715</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.40-0707/1651</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.41-0707/1715</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -735,11 +735,22 @@ function showToast(msg,duration=2500){
 
 function getReceipts(){return lsGet('ezy_receipts_'+COMPANY_CONFIG.id,[])}
 function setReceipts(r){lsSet('ezy_receipts_'+COMPANY_CONFIG.id,r)}
+// Per-company hidden supplier list (by lowercased name). The Suppliers sheet tab is SHARED
+// across companies (e.g. ezydurian), so a deleted supplier would otherwise reappear on every
+// reload. Hiding it here keeps it gone for this company without touching the shared tab.
+function getHiddenSuppliers(){return lsGet('ezy_hidden_suppliers_'+COMPANY_CONFIG.id,[])}
+function hideSupplier(name){
+  const n=(name||'').trim().toLowerCase();
+  if(!n) return;
+  const h=getHiddenSuppliers();
+  if(!h.includes(n)){h.push(n);lsSet('ezy_hidden_suppliers_'+COMPANY_CONFIG.id,h);}
+}
 function getSuppliers(){
   let s=lsGet('ezy_suppliers_'+COMPANY_CONFIG.id,null);
   if(!s){s=DEFAULT_SUPPLIERS;lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,s)}
-  // Filter out corrupt entries (no name, or name is pure number)
-  return s.filter(x=>x.name&&x.name.trim()&&!/^\d+$/.test(x.name.trim()));
+  const hidden=new Set(getHiddenSuppliers());
+  // Filter out corrupt entries (no name, or name is pure number) and permanently-hidden suppliers
+  return s.filter(x=>x.name&&x.name.trim()&&!/^\d+$/.test(x.name.trim())&&!hidden.has(x.name.trim().toLowerCase()));
 }
 function setSuppliers(s){lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,s);syncSuppliersToSheet().catch(e=>console.warn('Supplier sync failed',e));}
 // =====================
@@ -5721,7 +5732,9 @@ async function loadSuppliersFromSheet(){
     const sheetIds=new Set(sheetSuppliers.map(s=>s.id));
     const sheetNames=new Set(sheetSuppliers.map(s=>s.name.toLowerCase()));
     const localOnly=local.filter(s=>!sheetIds.has(s.id)&&!sheetNames.has(s.name.toLowerCase()));
-    const merged=[...sheetSuppliers,...localOnly];
+    // Drop suppliers this company has permanently hidden (shared tab may still contain them).
+    const hidden=new Set(getHiddenSuppliers());
+    const merged=[...sheetSuppliers,...localOnly].filter(s=>!hidden.has((s.name||'').trim().toLowerCase()));
     lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,merged);
     // If there are local-only suppliers, push them to sheet now
     if(localOnly.length) syncSuppliersToSheet().catch(()=>{});
@@ -5805,19 +5818,33 @@ async function loadReceiptsFromSheet(){
         // Detect format by header: new format has 'supplier' in col B
         const isNewFormat=header[1]==='supplier';
         const dataRows=rid.values.slice(1);
-        const itemMap={};
+        const itemMap={};   // by ResitID
+        const itemMapDV={}; // by "sortdate|vendor" — fallback for OLD-format receipts whose synthetic id
+                            // never matches the real ResitID, so their SKU items would otherwise be lost.
         dataRows.forEach(row=>{
           const rid2=row[0];if(!rid2) return;
-          if(!itemMap[rid2]) itemMap[rid2]=[];
+          let item, sup='', tar='';
           if(isNewFormat){
             // ResitID,Supplier,Tarikh,Item,Kod,Qty,Harga,LineTotal,Kategori
-            itemMap[rid2].push({name:row[3]||'',code:row[4]||'',qty:parseFloat(row[5])||1,price:parseFloat(row[6])||0,lineTotal:parseFloat(row[7])||0,category:row[8]||''});
+            item={name:row[3]||'',code:row[4]||'',qty:parseFloat(row[5])||1,price:parseFloat(row[6])||0,lineTotal:parseFloat(row[7])||0,category:row[8]||''};
+            sup=(row[1]||'').toString(); tar=(row[2]||'').toString();
           } else {
             // ResitID,Item,Kod,Qty,Harga,LineTotal,Kategori
-            itemMap[rid2].push({name:row[1]||'',code:row[2]||'',qty:parseFloat(row[3])||1,price:parseFloat(row[4])||0,lineTotal:parseFloat(row[5])||0,category:row[6]||''});
+            item={name:row[1]||'',code:row[2]||'',qty:parseFloat(row[3])||1,price:parseFloat(row[4])||0,lineTotal:parseFloat(row[5])||0,category:row[6]||''};
+          }
+          if(!itemMap[rid2]) itemMap[rid2]=[];
+          itemMap[rid2].push(item);
+          if(sup&&tar){
+            const dv=dateSortKey(tar)+'|'+sup.trim().toLowerCase();
+            if(!itemMapDV[dv]) itemMapDV[dv]=[];
+            itemMapDV[dv].push(item);
           }
         });
-        receipts.forEach(r=>{if(itemMap[r.id]) r.itemDetails=itemMap[r.id];});
+        receipts.forEach(r=>{
+          if(itemMap[r.id]&&itemMap[r.id].length){ r.itemDetails=itemMap[r.id]; return; }
+          const dv=dateSortKey(r.date)+'|'+(r.vendor||'').trim().toLowerCase();
+          if(itemMapDV[dv]&&itemMapDV[dv].length) r.itemDetails=itemMapDV[dv];
+        });
       }
     }catch(e){console.warn('resit_items load skip:',e);}
 
@@ -6220,6 +6247,8 @@ function saveEditSupplier(supplierId){
 
 function deleteSupplier(id){
   if(!confirm('Buang supplier ini?')) return;
+  const target=getSuppliers().find(s=>s.id===id);
+  if(target) hideSupplier(target.name); // remember it so it stays gone after reload from the shared sheet
   const suppliers=getSuppliers().filter(s=>s.id!==id);
   setSuppliers(suppliers);
   renderSupplierAdminList();
