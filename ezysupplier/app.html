@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.33-0607/2223</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.34-0707/1027</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.33-0607/2223</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.34-0707/1027</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -4124,8 +4124,28 @@ async function updateInvoiceInSheet(inv, matchNo){
 }
 
 async function writePaymentToSheet(p){
-  // Append to 'Payment': Date, Invoice no, Branch, Amount
-  await _appendSheetRow('Payment', [p.date, p.invoiceNo||'', p.branch||p.supplier||'', p.amount]);
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok) return;
+  // Ensure 'Payment' tab exists first. Older ezysupplier sheets never had this tab, so
+  // _appendSheetRow's write silently failed and every recorded payment vanished on refresh.
+  try{
+    const chk=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Payment!A1:A1`,{headers:{Authorization:'Bearer '+tok}});
+    const chkD=await chk.json();
+    if(chkD.error){
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate`,{
+        method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+        body:JSON.stringify({requests:[{addSheet:{properties:{title:'Payment'}}}]})
+      });
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Payment!A1:F1?valueInputOption=RAW`,{
+        method:'PUT',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+        body:JSON.stringify({values:[['','Tarikh','No Rujukan','Supplier','Jumlah','Nota']]})
+      });
+    }
+  }catch(e){ console.warn('ensure Payment tab:',e); }
+  // Append to 'Payment': A(blank), B=Date, C=Ref, D=Supplier, E=Amount.
+  // ezysupplier is supplier-based, so supplier name must win over any branch value.
+  const supplierName = p.supplier || p.branch || '';
+  await _appendSheetRow('Payment', [toSheetDateText(p.date), p.invoiceNo||p.note||'', supplierName, p.amount]);
 }
 
 async function writeOnpayToSheet(o){
@@ -5208,12 +5228,14 @@ function _renderPaymentScreenInner(){
   const payments=sheetPayments();
   const receipts=getReceipts();
 
+  const _norm=v=>(v||'').toString().trim().toLowerCase();
   function getSupplierDebt(supplierName){
+    const sn=_norm(supplierName);
     const totalPurchase=receipts
-      .filter(r=>r.vendor===supplierName && r.status==='Approved')
+      .filter(r=>_norm(r.vendor)===sn && r.status==='Approved')
       .reduce((s,r)=>s+parseFloat(r.amount||0),0);
     const totalPaid=payments
-      .filter(p=>p.supplier===supplierName)
+      .filter(p=>_norm(p.supplier)===sn)
       .reduce((s,p)=>s+parseFloat(p.amount||0),0);
     return {totalPurchase,totalPaid,balance:totalPurchase-totalPaid};
   }
@@ -5222,9 +5244,8 @@ function _renderPaymentScreenInner(){
   const totalBayar=payments.reduce((a,p)=>a+parseFloat(p.amount||0),0);
   const totalHutang=totalBeli-totalBayar;
   const suppliersOwed=suppliers.filter(s=>{
-    const b=receipts.filter(r=>r.vendor===s.name&&r.status==='Approved').reduce((a,r)=>a+parseFloat(r.amount||0),0);
-    const p=payments.filter(x=>x.supplier===s.name).reduce((a,x)=>a+parseFloat(x.amount||0),0);
-    return (b-p)>0.01;
+    const d=getSupplierDebt(s.name);
+    return d.balance>0.01;
   }).length;
 
   let html=`
@@ -5236,7 +5257,7 @@ function _renderPaymentScreenInner(){
   </div>
   <div style="margin-bottom:16px;display:flex;gap:8px">
     <button class="btn btn-primary" onclick="showPaymentUploadModal()" style="flex:1">Upload Resit Bayaran</button>
-    <button class="btn btn-outline" onclick="showInputManualModal()" style="flex:1">Input Manual</button>
+    <button class="btn btn-outline" onclick="showAddPaymentModal()" style="flex:1">Input Manual</button>
   </div>
   <div style="font-size:12px;font-weight:600;color:var(--mid);margin-bottom:8px">HUTANG SUPPLIER</div>`;
 
@@ -5783,9 +5804,11 @@ function showSupplierPaymentDetail(supplierName){
   const receipts=getReceipts();
   const payments=lsGetPayments(); // uses cache
   const suppliers=getSuppliers();
+  const _n=v=>(v||'').toString().trim().toLowerCase();
+  const sn=_n(supplierName);
   const sup=suppliers.find(s=>s.name===supplierName)||{};
-  const myReceipts=receipts.filter(r=>r.vendor===supplierName && r.status==='Approved');
-  const myPayments=payments.filter(p=>p.supplier===supplierName);
+  const myReceipts=receipts.filter(r=>_n(r.vendor)===sn && r.status==='Approved');
+  const myPayments=payments.filter(p=>_n(p.supplier)===sn);
   const totalPurchase=myReceipts.reduce((s,r)=>s+parseFloat(r.amount||0),0);
   const totalPaid=myPayments.reduce((s,p)=>s+parseFloat(p.amount||0),0);
   const balance=totalPurchase-totalPaid;
