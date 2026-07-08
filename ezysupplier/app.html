@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.50-0807/1315</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.51-0807/1334</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.50-0807/1315</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.51-0807/1334</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -5880,18 +5880,13 @@ async function loadSuppliersFromSheet(){
       waNum:row[4]||'',bankName:row[5]||'',bankAcc:row[6]||'',
       regNo:row[7]||'',count:parseInt(row[8])||0
     })).filter(s=>s.name);
-    // Merge: keep local suppliers not yet in sheet (e.g. added while offline/401)
-    const local=lsGet('ezy_suppliers_'+COMPANY_CONFIG.id)||[];
-    const sheetIds=new Set(sheetSuppliers.map(s=>s.id));
-    const sheetNames=new Set(sheetSuppliers.map(s=>s.name.toLowerCase()));
-    const localOnly=local.filter(s=>!sheetIds.has(s.id)&&!sheetNames.has(s.name.toLowerCase()));
-    // Drop suppliers this company has permanently hidden (shared tab may still contain them).
+    // The Suppliers sheet tab is the SINGLE source of truth. We do NOT merge/re-push local-only
+    // suppliers — that was re-uploading any supplier deleted from the sheet, so they reappeared
+    // endlessly. Just drop the ones this company has permanently hidden.
     const hidden=new Set(getHiddenSuppliers());
-    const merged=[...sheetSuppliers,...localOnly].filter(s=>!hidden.has((s.name||'').trim().toLowerCase()));
+    const merged=sheetSuppliers.filter(s=>!hidden.has((s.name||'').trim().toLowerCase()));
     lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,merged);
-    // If there are local-only suppliers, push them to sheet now
-    if(localOnly.length) syncSuppliersToSheet().catch(()=>{});
-    console.log('Loaded',sheetSuppliers.length,'suppliers from Sheets, merged',localOnly.length,'local-only');
+    console.log('Loaded',merged.length,'suppliers from Sheets (hidden',hidden.size,')');
   }catch(e){console.warn('Load suppliers:',e);}
 }
 
@@ -6432,14 +6427,42 @@ function saveEditSupplier(supplierId){
   renderSupplierDebtSummary();
 }
 
-function deleteSupplier(id){
+async function deleteSupplier(id){
   if(!confirm('Buang supplier ini?')) return;
   const target=getSuppliers().find(s=>s.id===id);
   if(target) hideSupplier(target.name); // remember it so it stays gone after reload from the shared sheet
-  const suppliers=getSuppliers().filter(s=>s.id!==id);
-  setSuppliers(suppliers);
+  // Update local cache directly (avoid a full-overwrite sync that would wipe other companies' rows)
+  const all=(lsGet('ezy_suppliers_'+COMPANY_CONFIG.id)||[]).filter(s=>s.id!==id);
+  lsSet('ezy_suppliers_'+COMPANY_CONFIG.id,all);
+  // Delete just this supplier's row from the shared Suppliers tab
+  try{ await deleteSupplierFromSheet(id, target?target.name:''); }catch(e){ console.warn('deleteSupplierFromSheet:',e); }
   renderSupplierAdminList();
   renderSupplierAdmin();
+  showToast('Supplier dipadam ✅');
+}
+
+async function deleteSupplierFromSheet(id, name){
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok) return;
+  // Find the Suppliers tab gid
+  const meta=await (await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}?fields=sheets.properties`,{headers:{Authorization:'Bearer '+tok}})).json();
+  const sh=(meta.sheets||[]).find(s=>s.properties&&s.properties.title==='Suppliers');
+  if(!sh) return;
+  const gid=sh.properties.sheetId;
+  const d=await (await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Suppliers!A2:B`,{headers:{Authorization:'Bearer '+tok}})).json();
+  const vals=d.values||[];
+  const nm=(name||'').trim().toLowerCase();
+  const idxs=[];
+  vals.forEach((row,i)=>{ // A=ID, B=Nama; match either
+    const rid=(row[0]||'').toString().trim(), rname=(row[1]||'').toString().trim().toLowerCase();
+    if((id&&rid===id)||(nm&&rname===nm)) idxs.push(i+1); // +1: data starts at row 2 → 0-based row index
+  });
+  if(!idxs.length) return;
+  const requests=idxs.sort((a,b)=>b-a).map(rowIdx=>({deleteDimension:{range:{sheetId:gid,dimension:'ROWS',startIndex:rowIdx,endIndex:rowIdx+1}}}));
+  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate`,{
+    method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},
+    body:JSON.stringify({requests})
+  });
 }
 
 // =====================
