@@ -19,10 +19,10 @@ const COMPANY_CONFIG = {
   branchAddresses: {
     'Batu Caves': 'Ezydurian Batu Caves\n1, Jalan TIB 1/13, Taman Industri, 68100 Batu Caves, Selangor',
     'Shah Alam': 'Ezydurian Shah Alam\n27, Jalan Opera E U2/E, Taman TTDI Jaya, 40150 Shah Alam, Selangor',
-    'Bangi Durian': 'Ezydurian Bangi Durian\nBangi, Selangor',
+    'Bangi Durian': 'Ezydurian Bangi\nPersiaran Universiti, Seksyen 3 Bandar Baru Bangi, 43650 Bandar Baru Bangi, Selangor',
     'Putrajaya': 'Ezydurian Putrajaya\nTaman Warisan Pertanian Putrajaya, 7, Jalan P16, Presint 16, 62000 Putrajaya',
     'TTDI': 'Ezydurian TTDI\n34, Jalan Datuk Sulaiman, Taman Tun Dr Ismail, 60000 Kuala Lumpur',
-    'Bakery': 'Ezybakery\nSelangor',
+    'Bakery': 'Ezybakery\nTaman Bolton, Batu Caves 68100 Selangor',
   },
 
   categories: ['COGS','UTILITIES','RENTAL','RENOVATION','MARKETING','TRANSPORTATION','GAS','MANAGEMENT','OTHERS'],
