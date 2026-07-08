@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.32-0607/2142</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v3.34-0807/1620</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.32-0607/2142</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v3.34-0807/1620</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -3100,11 +3100,144 @@ function renderAdminDashboard(){
 // =====================
 // EZYBRANCH DASHBOARD
 // =====================
+// ===================== REVIEW (MINTA SEMAK) MODULE — check & balance =====================
+// Manager flags an item (invoice/onpay/payment/resit) they think is wrong → accountant/admin
+// sees it on the dashboard, reviews & adjusts, then marks it done. Manager sees the outcome.
+function getReviews(){ return lsGet('ezy_reviews_'+COMPANY_CONFIG.id,[]); }
+function setReviews(list){ lsSet('ezy_reviews_'+COMPANY_CONFIG.id,list); }
+function canRequestReview(){ return currentRole==='manager'; }
+function canResolveReview(){ return currentRole==='accountant'||currentRole==='super_admin'; }
+
+async function loadReviewsFromSheet(){
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok) return;
+  try{
+    const r=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Reviews!A2:N`,{headers:{Authorization:'Bearer '+tok}});
+    const d=await r.json();
+    if(d.error) return; // tab may not exist yet — no reviews
+    const rows=(d.values||[]).filter(row=>row[0]);
+    setReviews(rows.map(row=>({
+      id:row[0], type:row[1]||'', refId:row[2]||'', info:row[3]||'', branch:row[4]||'',
+      amount:parseFloat(row[5])||0, note:row[6]||'', requestedBy:row[7]||'', requestedAt:row[8]||'',
+      status:row[9]||'Open', resolution:row[10]||'', response:row[11]||'', resolvedBy:row[12]||'', resolvedAt:row[13]||''
+    })));
+  }catch(e){ console.warn('loadReviews:',e); }
+}
+async function syncReviewsToSheet(){
+  const tok=getValidToken()||accessToken||currentToken;
+  if(!tok) return;
+  try{
+    const cr=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Reviews!A1:A1`,{headers:{Authorization:'Bearer '+tok}});
+    const cd=await cr.json();
+    if(cd.error){
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate`,{method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({requests:[{addSheet:{properties:{title:'Reviews'}}}]})});
+    }
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Reviews!A1:N10000:clear`,{method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'}});
+    const rows=[['ID','Jenis','RefID','Info','Branch','Jumlah','Nota','DimintaOleh','DimintaMasa','Status','Resolusi','Respons','DisemakOleh','DisemakMasa']];
+    getReviews().forEach(v=>rows.push([v.id,v.type,v.refId,v.info,v.branch,v.amount,v.note,v.requestedBy,v.requestedAt,v.status,v.resolution,v.response,v.resolvedBy,v.resolvedAt]));
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Reviews!A1?valueInputOption=USER_ENTERED`,{method:'PUT',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({values:rows})});
+  }catch(e){ console.warn('syncReviews:',e); }
+}
+
+let _pendingReview=null, _resolvingReview=null;
+function requestReview(type, refId, info, branch, amount){
+  _pendingReview={type,refId:refId||'',info:info||'',branch:branch||'',amount:parseFloat(amount)||0};
+  showModal('🚩 Minta Semak', `
+    <div style="font-size:12px;color:var(--mid);margin-bottom:10px">${(info||'').replace(/</g,'&lt;')}</div>
+    <div class="form-group"><label class="form-label">Apa isu / kesalahan?</label>
+      <textarea id="reviewNote" class="form-input" rows="3" placeholder="Contoh: Jumlah tak padan, alamat salah, harga tersilap..."></textarea></div>
+    <button class="btn btn-primary" style="width:100%" onclick="submitReviewRequest()">Hantar Permintaan Semak</button>`);
+}
+function submitReviewRequest(){
+  if(!_pendingReview) return;
+  const note=(document.getElementById('reviewNote').value||'').trim();
+  if(!note){ showToast('Sila taip isu ⚠️'); return; }
+  const list=getReviews();
+  list.push({id:'rev_'+Date.now(),type:_pendingReview.type,refId:_pendingReview.refId,info:_pendingReview.info,branch:_pendingReview.branch,amount:_pendingReview.amount,note,requestedBy:currentUser?.email||'',requestedAt:new Date().toISOString(),status:'Open',resolution:'',response:'',resolvedBy:'',resolvedAt:''});
+  setReviews(list);
+  syncReviewsToSheet().catch(()=>{});
+  _pendingReview=null; hideModal();
+  showToast('Permintaan semak dihantar 🚩');
+  renderReviewBadge();
+}
+function reviewCard(v, actionable){
+  const typeLabel={invoice:'Invoice',payment:'Payment',onpay:'Onpay',resit:'Resit'}[v.type]||v.type;
+  const doneLine=v.resolution==='Approved'?'✅ Telah disemak & dibetulkan':(v.resolution==='Rejected'?'ℹ️ Disemak — tiada perubahan diperlukan':'');
+  return `<div class="card mb-8" style="padding:12px">
+    <div style="display:flex;justify-content:space-between"><div style="font-size:12px;font-weight:600">${typeLabel} · ${v.branch||'-'}</div><div style="font-size:12px;font-weight:700">${formatRM(v.amount)}</div></div>
+    <div style="font-size:11px;color:var(--mid);margin:2px 0">${(v.info||'').replace(/</g,'&lt;')}</div>
+    <div style="font-size:12px;margin-top:6px;background:#fff7ed;border-left:3px solid var(--amber);padding:6px 8px;border-radius:4px">🚩 ${(v.note||'').replace(/</g,'&lt;')}</div>
+    <div style="font-size:10px;color:var(--mid);margin-top:4px">Oleh ${v.requestedBy||'-'} · ${fmtDate((v.requestedAt||'').slice(0,10))}</div>
+    ${actionable?`<div style="display:flex;gap:6px;margin-top:8px">
+      <button class="btn btn-sm btn-primary" style="flex:1;background:#059669" onclick="resolveReview('${v.id}','Approved')">✅ Selesai & Dibetulkan</button>
+      <button class="btn btn-sm btn-outline" style="flex:1" onclick="resolveReview('${v.id}','Rejected')">Tak Perlu Ubah</button>
+    </div>`:(v.status!=='Open'?`<div style="font-size:11px;margin-top:6px;color:${v.resolution==='Approved'?'var(--green)':'var(--mid)'}">${doneLine}${v.response?(' · '+v.response.replace(/</g,'&lt;')):''}<div style="font-size:10px;color:var(--mid)">Disemak oleh ${v.resolvedBy||'-'}</div></div>`:`<div style="font-size:11px;margin-top:6px;color:var(--amber)">⏳ Menunggu semakan accountant</div>`)}
+  </div>`;
+}
+function showReviewsList(){
+  const all=getReviews();
+  const open=all.filter(v=>v.status==='Open').sort((a,b)=>(b.requestedAt||'').localeCompare(a.requestedAt||''));
+  const done=all.filter(v=>v.status!=='Open').sort((a,b)=>(b.resolvedAt||'').localeCompare(a.resolvedAt||''));
+  let html= open.length? open.map(v=>reviewCard(v,true)).join('') : '<div style="font-size:13px;color:var(--mid);padding:8px 0">Tiada isu perlu disemak 🎉</div>';
+  if(done.length) html+='<div style="font-size:12px;font-weight:600;color:var(--mid);margin:14px 0 6px">SELESAI</div>'+done.slice(0,20).map(v=>reviewCard(v,false)).join('');
+  showModal('🚩 Perlu Semak', html);
+}
+function showMyReviews(){
+  const mine=getReviews().filter(v=>v.requestedBy===(currentUser?.email||'')).sort((a,b)=>(b.requestedAt||'').localeCompare(a.requestedAt||''));
+  showModal('🚩 Semakan Saya', mine.length? mine.map(v=>reviewCard(v,false)).join('') : '<div style="font-size:13px;color:var(--mid);padding:8px 0">Tiada permintaan semak lagi.</div>');
+}
+function resolveReview(id, resolution){
+  _resolvingReview={id,resolution};
+  showModal(resolution==='Approved'?'✅ Selesai & Dibetulkan':'Tandakan Disemak', `
+    <div class="form-group"><label class="form-label">Nota respons untuk manager (pilihan)</label>
+      <textarea id="reviewResp" class="form-input" rows="2" placeholder="Contoh: Alamat sudah dibetulkan"></textarea></div>
+    <button class="btn btn-primary" style="width:100%" onclick="confirmResolveReview()">Simpan</button>`);
+}
+function confirmResolveReview(){
+  if(!_resolvingReview) return;
+  const resp=(document.getElementById('reviewResp').value||'').trim();
+  const list=getReviews();
+  const v=list.find(x=>x.id===_resolvingReview.id);
+  if(v){ v.status='Reviewed'; v.resolution=_resolvingReview.resolution; v.response=resp; v.resolvedBy=currentUser?.email||''; v.resolvedAt=new Date().toISOString(); }
+  setReviews(list); syncReviewsToSheet().catch(()=>{});
+  _resolvingReview=null; hideModal();
+  showToast('Semakan dikemas kini ✅');
+  showReviewsList();
+  renderReviewBadge();
+}
+function renderReviewBadge(){
+  const el=document.getElementById('reviewBadge');
+  if(!el) return;
+  const reviews=getReviews();
+  if(currentRole==='manager'){
+    const mine=reviews.filter(v=>v.requestedBy===(currentUser?.email||''));
+    if(!mine.length){ el.innerHTML=''; return; }
+    const open=mine.filter(v=>v.status==='Open').length, resolved=mine.length-open;
+    el.innerHTML=`<div class="card mb-12" style="cursor:pointer;border-left:4px solid var(--amber)" onclick="showMyReviews()">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-weight:600">🚩 Semakan Saya</div><div style="font-size:11px;color:var(--mid)">${open} menunggu · ${resolved} telah disemak</div></div>
+        <div style="font-size:22px;font-weight:800;color:var(--amber)">${open}</div></div></div>`;
+  } else if(canResolveReview()){
+    const open=reviews.filter(v=>v.status==='Open').length;
+    el.innerHTML=`<div class="card mb-12" style="cursor:pointer;border-left:4px solid ${open?'var(--red)':'var(--green)'}" onclick="showReviewsList()">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div><div style="font-weight:600">🚩 Perlu Semak</div><div style="font-size:11px;color:var(--mid)">${open?open+' isu ditanda oleh manager':'Tiada isu tertunggak'}</div></div>
+        <div style="font-size:22px;font-weight:800;color:${open?'var(--red)':'var(--green)'}">${open}</div></div></div>`;
+  } else { el.innerHTML=''; }
+}
+// Small inline "Minta Semak" button for item rows (manager only)
+function reviewBtn(type, refId, info, branch, amount){
+  if(!canRequestReview()) return '';
+  const esc=s=>(s||'').toString().replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  return `<button class="btn btn-sm btn-outline" style="font-size:11px;border-color:var(--amber);color:var(--amber)" onclick="event.stopPropagation();requestReview('${type}','${esc(refId)}','${esc(info)}','${esc(branch)}',${parseFloat(amount)||0})">🚩 Minta Semak</button>`;
+}
+// ===================== END REVIEW MODULE =====================
+
 function renderBranchDashboard(){
   const el=document.getElementById('dashboardContent');
   if(!el) return;
   el.innerHTML='<div style="text-align:center;padding:60px 0;color:var(--mid)">⏳ Memuatkan dashboard...</div>';
-  Promise.all([loadInvoicesFromSheet(), loadOnpayFromSheet(), loadPaymentsFromSheet()]).then(()=>{
+  Promise.all([loadInvoicesFromSheet(), loadOnpayFromSheet(), loadPaymentsFromSheet(), loadReviewsFromSheet()]).then(()=>{
     _renderBranchDashboardInner();
   });
 }
@@ -3118,6 +3251,7 @@ function _renderBranchDashboardInner(){
         <button onclick="setBranchPeriod('${p}',this)" class="btn btn-sm ${i===2?'btn-primary':'btn-secondary'}" id="bperiod-${p}" style="white-space:nowrap">${p}</button>`).join('')}
       <button onclick="renderBranchDashboard()" class="btn btn-sm btn-secondary" style="margin-left:auto;white-space:nowrap">🔄</button>
     </div>
+    <div id="reviewBadge"></div>
     <div class="kpi-grid" id="branchKpi"></div>
     <div class="chart-wrap" style="margin-bottom:12px">
       <div class="chart-title">Trend Stock IN</div>
@@ -3143,6 +3277,7 @@ function _renderBranchDashboardInner(){
     <div class="card"><div class="card-title mb-12">Rekod Stock IN Terbaru</div><div class="table-wrap" id="blatest-tx"></div></div>
   `;
   setBranchPeriod('Bulan', document.getElementById('bperiod-Bulan'));
+  renderReviewBadge();
 }
 
 function setBranchPeriod(period, btn){
@@ -3264,8 +3399,8 @@ function _renderOnpayScreenInner(){
       <div class="section-title">Onpay</div>
       <button class="btn btn-sm btn-secondary" onclick="renderOnpayScreen()">🔄 Refresh</button>
     </div>
-    <!-- Input Form -->
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px">
+    <!-- Input Form (accountant/admin only) -->
+    ${canResolveReview()?`<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px">
       <div style="font-size:12px;font-weight:600;color:var(--mid);margin-bottom:12px">INPUT ONPAY BARU</div>
       <div class="form-group">
         <label class="form-label">Branch</label>
@@ -3284,7 +3419,7 @@ function _renderOnpayScreenInner(){
         <input type="number" id="onpAmount" class="form-input" placeholder="0.00" step="0.01">
       </div>
       <button class="btn btn-primary" style="width:100%" onclick="saveOnpay()">Simpan ke Sheet</button>
-    </div>
+    </div>`:''}
     <!-- Summary -->
     <div class="kpi-grid" style="margin-bottom:14px">
       <div class="kpi-card"><div class="kpi-label">Jumlah Rekod</div><div class="kpi-value">${records.length}</div></div>
@@ -3301,6 +3436,7 @@ function _renderOnpayScreenInner(){
             <th style="padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)">Invoice No</th>
             <th style="padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)">Branch</th>
             <th style="padding:8px 10px;text-align:right;border-bottom:1px solid var(--border)">Jumlah</th>
+            ${canRequestReview()?'<th style="border-bottom:1px solid var(--border)"></th>':''}
           </tr>
         </thead>
         <tbody>
@@ -3310,6 +3446,7 @@ function _renderOnpayScreenInner(){
               <td style="padding:8px 10px;color:var(--mid)">${r.invoiceNo||'-'}</td>
               <td style="padding:8px 10px">${r.branch}</td>
               <td style="padding:8px 10px;text-align:right;font-weight:600;color:var(--green)">${formatRM(r.amount)}</td>
+              ${canRequestReview()?`<td style="padding:8px 10px;text-align:right">${reviewBtn('onpay',r.id||'','Onpay '+fmtDate(r.date)+' · '+(r.branch||'')+' · '+(r.invoiceNo||''),r.branch||'',r.amount)}</td>`:''}
             </tr>`).join('')}
         </tbody>
       </table>
@@ -4451,7 +4588,7 @@ function _renderInvoiceList(invoices){
       <div style="font-size:16px;font-weight:700;color:var(--dark)">Invoice</div>
       <div style="display:flex;gap:8px">
         <button class="btn btn-sm btn-secondary" onclick="window._invoiceCache=null;renderInvoiceScreen()">🔄</button>
-        <button class="btn btn-primary" onclick="showInvoiceForm()">+ Buat Invoice</button>
+        ${canResolveReview()?`<button class="btn btn-primary" onclick="showInvoiceForm()">+ Buat Invoice</button>`:''}
       </div>
     </div>
     <div id="invoiceFormWrap" style="display:none"></div>
@@ -4470,6 +4607,7 @@ function _renderInvoiceList(invoices){
                 <span style="font-size:11px;padding:2px 8px;border-radius:10px;background:${inv.status==='Paid'?'#d1fae5':inv.status==='Approved'?'#dbeafe':inv.status==='Sent'?'#fef9c3':'#f3f4f6'};color:${inv.status==='Paid'?'#065f46':inv.status==='Approved'?'#1e40af':inv.status==='Sent'?'#92400e':'#6b7280'}">${inv.status||'Draft'}</span>
               </div>
             </div>
+            ${canRequestReview()?`<div style="text-align:right;margin-top:8px">${reviewBtn('invoice',inv.id,'Invoice '+(inv.invoiceNo||'')+' · '+(inv.branch||inv.billTo?.split('\n')[0]||'')+' · '+fmtDate(inv.date),inv.branch||inv.billTo?.split('\n')[0]||'',inv.total)}</div>`:''}
           </div>`).join('')}
     </div>`;
 }
@@ -4784,6 +4922,7 @@ function viewInvoice(id){
         ${canApprove && inv.status==='Sent' ? `<button class="btn btn-primary" style="background:#059669" onclick="updateInvoiceStatus('${inv.id}','Approved')">✅ Approve</button>` : ''}
         ${canApprove && inv.status==='Approved' ? `<button class="btn btn-primary" style="background:#2563eb" onclick="updateInvoiceStatus('${inv.id}','Paid')">💰 Mark Paid</button>` : ''}
         ${canSaveImg ? `<button class="btn btn-primary" onclick="generateInvoiceImage('${inv.id}')">📷 Simpan Gambar</button>` : ''}
+        ${reviewBtn('invoice',inv.id,'Invoice '+(inv.invoiceNo||'')+' · '+(inv.branch||inv.billTo?.split('\n')[0]||'')+' · '+fmtDate(inv.date),inv.branch||inv.billTo?.split('\n')[0]||'',inv.total)}
       </div>
 
       <div style="margin-top:8px">
@@ -5083,7 +5222,7 @@ function _renderPaymentScreenEzybranch(){
     <div class="kpi-card"><div class="kpi-label">Total Payment</div><div class="kpi-value" style="font-size:14px;color:var(--green)">${formatRM(grand.payment)}</div></div>
     <div class="kpi-card"><div class="kpi-label">Baki Hutang</div><div class="kpi-value" style="font-size:14px;color:${grand.balance>0?'var(--red)':'var(--green)'}">${formatRM(Math.abs(grand.balance))}</div></div>
   </div>
-  <button class="btn btn-outline" onclick="showInputManualModal()" style="width:100%;margin-bottom:16px">+ Input Bayaran Manual</button>`;
+  ${canResolveReview()?`<button class="btn btn-outline" onclick="showInputManualModal()" style="width:100%;margin-bottom:16px">+ Input Bayaran Manual</button>`:''}`;
 
   if(branchRows.length){
     html+=`<div style="font-size:12px;font-weight:600;color:var(--mid);margin-bottom:8px">HUTANG SETIAP BRANCH</div>`;
@@ -5111,12 +5250,13 @@ function _renderPaymentScreenEzybranch(){
   if(recent.length){
     html+=`<div style="font-size:12px;font-weight:600;color:var(--mid);margin:16px 0 8px">BAYARAN TERBARU</div>`;
     html+=`<div class="table-wrap"><table class="data-table">
-      <thead><tr><th>Tarikh</th><th>Invoice</th><th>Branch</th><th>RM</th></tr></thead>
+      <thead><tr><th>Tarikh</th><th>Invoice</th><th>Branch</th><th>RM</th>${canRequestReview()?'<th></th>':''}</tr></thead>
       <tbody>${recent.map(p=>`<tr>
         <td>${fmtDate(p.date)}</td>
         <td style="color:var(--mid);font-size:11px">${p.invoiceNo||'-'}</td>
         <td>${p.branch||p.supplier||'-'}</td>
         <td style="font-weight:600;color:var(--green)">${formatRM(p.amount)}</td>
+        ${canRequestReview()?`<td>${reviewBtn('payment',p.id||'','Payment '+fmtDate(p.date)+' · '+(p.branch||p.supplier||'')+' · '+(p.invoiceNo||''),p.branch||p.supplier||'',p.amount)}</td>`:''}
       </tr>`).join('')}</tbody>
     </table></div>`;
   }
@@ -5585,7 +5725,9 @@ async function loadReceiptsFromSheet(){
     // Mixed format support — detect row-by-row:
     // OLD row: col A = date (YYYY-MM-DD or DD/MM/YYYY), col B = Vendor, col C = Item
     // NEW row: col A = ID (long number/string, not a date), col B = date, col C = Vendor
-    function isDateVal(v){return /^\d{4}-\d{2}-\d{2}$/.test(v)||/^\d{2}\/\d{2}\/\d{4}$/.test(v);}
+    // Day/month may be 1 or 2 digits — manual entries like "1/07/2026" must still count as dates,
+    // otherwise the row is misread as NEW format and silently dropped (empty col C = no vendor).
+    function isDateVal(v){return /^\d{4}-\d{1,2}-\d{1,2}$/.test(v)||/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(v);}
 
     const oldMap={};
     const newRows=[];
@@ -5600,7 +5742,9 @@ async function loadReceiptsFromSheet(){
         if(!vendor) return;
         const key=`${date}__${vendor.toLowerCase()}__${uploadedEmail}`;
         if(!oldMap[key]){
-          oldMap[key]={id:'r_'+key.replace(/[^a-z0-9]/gi,'_'),date,vendor,branch:row[6]||'',category:row[5]||'',amount:0,status:row[9]||'Pending',uploadedBy:row[7]||'',uploadedEmail,approvedBy:row[10]||'',driveLink:row[11]||'',nota:row[12]||'',itemDetails:[]};
+          // OLD-format rows are legacy/manually-keyed data — blank Status means already-approved history,
+          // not an item waiting in the approval queue (new app uploads always write 'Pending' explicitly).
+          oldMap[key]={id:'r_'+key.replace(/[^a-z0-9]/gi,'_'),date,vendor,branch:row[6]||'',category:row[5]||'',amount:0,status:row[9]||'Approved',uploadedBy:row[7]||'',uploadedEmail,approvedBy:row[10]||'',driveLink:row[11]||'',nota:row[12]||'',itemDetails:[]};
         }
         oldMap[key].amount+=amount;
         if(row[2]) oldMap[key].itemDetails.push({name:row[2],price:amount,category:row[5]||''});
