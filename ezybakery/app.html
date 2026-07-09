@@ -205,7 +205,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
   <label class="kekal-row">
     <input type="checkbox" id="kekalCheck"> Kekal Log Masuk
   </label>
-  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v4.03-0907/1829</div>
+  <div style="position:absolute;bottom:20px;font-size:11px;color:#bbb;letter-spacing:0.5px">EzyAccount v4.05-0907/2313</div>
 </div>
 
 <!-- PENDING SCREEN -->
@@ -233,7 +233,7 @@ table.data-table td{padding:8px;border-bottom:1px solid var(--border);color:var(
     <div class="header-left">
       <img id="headerCompanyLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7HY4Un0Ga8+stR1y50XTtVu/FF1bNqFstyIbXQTOkYYA7cqrHjOOTk9a9Ak/1bf7p/lXl9jY3t/4I8Ita6fLcj+yYQzrbeaEJVev+kRY9eh+vavRwPJyvmtuuifR90znrXurf1t2Lth4p8SaL8Qz4b8Q2F7e6PeeUthrS2XlIJnX/AFT7eOSMA9QevByPRa8l8Y+J7PTtTsvDtnol3cWuiXMd3cXMUnlxq0Q8xlBfPA3jOWzlgB2r1SxuYbyxt7y3YtDPEssZIxlWAI/Q1zYnEUa8k6as1o7K17dbba9baE4eom5QUr2/r5kxGQRjINcPZ+E/EemWNvp+m+K9UjtLWNYoI/KtfkRRtUZMRJwvc9Ww3sb/AIv8INr+t6Zqa6rLbCxDDyCpZHJYMDwy4Py4PUFSR3rkk+Ft8IV0cat5VmdMuYp7uBTH5tzIHWKTytxwY/NlbIYA5QADbXXh1RjSb9qr72cb7X6v+tfJjqOblbl073/r+kaMvw0h1S7kn1++1K8890e4VZ0iS42cL5iRqAxA4yAD/TuNLvdMnQ22nXNs4twYzFEwzGFZo8Y6gBkZfqpHavKtV+BkFzcao1l4luLSC7hhit4TFI6W3liLAx5oDoDFuVWBALtndk56XwH8OI/C3iu58QnVEv7m7tJLeeSW0Cykm5knUhw3AAl2lcYOxSNuMVwSUG3JbvsrF06UYNtLc//Z" alt="" class="header-logo" style="width:32px;height:32px;border-radius:6px;object-fit:contain">
       <span class="header-title" id="headerCompanyName">EzyAccount</span>
-      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v4.03-0907/1829</span>
+      <span style="font-size:9px;color:#9ca3af;margin-left:4px;letter-spacing:0.3px">v4.05-0907/2313</span>
     </div>
     <div class="header-right"><button onclick="window.location.href='../index.html'" title="Tukar Syarikat" style="background:none;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;padding:5px 10px;margin-right:4px">🏢 Tukar</button>
       <button id="btnRefresh" onclick="refreshAllData()" title="Refresh Data" style="background:none;border:none;font-size:18px;cursor:pointer;padding:4px;line-height:1">🔄</button>
@@ -1252,9 +1252,9 @@ function setupAppForRole(){
         {id:'dashboard',label:'Dashboard',fn:renderAccountantDashboard},
         {id:'resit',label:'Resit',fn:()=>renderResit(['Pending','Approved'])},
         {id:'invoice',label:'Jualan',fn:renderInvoiceScreen},
-        {id:'upload',label:'Beli',fn:()=>initWizard()},
+        {id:'upload',label:'Belian',fn:()=>initWizard()},
         {id:'suppliers',label:'Supplier',fn:renderSuppliersList},
-        {id:'payment',label:'Bayaran',fn:renderPaymentScreen}
+        {id:'payment',label:'Settlement',fn:renderPaymentScreen}
       ]);
     }
     switchTab('dashboard');
@@ -1273,9 +1273,9 @@ function setupAppForRole(){
         {id:'dashboard',label:'Dashboard',fn:renderAccountantDashboard},
         {id:'resit',label:'Resit',fn:()=>renderResit(['Pending','Approved'])},
         {id:'invoice',label:'Jualan',fn:renderInvoiceScreen},
-        {id:'upload',label:'Beli',fn:()=>initWizard()},
+        {id:'upload',label:'Belian',fn:()=>initWizard()},
         {id:'suppliers',label:'Supplier',fn:renderSuppliersList},
-        {id:'payment',label:'Bayaran',fn:renderPaymentScreen}
+        {id:'payment',label:'Settlement',fn:renderPaymentScreen}
       ]);
     }
     switchTab('dashboard');
@@ -1296,7 +1296,7 @@ function setupAppForRole(){
         {id:'invoice',label:'Jualan',fn:renderInvoiceScreen},
         {id:'staff',label:'Staff',fn:renderStaffScreen},
         {id:'supplier-admin',label:'Supplier',fn:renderSupplierAdmin},
-        {id:'payment',label:'Bayaran',fn:renderPaymentScreen}
+        {id:'payment',label:'Settlement',fn:renderPaymentScreen}
       ]);
     }
     switchTab('dashboard');
@@ -2656,36 +2656,25 @@ function renderSuppliersList(){
   const el=document.getElementById('suppliersList');
   if(!el) return;
   if(!suppliers.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">📦</div><div>Tiada supplier</div></div>';return;}
-  // Build KPI summary
-  const totalBeli=receipts.filter(r=>r.status==='Approved').reduce((a,r)=>a+parseFloat(r.amount||0),0);
-  const totalBayar=payments.reduce((a,p)=>a+parseFloat(p.amount||0),0);
-  const totalHutang=totalBeli-totalBayar;
-  const suppliersWithDebt=suppliers.filter(s=>{
-    const sn=s.name.toLowerCase();
-    const beli=receipts.filter(r=>r.vendor&&r.vendor.toLowerCase()===sn&&r.status==='Approved').reduce((a,r)=>a+parseFloat(r.amount||0),0);
-    const bayar=payments.filter(p=>p.supplier&&p.supplier.toLowerCase()===sn).reduce((a,p)=>a+parseFloat(p.amount||0),0);
-    return (beli-bayar)>0.01;
-  });
+  // Suppliers are paid instantly by the company card — no per-supplier debt. Show purchase info only.
+  const valid=receipts.filter(r=>r.status!=='Rejected');
+  const totalBeli=valid.reduce((a,r)=>a+parseFloat(r.amount||0),0);
   const kpiHtml=`<div class="kpi-grid" style="margin-bottom:12px">
-    <div class="kpi-card"><div class="kpi-label">Jumlah Supplier</div><div class="kpi-value">${suppliers.length}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Ada Hutang</div><div class="kpi-value" style="color:var(--red)">${suppliersWithDebt.length}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Jumlah Beli</div><div class="kpi-value" style="font-size:14px">${formatRM(totalBeli)}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Baki Hutang</div><div class="kpi-value" style="font-size:14px;color:${totalHutang>0?'var(--red)':'var(--green)'}">${formatRM(Math.abs(totalHutang))}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Jumlah Kedai</div><div class="kpi-value">${suppliers.length}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Jumlah Belian</div><div class="kpi-value" style="font-size:14px">${formatRM(totalBeli)}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Bil. Belian</div><div class="kpi-value">${valid.length}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Purata/Resit</div><div class="kpi-value" style="font-size:14px">${formatRM(valid.length?totalBeli/valid.length:0)}</div></div>
   </div>`;
   const listHtml=suppliers.map(s=>{
     const sn=s.name.toLowerCase();
-    const sRec=receipts.filter(r=>r.vendor&&r.vendor.toLowerCase()===sn&&r.status==='Approved');
-    const sPay=payments.filter(p=>p.supplier&&p.supplier.toLowerCase()===sn);
+    const sRec=valid.filter(r=>r.vendor&&r.vendor.toLowerCase()===sn);
     const sBeli=sRec.reduce((a,r)=>a+parseFloat(r.amount||0),0);
-    const sBayar=sPay.reduce((a,p)=>a+parseFloat(p.amount||0),0);
-    const baki=sBeli-sBayar;
     return `<div class="supplier-card" onclick="showSupplierHistory('${s.name.replace(/'/g,"\'")}')">
       <div class="supplier-info">
         <div class="supplier-name">${s.name}</div>
-        <div class="supplier-meta">${CAT_EMOJI[s.category]||''} ${s.category||'-'} · ${s.count||0}x transaksi</div>
-        ${baki>0?`<div style="font-size:11px;color:var(--red);margin-top:2px">Hutang: ${formatRM(baki)}</div>`:(sBeli>0?`<div style="font-size:11px;color:var(--green);margin-top:2px">Selesai</div>`:'')}
+        <div class="supplier-meta">${sRec.length}x belian</div>
       </div>
-      <span class="supplier-count" style="color:${baki>0?'var(--red)':'var(--green)'}">${baki>0?formatRM(baki):'✓'}</span>
+      <span class="supplier-count" style="color:var(--dark);font-weight:700">${formatRM(sBeli)}</span>
     </div>`;
   }).join('');
   el.innerHTML=kpiHtml+listHtml;
@@ -2877,11 +2866,14 @@ function renderAccountantDashboard(){
   if(pending.length){
     html+=`<div class="alert-banner alert-amber">${pending.length} resit menunggu kelulusan anda.</div>`;
   }
+  const totalBelian=receipts.filter(r=>r.status!=='Rejected').reduce((a,r)=>a+parseFloat(r.amount||0),0);
+  const totalSettled=getSettlements().reduce((a,s)=>a+parseFloat(s.amount||0),0);
+  const bakiSettle=totalBelian-totalSettled;
   html+=`<div class="kpi-grid">
     <div class="kpi-card"><div class="kpi-label">Total Resit</div><div class="kpi-value">${receipts.length}</div></div>
     <div class="kpi-card" style="cursor:pointer" onclick="switchTab('resit')"><div class="kpi-label">Pending</div><div class="kpi-value" style="color:var(--amber)">${pending.length}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Approved</div><div class="kpi-value" style="color:var(--green)">${approved.length}</div></div>
-    <div class="kpi-card"><div class="kpi-label">Total Approved</div><div class="kpi-value" style="font-size:16px">${formatRM(totalApproved)}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Belian Kad</div><div class="kpi-value" style="font-size:16px">${formatRM(totalBelian)}</div></div>
+    <div class="kpi-card" style="cursor:pointer" onclick="switchTab('payment')"><div class="kpi-label">Baki Settle Kad</div><div class="kpi-value" style="font-size:16px;color:${bakiSettle>0.01?'var(--red)':'var(--green)'}">${formatRM(Math.abs(bakiSettle))}</div></div>
   </div>
   <div id="itemPriceAnalysis" class="card mb-12" style="margin-top:12px"></div>
   <div class="card mb-12"><div class="card-title mb-8">Perbandingan Harga Hari Sama</div><div id="sameDateComparison"></div></div>`;
@@ -5348,21 +5340,167 @@ async function uploadInvoiceToDrive(base64, filename, folderPath){
 }
 // ===================== END INVOICE MODULE =====================
 
+// ===================== SETTLEMENT MODULE (credit-card monthly settlement) =====================
+// All purchases go on ONE company credit card. Suppliers are paid instantly by the card, so
+// there is no per-supplier debt — instead the bakery owes the company. Each settlement payment
+// reduces a running balance; periods (calendar month OR card statement cycle) are marked using
+// FIFO allocation (oldest period first), so both views stay consistent without double-counting.
+function getSettlements(){ return lsGet('ezy_settlements_'+COMPANY_CONFIG.id,[]); }
+function setSettlements(list){ lsSet('ezy_settlements_'+COMPANY_CONFIG.id,list); }
+function getStmtCutoff(){ return parseInt(lsGet('ezy_stmt_cutoff_'+COMPANY_CONFIG.id,0))||0; } // 0 = end of calendar month
+function setStmtCutoff(d){ lsSet('ezy_stmt_cutoff_'+COMPANY_CONFIG.id,d); }
+window._settleView = window._settleView || 'month'; // 'month' | 'stmt'
+
+async function loadSettlementsFromSheet(){
+  const tok=getValidToken()||accessToken||currentToken; if(!tok) return;
+  try{
+    const r=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Settlement!A2:F`,{headers:{Authorization:'Bearer '+tok}});
+    const d=await r.json();
+    if(d.error) return;
+    setSettlements((d.values||[]).filter(row=>row[0]).map(row=>({id:row[0],date:row[1]||'',amount:parseFloat(row[2])||0,method:row[3]||'',note:row[4]||'',recordedBy:row[5]||''})));
+  }catch(e){ console.warn('loadSettlements:',e); }
+}
+async function syncSettlementsToSheet(){
+  const tok=getValidToken()||accessToken||currentToken; if(!tok) return;
+  try{
+    const cr=await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Settlement!A1:A1`,{headers:{Authorization:'Bearer '+tok}});
+    if((await cr.json()).error){
+      await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate`,{method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({requests:[{addSheet:{properties:{title:'Settlement'}}}]})});
+    }
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Settlement!A1:F10000:clear`,{method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'}});
+    const rows=[['ID','Tarikh','Jumlah','Kaedah','Nota','DirekoOleh']];
+    getSettlements().forEach(s=>rows.push([s.id,s.date,s.amount,s.method,s.note,s.recordedBy]));
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Settlement!A1?valueInputOption=USER_ENTERED`,{method:'PUT',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({values:rows})});
+  }catch(e){ console.warn('syncSettlements:',e); }
+}
+// Which settlement period a date falls in. Returns {key, label, sortKey}.
+function settlePeriodOf(dateStr){
+  const k=dateSortKey(dateStr); if(!k) return null;
+  const [y,m,d]=k.split('-').map(Number);
+  const cutoff=getStmtCutoff();
+  if(window._settleView==='month'||!cutoff){
+    return {key:y+'-'+String(m).padStart(2,'0'), label:MALAY_MONTHS[m-1]+' '+y, sortKey:y+'-'+String(m).padStart(2,'0')};
+  }
+  // statement cycle: cutoff day D → cycle runs D of one month to (D-1) of next
+  let sy=y, sm=m;
+  if(d<cutoff){ sm=m-1; if(sm<1){sm=12;sy=y-1;} }
+  const start=new Date(sy,sm-1,cutoff);
+  const end=new Date(sy,sm,cutoff-1);
+  const sk=sy+'-'+String(sm).padStart(2,'0')+'-'+String(cutoff).padStart(2,'0');
+  const lbl=cutoff+' '+MALAY_MONTHS[start.getMonth()].slice(0,3)+' – '+(cutoff-1)+' '+MALAY_MONTHS[end.getMonth()].slice(0,3)+' '+end.getFullYear();
+  return {key:sk, label:lbl, sortKey:sk};
+}
+// Build periods with FIFO-allocated settlement.
+function computeSettlementPeriods(){
+  const receipts=getReceipts().filter(r=>r.status!=='Rejected');
+  const byPeriod={};
+  receipts.forEach(r=>{
+    const p=settlePeriodOf(r.date); if(!p) return;
+    if(!byPeriod[p.key]) byPeriod[p.key]={key:p.key,label:p.label,sortKey:p.sortKey,belian:0};
+    byPeriod[p.key].belian+=parseFloat(r.amount||0);
+  });
+  const periods=Object.values(byPeriod).sort((a,b)=>a.sortKey.localeCompare(b.sortKey)); // oldest first
+  let remaining=getSettlements().reduce((a,s)=>a+parseFloat(s.amount||0),0);
+  periods.forEach(p=>{
+    const applied=Math.min(remaining,p.belian);
+    p.settled=applied; remaining-=applied;
+    p.baki=p.belian-p.settled;
+    p.status=p.baki<=0.01?'Settle':(p.settled>0.01?'Sebahagian':'Belum');
+  });
+  return periods.reverse(); // newest first for display
+}
+
 function renderPaymentScreen(){
   const el=document.getElementById('paymentContent');
   if(!el) return;
-  el.innerHTML='<div style="text-align:center;padding:40px 0;color:var(--mid)">⏳ Memuatkan bayaran...</div>';
+  el.innerHTML='<div style="text-align:center;padding:40px 0;color:var(--mid)">⏳ Memuatkan...</div>';
   if(COMPANY_CONFIG.id==='ezybranch'){
     Promise.all([loadInvoicesFromSheet(), loadOnpayFromSheet(), loadPaymentsFromSheet()])
       .then(()=>_renderPaymentScreenEzybranch());
   } else {
-    // Supplier-based: render immediately from localStorage (already hydrated at app init /
-    // updated instantly after each save), then refresh from the sheet in the background.
-    // Rendering straight from the sheet on every call raced with the async save-sync and
-    // could wipe a just-recorded payment.
-    _renderPaymentScreenInner();
-    loadPaymentsFromSheet().then(()=>_renderPaymentScreenInner()).catch(()=>{});
+    // EzyBakery: credit-card settlement screen (not per-supplier payments)
+    renderSettlementScreen();
+    loadSettlementsFromSheet().then(()=>renderSettlementScreen()).catch(()=>{});
   }
+}
+
+function renderSettlementScreen(){
+  const el=document.getElementById('paymentContent');
+  if(!el) return;
+  const periods=computeSettlementPeriods();
+  const totalBelian=getReceipts().filter(r=>r.status!=='Rejected').reduce((a,r)=>a+parseFloat(r.amount||0),0);
+  const totalSettled=getSettlements().reduce((a,s)=>a+parseFloat(s.amount||0),0);
+  const baki=totalBelian-totalSettled;
+  const cutoff=getStmtCutoff();
+  const recent=getSettlements().slice().sort((a,b)=>dateSortKey(b.date).localeCompare(dateSortKey(a.date))).slice(0,10);
+  let html=`
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <div class="section-title">Settlement Kad Kredit</div>
+    <button class="btn btn-sm btn-secondary" onclick="renderPaymentScreen()">🔄</button>
+  </div>
+  <div class="kpi-grid" style="margin-bottom:14px">
+    <div class="kpi-card"><div class="kpi-label">Belian Kad (Semua)</div><div class="kpi-value" style="font-size:14px">${formatRM(totalBelian)}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Telah Settle</div><div class="kpi-value" style="font-size:14px;color:var(--green)">${formatRM(totalSettled)}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Baki Perlu Settle</div><div class="kpi-value" style="font-size:14px;color:${baki>0.01?'var(--red)':'var(--green)'}">${formatRM(Math.abs(baki))}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Bilangan Tempoh</div><div class="kpi-value">${periods.length}</div></div>
+  </div>
+  <button class="btn btn-primary" style="width:100%;margin-bottom:12px" onclick="showSettlementModal()">+ Rekod Settlement</button>
+  <div style="display:flex;gap:6px;margin-bottom:10px;align-items:center">
+    <button class="btn btn-sm ${window._settleView==='month'?'btn-primary':'btn-secondary'}" style="flex:1" onclick="setSettleView('month')">📅 Bulan Kalendar</button>
+    <button class="btn btn-sm ${window._settleView==='stmt'?'btn-primary':'btn-secondary'}" style="flex:1" onclick="setSettleView('stmt')">💳 Kitaran Statement</button>
+  </div>
+  ${window._settleView==='stmt'?`<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:12px;color:var(--mid)">
+    <span>Tarikh potong statement (hari):</span>
+    <input type="number" min="1" max="28" value="${cutoff||15}" onchange="setStmtCutoff(parseInt(this.value)||15);renderSettlementScreen()" style="width:60px;font-size:12px;padding:4px 6px;border:1px solid var(--border);border-radius:6px">
+  </div>`:''}
+  <div style="font-size:12px;font-weight:600;color:var(--mid);margin-bottom:8px">TEMPOH ${window._settleView==='month'?'BULANAN':'STATEMENT'}</div>`;
+  if(!periods.length){
+    html+='<div class="empty-state"><div class="empty-icon">💳</div><div>Tiada belian lagi</div></div>';
+  } else {
+    html+=periods.map(p=>{
+      const badge=p.status==='Settle'?'<span style="color:var(--green);font-weight:600">✅ Settle</span>':p.status==='Sebahagian'?'<span style="color:var(--amber);font-weight:600">🟡 Sebahagian</span>':'<span style="color:var(--red);font-weight:600">⏳ Belum</span>';
+      return `<div class="card mb-8" style="padding:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div style="font-size:13px;font-weight:700">${p.label}</div><div>${badge}</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;font-size:11px">
+          <div><div style="color:var(--mid)">Belian</div><div style="font-weight:600">${formatRM(p.belian)}</div></div>
+          <div><div style="color:var(--mid)">Settle</div><div style="font-weight:600;color:var(--green)">${formatRM(p.settled)}</div></div>
+          <div><div style="color:var(--mid)">Baki</div><div style="font-weight:600;color:${p.baki>0.01?'var(--red)':'var(--green)'}">${formatRM(p.baki)}</div></div>
+        </div></div>`;
+    }).join('');
+  }
+  if(recent.length){
+    html+=`<div style="font-size:12px;font-weight:600;color:var(--mid);margin:16px 0 8px">REKOD SETTLEMENT</div>`;
+    html+=`<div class="table-wrap"><table class="data-table"><thead><tr><th>Tarikh</th><th>Kaedah</th><th>RM</th></tr></thead>
+      <tbody>${recent.map(s=>`<tr><td>${fmtDate(s.date)}</td><td>${s.method||'-'}</td><td style="font-weight:600;color:var(--green)">${formatRM(s.amount)}</td></tr>`).join('')}</tbody></table></div>`;
+  }
+  el.innerHTML=html;
+}
+function setSettleView(v){ window._settleView=v; renderSettlementScreen(); }
+function showSettlementModal(){
+  const today=new Date().toISOString().split('T')[0];
+  const baki=getReceipts().filter(r=>r.status!=='Rejected').reduce((a,r)=>a+parseFloat(r.amount||0),0)-getSettlements().reduce((a,s)=>a+parseFloat(s.amount||0),0);
+  showModal('+ Rekod Settlement', `
+    <div style="font-size:12px;color:var(--mid);margin-bottom:10px">Baki perlu settle: <b style="color:var(--red)">${formatRM(Math.abs(baki))}</b></div>
+    <div class="form-group"><label class="form-label">Tarikh Bayaran</label><input type="date" id="setDate" class="form-input" value="${today}"></div>
+    <div class="form-group"><label class="form-label">Jumlah (RM)</label><input type="number" id="setAmount" class="form-input" placeholder="0.00" step="0.01" value="${baki>0.01?baki.toFixed(2):''}"></div>
+    <div class="form-group"><label class="form-label">Kaedah</label><select id="setMethod" class="form-input"><option>Bank Transfer</option><option>Tunai</option><option>Cek</option><option>DuitNow</option></select></div>
+    <div class="form-group"><label class="form-label">Nota (pilihan)</label><input type="text" id="setNote" class="form-input" placeholder="cth: Settlement Julai"></div>
+    <button class="btn btn-primary" style="width:100%" onclick="saveSettlement()">Simpan Settlement</button>`);
+}
+function saveSettlement(){
+  const date=document.getElementById('setDate').value;
+  const amount=parseFloat(document.getElementById('setAmount').value)||0;
+  const method=document.getElementById('setMethod').value;
+  const note=(document.getElementById('setNote').value||'').trim();
+  if(!date||!amount){ showToast('Sila lengkapkan tarikh & jumlah ⚠️'); return; }
+  const list=getSettlements();
+  list.push({id:'SET-'+Date.now(),date,amount,method,note,recordedBy:currentUser?.email||''});
+  setSettlements(list);
+  syncSettlementsToSheet().catch(()=>{});
+  hideModal();
+  showToast('Settlement direkod ✅');
+  renderSettlementScreen();
 }
 
 // ===== PAYMENT SCREEN FOR EZYBRANCH (guna 3-tab balance) =====
@@ -6080,7 +6218,7 @@ async function loadAllFromSheets(){
   } else {
     await Promise.all([
       loadReceiptsFromSheet(),
-      loadPaymentsFromSheet(),
+      loadSettlementsFromSheet(),
       loadSuppliersFromSheet(),
       syncAllStaffFromSheet()
     ]);
